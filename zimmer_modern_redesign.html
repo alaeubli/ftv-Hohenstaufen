@@ -3,7 +3,7 @@
 <html class="scroll-smooth" lang="de"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Zimmer mieten | FTV Hohenstaufen</title>
+<title>Zimmer mieten in Aalen | FtV Hohenstaufen</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -169,167 +169,281 @@
 </head>
 <body class="bg-background text-on-surface font-body-md text-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopNavBar -->
-<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-container-max rounded-full backdrop-blur-xl border border-white/20 shadow-[0_10px_30px_rgba(32,89,48,0.05)] bg-white/70 dark:bg-surface/70 flex justify-between items-center px-8 py-3 z-50 transition-transform duration-300" id="main-nav">
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-container-max rounded-full backdrop-blur-xl border border-white/20 shadow-[0_10px_30px_rgba(32,89,48,0.05)] bg-white/70 dark:bg-surface/70 flex justify-between items-center px-6 md:px-8 py-3 z-50 transition-transform duration-300" id="main-nav">
 <a class="font-display-lg text-headline-md font-semibold text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity" href="startseite_modern_redesign.html">
-            FTV Hohenstaufen
+            FtV Hohenstaufen
         </a>
 <div class="hidden md:flex items-center gap-6">
 <a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="startseite_modern_redesign.html#tradition">Tradition</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="das_haus_modern_redesign.html">Das Haus</a>
 <a class="text-primary dark:text-primary-fixed-dim font-medium font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="zimmer_modern_redesign.html">Zimmer</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="veranstaltungen_modern_redesign.html">Veranstaltungen</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="startseite_modern_redesign.html#contact">Kontakt</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="startseite_modern_redesign.html#kontakt">Kontakt</a>
 </div>
-<a class="bg-primary text-white font-label-sm text-label-sm uppercase px-6 py-3 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 hidden md:block" href="startseite_modern_redesign.html#contact">
-            Mitglied werden
+<a class="bg-primary text-white font-label-sm text-label-sm uppercase px-6 py-3 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 hidden md:block" href="startseite_modern_redesign.html#aktiv-werden">
+            Aktiv werden
         </a>
-<button class="md:hidden text-primary p-2">
-<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü öffnen" class="md:hidden text-primary p-2 rounded-full hover:bg-secondary-container transition-colors" id="nav-toggle" type="button">
+<span class="material-symbols-outlined" id="nav-icon">menu</span>
 </button>
+<div class="absolute top-full left-0 right-0 mt-3 hidden md:hidden" id="mobile-menu">
+<div class="bg-white/95 dark:bg-surface/95 backdrop-blur-xl border border-white/20 rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.12)] p-4 flex flex-col gap-1">
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="startseite_modern_redesign.html#tradition">Tradition</a>
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="das_haus_modern_redesign.html">Das Haus</a>
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-primary font-medium" href="zimmer_modern_redesign.html">Zimmer</a>
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="veranstaltungen_modern_redesign.html">Veranstaltungen</a>
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="startseite_modern_redesign.html#kontakt">Kontakt</a>
+<a class="bg-primary text-white font-label-sm text-label-sm uppercase px-6 py-4 rounded-full hover:bg-primary-container transition-colors text-center mt-2" href="startseite_modern_redesign.html#aktiv-werden">Aktiv werden</a>
+</div>
+</div>
 </nav>
 <main class="w-full max-w-container-max mx-auto px-gutter md:px-0 flex flex-col gap-section-gap pt-[160px] pb-section-gap">
 <!-- Hero -->
 <section class="relative w-full h-[480px] md:h-[620px] rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(32,89,48,0.08)]">
-<!-- TODO: echtes Foto ersetzen -->
-<img alt="Sonnendurchflutetes Zimmer im Haus der FTV Hohenstaufen mit Schreibtisch am Fenster" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-hero/1920/1080"/>
+<!-- TODO: echtes Foto vom Hohenstaufenhaus einsetzen -->
+<img alt="Studentenzimmer im Hohenstaufenhaus mit Schreibtisch am Fenster" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-hero/1920/1080"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
 <div class="absolute bottom-0 left-0 w-full p-8 md:p-16 flex flex-col items-start max-w-3xl">
 <span class="bg-white/20 backdrop-blur-md text-white font-label-sm text-label-sm px-4 py-1.5 rounded-full mb-stack-md border border-white/30">Zimmer mieten</span>
-<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-stack-md drop-shadow-lg">Wohnen, wo das Semester stattfindet.</h1>
-<p class="font-body-lg text-body-lg text-white/90 max-w-xl">Bezahlbare, möblierte Zimmer mitten in der Stadt — und eine Hausgemeinschaft, die abends noch am Küchentisch sitzt, wenn die Bibliothek längst zu hat.</p>
-</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-stack-md drop-shadow-lg">Wohnen, wo dein Semester sowieso stattfindet.</h1>
+<p class="font-body-lg text-body-lg text-white/90 max-w-xl mb-stack-lg">Sieben Zimmer von 13 bis 19 m², direkt hinter der Mensa — mit Küche, Kneipsaal, Kellerbar und Leuten, die abends noch am Tisch sitzen.</p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest hover:-translate-y-0.5 transition-all duration-200 shadow-lg flex items-center justify-center gap-2 whitespace-nowrap" href="#zimmer">Zimmer ansehen</a>
+<a class="bg-transparent border border-white text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center gap-2 whitespace-nowrap" href="#kontakt">Anfrage stellen</a>
+</div></div>
 </section>
 <!-- Intro -->
 <section>
 <div class="mb-stack-lg text-center max-w-2xl mx-auto">
-<h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">Ein Zuhause auf Zeit — mitten im Semester</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Im Haus der FTV Hohenstaufen wohnen Studierende aller Fachrichtungen unter einem Dach. Du bekommst ein eigenes, möbliertes Zimmer und dazu alles, was ein Haus lebendig macht: eine große Küche, eine Bibliothek zum Lernen, einen Garten für den Sommer und Leute, die dir in der ersten Woche zeigen, wo es den besten Kaffee gibt. Kein anonymes Wohnheim, sondern eine Adresse, an die man später gerne zurückkommt.</p>
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">Ein Zimmer, ein halbes Haus dazu</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Du mietest bei uns nicht nur vier Wände. Zum Zimmer gehören Küche, Bäder, Balkon, Kneipsaal und Kellerbar — und eine Hausgemeinschaft, die man sich sonst mühsam suchen muss.</p>
 </div>
-<div class="bg-surface-container-low rounded-xl p-8 md:p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 shadow-[0_10px_30px_rgba(32,89,48,0.04)]">
+<div class="bg-surface-container-low rounded-xl p-8 md:p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 shadow-[0_10px_30px_rgba(32,89,48,0.04)]">
 <div class="flex flex-col">
-<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="chair" style="font-variation-settings: 'FILL' 1;">chair</span>
-<h3 class="font-headline-md text-body-lg text-on-surface mb-stack-sm">Möbliert einziehen</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Bett, Schreibtisch, Schrank und Regal sind da. Du bringst mit, was dich ausmacht.</p>
-</div>
-<div class="flex flex-col">
-<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="wifi" style="font-variation-settings: 'FILL' 1;">wifi</span>
-<h3 class="font-headline-md text-body-lg text-on-surface mb-stack-sm">Glasfaser im ganzen Haus</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Schnelles WLAN in jedem Zimmer, dazu ein Arbeitsplatz in der Bibliothek.</p>
+<span class="material-symbols-outlined text-primary text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">wifi</span>
+<h3 class="font-headline-md text-body-lg text-on-surface mb-stack-sm">LAN, WLAN und TV</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">In jedem Zimmer liegt ein Anschluss — kein Kampf um Bandbreite vor der Abgabe.</p>
 </div>
 <div class="flex flex-col">
-<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="receipt_long" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
-<h3 class="font-headline-md text-body-lg text-on-surface mb-stack-sm">Nebenkosten inklusive</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Strom, Wasser, Heizung und Internet stecken schon in der Miete.</p>
+<span class="material-symbols-outlined text-primary text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">countertops</span>
+<h3 class="font-headline-md text-body-lg text-on-surface mb-stack-sm">Küche für alle</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Herd, Backofen, Spülmaschine und zwei Kühlschränke. Platz für alle, die gleichzeitig Hunger haben.</p>
 </div>
 <div class="flex flex-col">
-<span class="material-symbols-outlined text-primary text-3xl mb-4" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
-<h3 class="font-headline-md text-body-lg text-on-surface mb-stack-sm">Gemeinsam kochen</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Große Küche, langer Tisch — und fast immer jemand, der mitisst.</p>
+<span class="material-symbols-outlined text-primary text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">shower</span>
+<h3 class="font-headline-md text-body-lg text-on-surface mb-stack-sm">Drei Bäder</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Auf drei Etagen verteilt. Morgens steht hier niemand Schlange.</p>
+</div>
+<div class="flex flex-col">
+<span class="material-symbols-outlined text-primary text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">deck</span>
+<h3 class="font-headline-md text-body-lg text-on-surface mb-stack-sm">Balkon mit Aussicht</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Blick über Aalen bis zu den Limes-Thermen. Ab Mai der beliebteste Platz im Haus.</p>
+</div>
+<div class="flex flex-col">
+<span class="material-symbols-outlined text-primary text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">local_bar</span>
+<h3 class="font-headline-md text-body-lg text-on-surface mb-stack-sm">Kneipsaal & Kellerbar</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Eigene Räume zum Feiern — du musst dafür nicht mal Schuhe anziehen.</p>
+</div>
+<div class="flex flex-col">
+<span class="material-symbols-outlined text-primary text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">directions_walk</span>
+<h3 class="font-headline-md text-body-lg text-on-surface mb-stack-sm">Hinter der Mensa</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Wenige Minuten zur Hochschule. Kein Bus, kein Parkplatz, keine Ausrede.</p>
 </div>
 </div>
 </section>
 <!-- Zimmer -->
 <section class="scroll-mt-32" id="zimmer">
-<div class="mb-stack-lg text-center max-w-2xl mx-auto">
-<h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">Unsere Zimmer</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Jedes Zimmer im Haus hat seinen eigenen Charakter — und seinen eigenen Namen, den ihm irgendwann jemand gegeben hat. Die Mieten verstehen sich warm, also inklusive Strom, Wasser, Heizung und Internet.</p>
+<div class="mb-stack-lg flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+<div class="max-w-2xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">Die sieben Zimmer</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Verteilt auf drei Etagen, zwischen 13 bis 19 m² groß. Welches Zimmer gerade frei wird, ändert sich meist zum Semesterwechsel — frag am besten kurz nach, dann bekommst du den aktuellen Stand.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="flex-shrink-0">
+<!-- TODO: WhatsApp-Nummer eintragen (49XXXXXXXXXX in allen vier Dateien ersetzen) -->
+<a class="bg-[#25D366] text-[#07301a] font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-[#1ebe5a] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap" href="https://wa.me/49XXXXXXXXXX?text=Hallo%21%20Welche%20Zimmer%20im%20Hohenstaufenhaus%20sind%20gerade%20frei%3F" rel="noopener" target="_blank"><svg aria-hidden="true" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.825 9.825 0 016.988 2.896 9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.142 1.595 5.945L0 24l6.335-1.652a11.94 11.94 0 005.71 1.447h.006c6.585 0 11.946-5.335 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg>Verfügbarkeit fragen</a>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 <article class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 overflow-hidden flex flex-col">
-<div class="relative h-56 overflow-hidden">
-<!-- TODO: echtes Foto ersetzen -->
-<img alt="Blick in ein helles Dachzimmer mit Schreibtisch am Fenster" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-turmstube/900/600"/>
-<span class="absolute top-4 right-4 flex items-center gap-2 bg-primary text-white backdrop-blur-md font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Frei</span>
+<div class="relative h-44 overflow-hidden">
+<!-- TODO: echtes Foto von Zimmer 1 einsetzen -->
+<img alt="Zimmer 1 im Hohenstaufenhaus" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-1/800/500"/>
+<span class="absolute top-4 right-4 flex items-center gap-2 bg-primary text-white font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full backdrop-blur-md">
+<span class="w-1.5 h-1.5 rounded-full bg-current"></span>Frei</span>
 </div>
-<div class="p-8 flex flex-col flex-1">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Turmstube</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">Ganz oben unterm Dach, mit schrägen Wänden und Blick über die Dächer der Altstadt. Das ruhigste Zimmer im Haus — perfekt für alle, die zum Lernen ihre Ruhe brauchen.</p>
-<div class="mt-auto flex items-center justify-between border-t border-surface-container pt-5">
-<span class="flex items-center gap-2 font-body-md text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-primary text-xl">straighten</span>18 m²</span>
-<span class="font-headline-md text-body-lg text-primary font-medium">340 € warm</span>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Zimmer 1</h3>
+<div class="flex flex-wrap items-center gap-x-5 gap-y-2 font-body-md text-body-md text-on-surface-variant">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">stairs</span>Erdgeschoss</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">straighten</span>14 m²</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant/80 mt-4 flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">event_available</span>Frei ab 1. Oktober 2026</p>
 </div>
 </article>
 <article class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 overflow-hidden flex flex-col">
-<div class="relative h-56 overflow-hidden">
-<!-- TODO: echtes Foto ersetzen -->
-<img alt="Zimmer im Erdgeschoss mit Terrassentür zum Garten" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-gartenzimmer/900/600"/>
-<span class="absolute top-4 right-4 flex items-center gap-2 bg-primary text-white backdrop-blur-md font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Frei</span>
+<div class="relative h-44 overflow-hidden">
+<!-- TODO: echtes Foto von Zimmer 2 einsetzen -->
+<img alt="Zimmer 2 im Hohenstaufenhaus" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-2/800/500"/>
+<span class="absolute top-4 right-4 flex items-center gap-2 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full backdrop-blur-md">
+<span class="w-1.5 h-1.5 rounded-full bg-current"></span>Belegt</span>
 </div>
-<div class="p-8 flex flex-col flex-1">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Gartenzimmer</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">Im Erdgeschoss gelegen, mit eigener Tür direkt auf die Terrasse. Im Sommer verlängert sich das Zimmer einfach nach draußen — Kaffee auf den Stufen inklusive.</p>
-<div class="mt-auto flex items-center justify-between border-t border-surface-container pt-5">
-<span class="flex items-center gap-2 font-body-md text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-primary text-xl">straighten</span>22 m²</span>
-<span class="font-headline-md text-body-lg text-primary font-medium">385 € warm</span>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Zimmer 2</h3>
+<div class="flex flex-wrap items-center gap-x-5 gap-y-2 font-body-md text-body-md text-on-surface-variant">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">stairs</span>Erdgeschoss</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">straighten</span>16 m²</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant/80 mt-4 flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">event_available</span>Sofort beziehbar</p>
 </div>
 </article>
 <article class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 overflow-hidden flex flex-col">
-<div class="relative h-56 overflow-hidden">
-<!-- TODO: echtes Foto ersetzen -->
-<img alt="Ruhiges Zimmer mit Bücherregal und altem Parkettboden" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-bibliothek/900/600"/>
-<span class="absolute top-4 right-4 flex items-center gap-2 bg-white/80 text-on-surface-variant backdrop-blur-md font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Belegt</span>
+<div class="relative h-44 overflow-hidden">
+<!-- TODO: echtes Foto von Zimmer 3 einsetzen -->
+<img alt="Zimmer 3 im Hohenstaufenhaus" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-3/800/500"/>
+<span class="absolute top-4 right-4 flex items-center gap-2 bg-primary text-white font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full backdrop-blur-md">
+<span class="w-1.5 h-1.5 rounded-full bg-current"></span>Frei</span>
 </div>
-<div class="p-8 flex flex-col flex-1">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Bibliothekszimmer</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">Direkt neben der Hausbibliothek, mit altem Parkett und einem eingebauten Regal, das schon Generationen von Semesterarbeiten getragen hat.</p>
-<div class="mt-auto flex items-center justify-between border-t border-surface-container pt-5">
-<span class="flex items-center gap-2 font-body-md text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-primary text-xl">straighten</span>16 m²</span>
-<span class="font-headline-md text-body-lg text-primary font-medium">310 € warm</span>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Zimmer 3</h3>
+<div class="flex flex-wrap items-center gap-x-5 gap-y-2 font-body-md text-body-md text-on-surface-variant">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">stairs</span>1. Obergeschoss</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">straighten</span>19 m²</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant/80 mt-4 flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">event_available</span>Voraussichtlich wieder frei ab April 2027</p>
 </div>
 </article>
-<article class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 overflow-hidden md:col-span-2 flex flex-col md:flex-row">
-<div class="relative w-full md:w-1/2 h-56 md:h-auto overflow-hidden">
-<!-- TODO: echtes Foto ersetzen -->
-<img alt="Großes Eckzimmer mit Erker und zwei Fenstern" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-erkerzimmer/1200/900"/>
-<span class="absolute top-4 right-4 flex items-center gap-2 bg-primary text-white backdrop-blur-md font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-current"></span>Frei</span>
+<article class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 overflow-hidden flex flex-col">
+<div class="relative h-44 overflow-hidden">
+<!-- TODO: echtes Foto von Zimmer 4 einsetzen -->
+<img alt="Zimmer 4 im Hohenstaufenhaus" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-4/800/500"/>
+<span class="absolute top-4 right-4 flex items-center gap-2 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full backdrop-blur-md">
+<span class="w-1.5 h-1.5 rounded-full bg-current"></span>Belegt</span>
 </div>
-<div class="p-8 md:p-10 flex flex-col flex-1">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Erkerzimmer</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">Das größte Zimmer im Haus: ein Eckzimmer mit Erker, zwei Fenstern und genug Platz für Schreibtisch, Sofa und die Freunde, die abends spontan vorbeikommen. Wer hier wohnt, hat schnell das inoffizielle Wohnzimmer der Etage.</p>
-<div class="mt-auto flex items-center justify-between border-t border-surface-container pt-5">
-<span class="flex items-center gap-2 font-body-md text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-primary text-xl">straighten</span>26 m²</span>
-<span class="font-headline-md text-body-lg text-primary font-medium">430 € warm</span>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Zimmer 4</h3>
+<div class="flex flex-wrap items-center gap-x-5 gap-y-2 font-body-md text-body-md text-on-surface-variant">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">stairs</span>1. Obergeschoss</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">straighten</span>13 m²</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant/80 mt-4 flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">event_available</span>Frei ab 1. November 2026</p>
+</div>
+</article>
+<article class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 overflow-hidden flex flex-col">
+<div class="relative h-44 overflow-hidden">
+<!-- TODO: echtes Foto von Zimmer 5 einsetzen -->
+<img alt="Zimmer 5 im Hohenstaufenhaus" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-5/800/500"/>
+<span class="absolute top-4 right-4 flex items-center gap-2 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full backdrop-blur-md">
+<span class="w-1.5 h-1.5 rounded-full bg-current"></span>Belegt</span>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Zimmer 5</h3>
+<div class="flex flex-wrap items-center gap-x-5 gap-y-2 font-body-md text-body-md text-on-surface-variant">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">stairs</span>1. Obergeschoss</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">straighten</span>17 m²</span>
+</div>
+</div>
+</article>
+<article class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 overflow-hidden flex flex-col">
+<div class="relative h-44 overflow-hidden">
+<!-- TODO: echtes Foto von Zimmer 6 einsetzen -->
+<img alt="Zimmer 6 im Hohenstaufenhaus" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-6/800/500"/>
+<span class="absolute top-4 right-4 flex items-center gap-2 bg-primary text-white font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full backdrop-blur-md">
+<span class="w-1.5 h-1.5 rounded-full bg-current"></span>Frei</span>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Zimmer 6</h3>
+<div class="flex flex-wrap items-center gap-x-5 gap-y-2 font-body-md text-body-md text-on-surface-variant">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">stairs</span>Dachgeschoss</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">straighten</span>15 m²</span>
+</div>
+</div>
+</article>
+<article class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 overflow-hidden flex flex-col">
+<div class="relative h-44 overflow-hidden">
+<!-- TODO: echtes Foto von Zimmer 7 einsetzen -->
+<img alt="Zimmer 7 im Hohenstaufenhaus" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-zimmer-7/800/500"/>
+<span class="absolute top-4 right-4 flex items-center gap-2 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full backdrop-blur-md">
+<span class="w-1.5 h-1.5 rounded-full bg-current"></span>Belegt</span>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Zimmer 7</h3>
+<div class="flex flex-wrap items-center gap-x-5 gap-y-2 font-body-md text-body-md text-on-surface-variant">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">stairs</span>Dachgeschoss</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">straighten</span>18 m²</span>
+</div>
 </div>
 </article>
 <!-- Hinweis-Karte -->
 <div class="bg-primary text-white rounded-xl p-8 shadow-[0_10px_30px_rgba(32,89,48,0.1)] hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-center">
-<span class="material-symbols-outlined text-primary-fixed-dim text-4xl mb-6" data-icon="waving_hand" style="font-variation-settings: 'FILL' 1;">waving_hand</span>
-<h3 class="font-headline-md text-headline-md mb-2">Nichts Passendes dabei?</h3>
-<p class="font-body-md text-body-md text-white/80 mb-stack-lg">Zimmer werden bei uns meist zum Semesterwechsel frei. Schreib uns trotzdem — wir melden uns, sobald etwas frei wird.</p>
-<a class="bg-white text-primary font-body-md text-body-md font-medium px-6 py-3 rounded-full hover:bg-surface-container-highest transition-colors self-start" href="#kontakt">Auf die Warteliste</a>
+<span class="material-symbols-outlined text-primary-fixed-dim text-4xl mb-6" style="font-variation-settings: 'FILL' 1;">waving_hand</span>
+<h3 class="font-headline-md text-headline-md mb-2">Gerade alles belegt?</h3>
+<p class="font-body-md text-body-md text-white/80 mb-stack-lg">Kein Problem — sag uns Bescheid, und wir melden uns, sobald ein Zimmer frei wird. Meistens ist das zum Semesterwechsel.</p>
+<a class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest hover:-translate-y-0.5 transition-all duration-200 shadow-lg flex items-center justify-center gap-2 whitespace-nowrap self-start" href="#kontakt">Auf die Warteliste</a>
 </div>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant/80 mt-stack-lg text-center">
-<!-- TODO: echte Zimmerdaten, Größen und Mietpreise eintragen -->
-Alle Angaben sind Platzhalter und werden noch durch die tatsächlichen Zimmerdaten ersetzt.
-</p>
+<!-- TODO: echte Zimmerdaten und Mietpreise eintragen -->
+<div class="mt-stack-lg bg-secondary-container rounded-xl p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+<span class="material-symbols-outlined text-primary flex-shrink-0">info</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Etagen, Größen und Belegung sind bis zur Freigabe Platzhalter. Gesichert ist bisher: sieben Zimmer von 13 bis 19 m² auf drei Etagen, jeweils mit LAN-, WLAN- und TV-Anschluss.</p>
+</div>
+</section>
+<!-- Miete -->
+<section>
+<div class="bg-surface-container-low rounded-xl p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center shadow-[0_10px_30px_rgba(32,89,48,0.04)]">
+<div>
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4 block">Was es kostet</span>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Günstiger als das meiste in Aalen.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">Wir vermieten nicht, um Gewinn zu machen — das Haus trägt sich selbst. Deshalb liegt die Miete deutlich unter dem, was du auf dem freien Markt für ein möbliertes Zimmer mit dieser Lage zahlst. Was genau drin ist und was dazukommt, sagen wir dir am Telefon in zwei Minuten.</p>
+<!-- TODO: echte Miete und Nebenkosten eintragen -->
+<div class="flex flex-wrap gap-4">
+<!-- TODO: WhatsApp-Nummer eintragen (49XXXXXXXXXX in allen vier Dateien ersetzen) -->
+<a class="bg-[#25D366] text-[#07301a] font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-[#1ebe5a] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap" href="https://wa.me/49XXXXXXXXXX?text=Hallo%21%20Was%20kostet%20ein%20Zimmer%20im%20Hohenstaufenhaus%2C%20und%20was%20ist%20in%20der%20Miete%20enthalten%3F" rel="noopener" target="_blank"><svg aria-hidden="true" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.825 9.825 0 016.988 2.896 9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.142 1.595 5.945L0 24l6.335-1.652a11.94 11.94 0 005.71 1.447h.006c6.585 0 11.946-5.335 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg>Miete per WhatsApp erfragen</a>
+<a class="bg-transparent border border-primary text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-secondary-container transition-colors flex items-center justify-center gap-2 whitespace-nowrap" href="tel:+4973618127290"><span class="material-symbols-outlined">call</span>07361 8127290</a>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-surface-container p-8">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-lg">Im Preis mit drin</h3>
+<ul class="flex flex-col gap-3 mb-stack-lg">
+<li class="flex items-center gap-3 text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                            Möbliertes Zimmer auf einer von drei Etagen
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                            LAN-, WLAN- und TV-Anschluss
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                            Mitbenutzung von Küche, drei Bädern und Balkon
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                            Kneipsaal und Kellerbar im Haus
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                            Wenige Minuten zu Fuß zur Hochschule
+</li>
+</ul>
+</div>
+</div>
 </section>
 <!-- Kontakt -->
 <section class="scroll-mt-32" id="kontakt">
 <div class="bg-primary text-white rounded-xl overflow-hidden shadow-[0_10px_30px_rgba(32,89,48,0.1)] grid grid-cols-1 md:grid-cols-2">
 <div class="p-8 md:p-12 flex flex-col justify-center">
 <span class="text-primary-fixed-dim font-label-sm text-label-sm uppercase tracking-wider mb-4 block">Zimmer anfragen</span>
-<h2 class="font-headline-md text-headline-md mb-stack-md">Komm einfach mal vorbei.</h2>
-<p class="font-body-lg text-body-lg text-white/80 mb-stack-lg">Am besten lernt man ein Haus kennen, indem man drin steht. Melde dich kurz — wir zeigen dir die freien Zimmer, du isst mit uns zu Abend, und danach entscheidest du in Ruhe.</p>
-<!-- TODO: echte Kontaktdaten eintragen -->
+<h2 class="font-headline-md text-headline-md mb-stack-md">Am schnellsten per WhatsApp.</h2>
+<p class="font-body-lg text-body-lg text-white/80 mb-stack-lg">Schreib uns kurz, was du suchst und ab wann. Meistens antwortet noch am selben Abend jemand — und wenn es passt, schaust du dir das Zimmer einfach an, isst mit uns zu Abend und entscheidest danach in Ruhe.</p>
+<div class="flex flex-wrap gap-4 mb-stack-lg">
+<!-- TODO: WhatsApp-Nummer eintragen (49XXXXXXXXXX in allen vier Dateien ersetzen) -->
+<a class="bg-[#25D366] text-[#07301a] font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-[#1ebe5a] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap" href="https://wa.me/49XXXXXXXXXX?text=Hallo%21%20Ich%20suche%20ein%20Zimmer%20in%20Aalen%20und%20interessiere%20mich%20f%C3%BCr%20das%20Hohenstaufenhaus.%20Ab%20wann%20h%C3%A4ttet%20ihr%20etwas%20frei%3F" rel="noopener" target="_blank"><svg aria-hidden="true" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.825 9.825 0 016.988 2.896 9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.142 1.595 5.945L0 24l6.335-1.652a11.94 11.94 0 005.71 1.447h.006c6.585 0 11.946-5.335 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg>Auf WhatsApp schreiben</a>
+<a class="bg-transparent border border-white text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center gap-2 whitespace-nowrap" href="tel:+4973618127290"><span class="material-symbols-outlined">call</span>Anrufen</a>
+</div>
 <ul class="flex flex-col gap-4">
-<li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary-fixed-dim">person</span><span class="font-body-md text-body-md text-white/80">Hausverwaltung · Ansprechpartner:in</span></li>
-<li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary-fixed-dim">call</span><a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="tel:+4900000000000">+49 (0) 000 000 00 00</a></li>
+<li class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-fixed-dim">location_on</span><a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="https://www.google.com/maps/search/?api=1&amp;query=Mozartstra%C3%9Fe+31%2C+73430+Aalen" rel="noopener" target="_blank">Hohenstaufenhaus<br/>Mozartstraße 31<br/>73430 Aalen<br/><span class="text-white/50">direkt hinter der Mensa · auf Karte öffnen</span></a></li>
 <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary-fixed-dim">mail</span><a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="mailto:zimmer@ftv-hohenstaufen.de">zimmer@ftv-hohenstaufen.de</a></li>
-<li class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-fixed-dim">location_on</span><span class="font-body-md text-body-md text-white/80">Musterstraße 12<br/>73033 Göppingen</span></li>
 </ul>
 </div>
 <div class="p-8 md:p-12 bg-white/5 border-t border-white/10 md:border-t-0 md:border-l">
-<!-- TODO: Formular an ein Backend anbinden (action/method) -->
-<form action="#" class="flex flex-col gap-stack-lg" method="post">
+<h3 class="font-headline-md text-headline-md mb-stack-lg">Oder schreib uns hier</h3>
+<form class="flex flex-col gap-stack-lg" id="zimmer-form" novalidate="">
 <div>
 <label class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-2 block" for="name">Name</label>
 <input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 font-body-md text-body-md text-white placeholder:text-white/50 focus:border-primary-fixed-dim focus:ring-2 focus:ring-primary-fixed-dim/40 focus:outline-none transition-colors" id="name" name="name" placeholder="Wie heißt du?" required="" type="text"/>
@@ -342,20 +456,46 @@ Alle Angaben sind Platzhalter und werden noch durch die tatsächlichen Zimmerdat
 <label class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-2 block" for="nachricht">Nachricht</label>
 <textarea class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 font-body-md text-body-md text-white placeholder:text-white/50 focus:border-primary-fixed-dim focus:ring-2 focus:ring-primary-fixed-dim/40 focus:outline-none transition-colors resize-y" id="nachricht" name="nachricht" placeholder="Ab wann suchst du ein Zimmer? Gibt es etwas, das du vorher wissen möchtest?" required="" rows="5"></textarea>
 </div>
-<button class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest hover:-translate-y-0.5 transition-all duration-200 shadow-lg" type="submit">Anfrage senden</button>
-<p class="font-body-md text-body-md text-white/60">Wir melden uns in der Regel innerhalb von zwei Tagen.</p>
+<button class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest hover:-translate-y-0.5 transition-all duration-200 shadow-lg flex items-center justify-center gap-2 whitespace-nowrap w-full" type="submit">Anfrage senden</button>
+<p class="font-body-md text-body-md text-white/60" id="form-hint">Der Button öffnet dein E-Mail-Programm mit fertig ausgefüllter Nachricht an zimmer@ftv-hohenstaufen.de.</p>
 </form>
 </div>
 </div>
 </section>
 </main>
+<script>
+    // Das Formular kommt ohne Backend aus: es baut aus den Feldern eine fertige
+    // E-Mail und uebergibt sie an das Mailprogramm des Besuchers.
+    // TODO: bei Bedarf durch ein echtes Backend ersetzen (action/method).
+    (function () {
+        var form = document.getElementById('zimmer-form');
+        var hint = document.getElementById('form-hint');
+        if (!form) return;
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!form.checkValidity()) { form.reportValidity(); return; }
+            var v = function (n) { return (form.elements[n].value || '').trim(); };
+            var subject = 'Zimmeranfrage über die Website – ' + v('name');
+            var body = 'Name: ' + v('name') + '\nE-Mail: ' + v('email') + '\n\n' + v('nachricht');
+            window.location.href = 'mailto:zimmer@ftv-hohenstaufen.de'
+                + '?subject=' + encodeURIComponent(subject)
+                + '&body=' + encodeURIComponent(body);
+            if (hint) {
+                hint.textContent = 'Dein E-Mail-Programm sollte sich jetzt geöffnet haben. '
+                    + 'Falls nicht, schreib uns direkt an zimmer@ftv-hohenstaufen.de oder per WhatsApp.';
+                hint.className = 'font-body-md text-body-md text-primary-fixed-dim';
+            }
+        });
+    })();
+</script>
 <!-- Footer -->
 <footer class="w-full max-w-container-max mx-auto px-gutter md:px-0 pb-16">
 <div class="bg-primary text-white rounded-xl p-8 md:p-12 shadow-[0_10px_30px_rgba(32,89,48,0.1)]">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
 <div class="md:col-span-1">
-<span class="font-display-lg text-headline-md font-semibold block mb-stack-md">FTV Hohenstaufen</span>
-<p class="font-body-md text-body-md text-white/70">Ein Haus, eine Tischgemeinschaft und ein Netzwerk, das weit über die Studienzeit hinaus trägt. Seit 1888.</p>
+<span class="font-display-lg text-headline-md font-semibold block mb-stack-sm">FtV Hohenstaufen</span>
+<span class="font-body-md text-body-md text-white/50 block mb-stack-md">Freie technische Verbindung Hohenstaufen zu Aalen</span>
+<p class="font-body-md text-body-md text-white/70">Die älteste Studentenverbindung an der Hochschule Aalen. Nichtschlagend, farbentragend in Schwarz-Weiß-Grün — und seit 1963 ziemlich beständig.</p>
 </div>
 <div>
 <span class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-stack-md block">Seiten</span>
@@ -364,36 +504,60 @@ Alle Angaben sind Platzhalter und werden noch durch die tatsächlichen Zimmerdat
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="das_haus_modern_redesign.html">Das Haus</a></li>
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="zimmer_modern_redesign.html">Zimmer</a></li>
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="veranstaltungen_modern_redesign.html">Veranstaltungen</a></li>
-<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="startseite_modern_redesign.html#contact">Kontakt</a></li>
+<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="startseite_modern_redesign.html#aktiv-werden">Aktiv werden</a></li>
+<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="startseite_modern_redesign.html#kontakt">Kontakt</a></li>
 </ul>
 </div>
 <div>
 <span class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-stack-md block">Kontakt</span>
-<!-- TODO: echte Kontaktdaten eintragen -->
 <ul class="flex flex-col gap-3 font-body-md text-body-md text-white/70">
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">location_on</span><span>Musterstraße 12<br/>73033 Göppingen</span></li>
-<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">call</span><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="tel:+4900000000000">+49 (0) 000 000 00 00</a></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">location_on</span><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="https://www.google.com/maps/search/?api=1&amp;query=Mozartstra%C3%9Fe+31%2C+73430+Aalen" rel="noopener" target="_blank">Hohenstaufenhaus<br/>Mozartstraße 31<br/>73430 Aalen</a></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">call</span><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="tel:+4973618127290">07361 8127290</a></li>
 <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">mail</span><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="mailto:kontakt@ftv-hohenstaufen.de">kontakt@ftv-hohenstaufen.de</a></li>
 </ul>
 </div>
 <div>
 <span class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-stack-md block">Rechtliches</span>
-<!-- TODO: Impressum und Datenschutzerklärung verlinken -->
+<!-- TODO: Impressum, Datenschutz und Satzung auf die bestehenden Seiten verlinken -->
 <ul class="flex flex-col gap-3">
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="#">Impressum</a></li>
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="#">Datenschutz</a></li>
-<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="#">Satzung</a></li>
+<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="#">Newsletter</a></li>
 </ul>
 </div>
 </div>
 <div class="border-t border-white/15 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-<!-- TODO: vollständigen Vereinsnamen ergänzen -->
-<p class="font-body-md text-body-md text-white/60">© 2026 FTV Hohenstaufen. Alle Rechte vorbehalten.</p>
+<p class="font-body-md text-body-md text-white/60">© 2026 Freie technische Verbindung Hohenstaufen zu Aalen</p>
 <div class="flex items-center gap-4">
-<a aria-label="Instagram" class="text-white/70 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
-<a aria-label="E-Mail" class="text-white/70 hover:text-white transition-colors" href="mailto:kontakt@ftv-hohenstaufen.de"><span class="material-symbols-outlined">alternate_email</span></a>
+<a aria-label="Facebook" class="text-white/70 hover:text-white transition-colors" href="https://www.facebook.com/ftv.hohenstaufen/" rel="noopener" target="_blank"><span class="material-symbols-outlined">thumb_up</span></a>
+<a aria-label="E-Mail schreiben" class="text-white/70 hover:text-white transition-colors" href="mailto:kontakt@ftv-hohenstaufen.de"><span class="material-symbols-outlined">alternate_email</span></a>
+<a aria-label="Anrufen" class="text-white/70 hover:text-white transition-colors" href="tel:+4973618127290"><span class="material-symbols-outlined">call</span></a>
 </div>
 </div>
 </div>
 </footer>
+<script>
+    // Mobile-Menue: oeffnen/schliessen, Icon wechseln, bei Klick und Escape schliessen.
+    (function () {
+        var btn = document.getElementById('nav-toggle');
+        var menu = document.getElementById('mobile-menu');
+        var icon = document.getElementById('nav-icon');
+        if (!btn || !menu || !icon) return;
+        function setOpen(open) {
+            menu.classList.toggle('hidden', !open);
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+            icon.textContent = open ? 'close' : 'menu';
+        }
+        btn.addEventListener('click', function () {
+            setOpen(menu.classList.contains('hidden'));
+        });
+        menu.addEventListener('click', function (e) {
+            if (e.target.closest('a')) setOpen(false);
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') setOpen(false);
+        });
+    })();
+</script>
 </body></html>

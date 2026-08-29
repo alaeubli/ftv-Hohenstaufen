@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html class="scroll-smooth" lang="en"><head>
+<html class="scroll-smooth" lang="de"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>FTV Hohenstaufen | Modern Heritage</title>
+<title>FtV Hohenstaufen zu Aalen | Studentenverbindung an der Hochschule Aalen</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -169,183 +169,205 @@
 </head>
 <body class="bg-background text-on-surface font-body-md text-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopNavBar -->
-<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-container-max rounded-full backdrop-blur-xl border border-white/20 shadow-[0_10px_30px_rgba(32,89,48,0.05)] bg-white/70 dark:bg-surface/70 flex justify-between items-center px-8 py-3 z-50 transition-transform duration-300" id="main-nav">
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-container-max rounded-full backdrop-blur-xl border border-white/20 shadow-[0_10px_30px_rgba(32,89,48,0.05)] bg-white/70 dark:bg-surface/70 flex justify-between items-center px-6 md:px-8 py-3 z-50 transition-transform duration-300" id="main-nav">
 <a class="font-display-lg text-headline-md font-semibold text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity" href="startseite_modern_redesign.html">
-            FTV Hohenstaufen
+            FtV Hohenstaufen
         </a>
 <div class="hidden md:flex items-center gap-6">
 <a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="#tradition">Tradition</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="das_haus_modern_redesign.html">Das Haus</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="zimmer_modern_redesign.html">Zimmer</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="veranstaltungen_modern_redesign.html">Veranstaltungen</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="#contact">Kontakt</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="#kontakt">Kontakt</a>
 </div>
-<a class="bg-primary text-white font-label-sm text-label-sm uppercase px-6 py-3 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 hidden md:block" href="#contact">
-            Mitglied werden
+<a class="bg-primary text-white font-label-sm text-label-sm uppercase px-6 py-3 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 hidden md:block" href="#aktiv-werden">
+            Aktiv werden
         </a>
-<button class="md:hidden text-primary p-2">
-<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü öffnen" class="md:hidden text-primary p-2 rounded-full hover:bg-secondary-container transition-colors" id="nav-toggle" type="button">
+<span class="material-symbols-outlined" id="nav-icon">menu</span>
 </button>
+<div class="absolute top-full left-0 right-0 mt-3 hidden md:hidden" id="mobile-menu">
+<div class="bg-white/95 dark:bg-surface/95 backdrop-blur-xl border border-white/20 rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.12)] p-4 flex flex-col gap-1">
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="#tradition">Tradition</a>
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="das_haus_modern_redesign.html">Das Haus</a>
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="zimmer_modern_redesign.html">Zimmer</a>
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="veranstaltungen_modern_redesign.html">Veranstaltungen</a>
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="#kontakt">Kontakt</a>
+<a class="bg-primary text-white font-label-sm text-label-sm uppercase px-6 py-4 rounded-full hover:bg-primary-container transition-colors text-center mt-2" href="#aktiv-werden">Aktiv werden</a>
+</div>
+</div>
 </nav>
 <main class="w-full max-w-container-max mx-auto px-gutter md:px-0 flex flex-col gap-section-gap pt-[160px] pb-section-gap">
-<!-- Hero Section -->
-<section class="relative w-full h-[819px] min-h-[600px] rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(32,89,48,0.08)]">
-<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="A breathtaking, wide-angle architectural photograph of a historic European manor house beautifully updated with modern glass extensions. The scene is bathed in golden hour sunlight filtering through tall forest trees. The aesthetic is clean, premium, and airy, featuring a natural color palette of stone grays, crisp whites, and vibrant forest green foliage. The mood is welcoming, prestigious, and serene." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7ju2qjBXrs2RyT6PkQrazG6XANZEo-OmsrCJo0YE3zzyu-jWLEDLbp2QBEKXGcOemv7EQ4dvv4p9d3UAPHfbOO95EhJYxnmMt5W4ckDoBqfJMo_Mf2eh_SuyA4H52KYYbY8ExZK_U1YrkmWB75M0h9zN93dbLY8WFbIEQrVD9nW90nkQibfnQf2dmx8PlKJ1cCTYcbzX36pnOLEeAmRfgbINq5wKjzWKrsjneoC300sxFtwHoqn9n')"></div>
-<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10"></div>
+<!-- Hero -->
+<section class="relative w-full h-[480px] md:h-[620px] rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(32,89,48,0.08)]">
+<!-- TODO: echtes Foto vom Hohenstaufenhaus einsetzen -->
+<img alt="Das Hohenstaufenhaus in Aalen am Abend, Licht in den Fenstern" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-haus-abend/1920/1080"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
 <div class="absolute bottom-0 left-0 w-full p-8 md:p-16 flex flex-col items-start max-w-3xl">
-<span class="bg-white/20 backdrop-blur-md text-white font-label-sm text-label-sm px-4 py-1.5 rounded-full mb-stack-md border border-white/30">Since 1888</span>
-<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-stack-md drop-shadow-lg">Where Heritage Meets Modern Momentum.</h1>
-<p class="font-body-lg text-body-lg text-white/90 mb-stack-lg max-w-xl">Experience a community built on enduring values, intellectual curiosity, and a shared drive for excellence. Step into a tradition reimagined for today.</p>
-<div class="flex gap-4">
-<a class="bg-white text-primary font-body-md text-body-md px-8 py-4 rounded-full hover:bg-surface-container-highest transition-colors shadow-lg font-medium" href="das_haus_modern_redesign.html">Explore the House</a>
-<a class="bg-transparent border border-white text-white font-body-md text-body-md px-8 py-4 rounded-full hover:bg-white/10 transition-colors backdrop-blur-sm" href="veranstaltungen_modern_redesign.html">Upcoming Events</a>
-</div>
-</div>
+<span class="bg-white/20 backdrop-blur-md text-white font-label-sm text-label-sm px-4 py-1.5 rounded-full mb-stack-md border border-white/30">Seit 1963 in Aalen</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-stack-md drop-shadow-lg">Studieren ist leichter, wenn du nicht allein wohnst.</h1>
+<p class="font-body-lg text-body-lg text-white/90 max-w-xl mb-stack-lg">Wir sind die älteste Studentenverbindung an der Hochschule Aalen — nichtschlagend, farbentragend und mit einem Haus, in dem abends immer jemand wach ist.</p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest hover:-translate-y-0.5 transition-all duration-200 shadow-lg flex items-center justify-center gap-2 whitespace-nowrap" href="zimmer_modern_redesign.html">Freie Zimmer ansehen</a>
+<a class="bg-transparent border border-white text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center gap-2 whitespace-nowrap" href="#aktiv-werden">Einfach mal vorbeikommen</a>
+</div></div>
 </section>
-<!-- Values Bento Grid -->
+<!-- Wer wir sind -->
 <section class="scroll-mt-32" id="tradition">
 <div class="mb-stack-lg text-center max-w-2xl mx-auto">
-<h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">The Pillars of Our Community</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">We believe in fostering an environment where tradition serves as a foundation for personal growth, lifelong friendships, and academic success.</p>
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">Die älteste Verbindung an der Hochschule Aalen</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Seit 1963 gibt es uns an der Hochschule für Technik und Wirtschaft in Aalen — als einzige Studentenverbindung am Ort. Was das konkret heißt, steht hier.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Card 1 -->
-<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 md:col-span-2 flex flex-col justify-center min-h-[300px]">
-<span class="material-symbols-outlined text-primary text-4xl mb-6" data-icon="school" data-weight="fill" style="font-variation-settings: 'FILL' 1;">school</span>
-<h3 class="font-headline-md text-headline-md mb-2 text-on-surface">Academic Excellence</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">We provide a supportive environment that encourages intellectual curiosity and academic achievement. Our network of alumni and older peers offer guidance, mentorship, and a quiet space dedicated to focused study.</p>
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 p-8 md:col-span-2 flex flex-col justify-center min-h-[300px]">
+<span class="material-symbols-outlined text-primary text-4xl mb-6" style="font-variation-settings: 'FILL' 1;">groups</span>
+<h3 class="font-headline-md text-headline-md mb-2 text-on-surface">Eine Verbindung, keine Zweckgemeinschaft</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Bei uns sitzen Erstsemester, Leute kurz vor der Abschlussarbeit, Berufstätige und Professoren der Hochschule am selben Tisch. Das klingt erst mal ungewohnt — bis dir jemand aus dem sechsten Semester in zwanzig Minuten erklärt, woran du seit zwei Wochen hängst, oder du beim Bier nebenbei dein erstes Praktikum vermittelt bekommst. Wir sind nichtschlagend: bei uns wird geredet, nicht gefochten.</p>
 </div>
-<!-- Card 2 -->
 <div class="bg-primary text-white rounded-xl p-8 shadow-[0_10px_30px_rgba(32,89,48,0.1)] hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-center min-h-[300px]">
-<span class="material-symbols-outlined text-primary-fixed-dim text-4xl mb-6" data-icon="diversity_3" data-weight="fill" style="font-variation-settings: 'FILL' 1;">diversity_3</span>
-<h3 class="font-headline-md text-headline-md mb-2">Lifelong Bonds</h3>
-<p class="font-body-md text-body-md text-white/80">More than just a house, we are a brotherhood. Connections forged here extend far beyond university years, creating a powerful, supportive network for life.</p>
+<span class="material-symbols-outlined text-primary-fixed-dim text-4xl mb-6" style="font-variation-settings: 'FILL' 1;">local_bar</span>
+<h3 class="font-headline-md text-headline-md mb-2">Schwarz-Weiß-Grün</h3>
+<p class="font-body-md text-body-md text-white/80">Unsere Farben. Wir tragen sie zu Kneipen und offiziellen Anlässen — nicht, weil es Vorschrift ist, sondern weil seit 1963 jeder vor dir das auch getan hat. Alles andere im Haus läuft in Kapuzenpulli.</p>
 </div>
-<!-- Card 3 -->
 <div class="bg-secondary-container rounded-xl p-8 shadow-[0_10px_30px_rgba(32,89,48,0.03)] hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-center min-h-[300px]">
-<span class="material-symbols-outlined text-primary text-4xl mb-6" data-icon="local_florist" data-weight="fill" style="font-variation-settings: 'FILL' 1;">local_florist</span>
-<h3 class="font-headline-md text-headline-md mb-2 text-on-secondary-container">Personal Growth</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Through organized events, shared responsibilities, and diverse perspectives, members develop leadership skills and a strong sense of character.</p>
+<span class="material-symbols-outlined text-primary text-4xl mb-6" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+<h3 class="font-headline-md text-headline-md mb-2 text-on-secondary-container">Angefangen hat es 1959</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Am 1. November 1959 als studentische Vereinigung ITOM an der Fachschule für das Edelmetallgewerbe — Ingenieure und Techniker für Oberflächenveredelung und Materialprüfung. 1963 wurde daraus die FtV Hohenstaufen. Seitdem sind wir an der Hochschule geblieben.</p>
 </div>
-<!-- Card 4 (Image) -->
 <div class="rounded-xl overflow-hidden md:col-span-2 relative min-h-[300px] shadow-[0_10px_30px_rgba(32,89,48,0.05)]">
-<img class="absolute inset-0 w-full h-full object-cover" data-alt="A candid, high-quality photograph of young professionals and students engaged in a lively discussion around a large, modern oak table in a sunlit room. The aesthetic is contemporary, bright, and collaborative. Natural light pours in through large windows, highlighting subtle forest green accents in the room's decor. The mood is dynamic, intelligent, and welcoming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE5ENHCCdPRaOs_ggmAiuCbBwzRYsV1LiJUMJ9ta2RiKVd5SPL-ODClipU0lfOCZZw4qUna1So_fcr6KmUNFl8jcghh2gYkrDb8lcWDvy-lSjtX5_u8ha0nvQojuyzUkD5HHDJDPyZTcmwoEg6nYE5CEbH5GvHjHbD30GpWcuvh1tLVGzesqN8VeIx3tDWrfFNw2pQeSifJ-pOMe_jUfZO0KhAKFXw2BT6ptVtuXvY83mfLZEXkPRz"/>
+<!-- TODO: echtes Foto einsetzen (z. B. Gruppenbild oder Kneipsaal) -->
+<img alt="Mitglieder der FtV Hohenstaufen im Kneipsaal" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-gruppe/1400/900"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full p-8">
+<h3 class="font-headline-md text-headline-md text-white mb-2">Einmal Hohenstaufen, immer Hohenstaufen</h3>
+<p class="font-body-md text-body-md text-white/90 max-w-lg">Wer hier aktiv war, bleibt danach als Alter Herr dabei. Deshalb kennst du nach einem Semester Leute, die längst in der Branche arbeiten, in die du erst noch willst.</p>
+</div>
 </div>
 </div>
 </section>
-<!-- The House / Rentals -->
-<section class="scroll-mt-32" id="house">
+<!-- Das Haus -->
+<section class="scroll-mt-32" id="haus">
 <div class="bg-surface-container-low rounded-xl overflow-hidden flex flex-col md:flex-row items-stretch shadow-[0_10px_30px_rgba(32,89,48,0.04)]">
 <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4 block">Living Spaces</span>
-<h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md">More Than Just a Room.</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">Our house offers affordable, modern living arrangements in the heart of the city. We provide fully furnished rooms, expansive communal areas, and a dedicated library, creating the perfect balance between privacy and community life.</p>
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4 block">Das Hohenstaufenhaus</span>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Direkt hinter der Mensa.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">Seit dem Wintersemester 2010/11 wohnen wir in der Mozartstraße 31 — buchstäblich hinter der Mensa. Kein Bus, kein Parkplatzstress, keine Ausrede fürs Zuspätkommen. Im Haus: sieben Zimmer, ein eigener Kneipsaal, eine Kellerbar und ein Balkon, von dem aus du über Aalen bis zu den Limes-Thermen schaust.</p>
 <ul class="flex flex-col gap-3 mb-stack-lg">
 <li class="flex items-center gap-3 text-on-surface-variant font-body-md text-body-md">
 <span class="material-symbols-outlined text-primary">check_circle</span>
-                            Prime Central Location
-                        </li>
+                            Sieben Zimmer von 13 bis 19 m² auf drei Etagen
+</li>
 <li class="flex items-center gap-3 text-on-surface-variant font-body-md text-body-md">
 <span class="material-symbols-outlined text-primary">check_circle</span>
-                            High-Speed Fiber Internet
-                        </li>
+                            LAN, WLAN und TV-Anschluss in jedem Zimmer
+</li>
 <li class="flex items-center gap-3 text-on-surface-variant font-body-md text-body-md">
 <span class="material-symbols-outlined text-primary">check_circle</span>
-                            Access to Library &amp; Event Spaces
-                        </li>
-<!-- ===== Ab hier rekonstruiert: die Vorlage war an dieser Stelle abgeschnitten ===== -->
+                            Küche, drei Bäder, Kneipsaal und Kellerbar
+</li>
 <li class="flex items-center gap-3 text-on-surface-variant font-body-md text-body-md">
 <span class="material-symbols-outlined text-primary">check_circle</span>
-                            All Utilities Included in Rent
-                        </li>
+                            Balkon mit Blick über Aalen bis zu den Limes-Thermen
+</li>
 </ul>
-<div class="flex flex-col sm:flex-row gap-4">
-<a class="bg-primary text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 text-center" href="zimmer_modern_redesign.html">See Available Rooms</a>
-<a class="bg-transparent border border-primary text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-secondary-container transition-colors text-center" href="das_haus_modern_redesign.html">Tour the House</a>
+<div class="flex flex-wrap gap-4">
+<a class="bg-primary text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap" href="das_haus_modern_redesign.html">Haus ansehen</a>
+<a class="bg-transparent border border-primary text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-secondary-container transition-colors flex items-center justify-center gap-2 whitespace-nowrap" href="zimmer_modern_redesign.html">Zimmer &amp; Miete</a>
 </div>
 </div>
 <div class="w-full md:w-1/2 relative min-h-[320px] md:min-h-[520px]">
-<!-- TODO: echtes Foto ersetzen -->
-<img alt="Helles Gemeinschaftszimmer im Haus mit großen Fenstern und langem Holztisch" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-house-common/1200/900"/>
+<!-- TODO: echtes Foto vom Hohenstaufenhaus einsetzen -->
+<img alt="Das Hohenstaufenhaus in der Mozartstraße 31 in Aalen" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-haus-aussen/1200/900"/>
 </div>
 </div>
 </section>
-<!-- Events -->
+<!-- Veranstaltungen -->
 <section class="scroll-mt-32" id="events">
 <div class="mb-stack-lg flex flex-col md:flex-row md:items-end md:justify-between gap-6">
 <div class="max-w-2xl">
-<h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">What Is Coming Up</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Our calendar is where the community actually happens: evenings in the hall, talks in the library, and one long walk up the hill every autumn. Many of our dates are open to guests.</p>
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">Was bei uns läuft</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Jedes Semester hat seinen festen Rhythmus: Antrittskneipe zum Start, Exkneipe zum Schluss und dazwischen alles von Vortragsabend bis Grillen auf dem Balkon. Vieles davon ist offen — du brauchst keine Einladung, nur den Weg hinter die Mensa.</p>
 </div>
 <a class="flex-shrink-0 flex items-center gap-2 text-primary font-body-md text-body-md font-medium hover:gap-3 transition-all" href="veranstaltungen_modern_redesign.html">
-                    Alle Termine ansehen
+                    Alle Termine
                     <span class="material-symbols-outlined">arrow_forward</span>
 </a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<article class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 flex flex-col">
-<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4 block">12 September</span>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Semesterantrittskneipe</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">The first evening of the term: old songs, new faces, and the question of who gives the welcome speech this time.</p>
-<span class="mt-auto flex items-center gap-2 font-body-md text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kneipsaal im Haus</span>
+<article class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 p-8 flex flex-col">
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4 block">Zum Semesterstart</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Antrittskneipe</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">Der offizielle Auftakt im Kneipsaal: Farben, alte Lieder und ein Abend, an dem du nach zwei Stunden das Gefühl hast, die Leute schon länger zu kennen.</p>
+<span class="mt-auto flex items-center gap-2 font-body-md text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kneipsaal, auf dem Hause</span>
 </article>
-<article class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 flex flex-col">
-<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4 block">26 September</span>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Tag der offenen Tür</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">Every door in the house is open — rooms, library, cellar and garden. Coffee and cake are on the table, no invitation needed.</p>
-<span class="mt-auto flex items-center gap-2 font-body-md text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Haus Hohenstaufen</span>
+<article class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 p-8 flex flex-col">
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4 block">Jede Woche</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Stammtisch &amp; Kellerbar</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">Der unkomplizierteste Einstieg. Kein Programm, kein Dresscode — einfach runter in die Kellerbar, hinsetzen und schauen, ob es passt.</p>
+<span class="mt-auto flex items-center gap-2 font-body-md text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kellerbar im Haus</span>
 </article>
-<article class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 flex flex-col">
-<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4 block">24 Oktober</span>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Wanderung auf den Hohenstaufen</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">Once a year we walk up the hill that gave us our name. Sturdy shoes are the only requirement.</p>
-<span class="mt-auto flex items-center gap-2 font-body-md text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Treffpunkt vor dem Haus</span>
+<article class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 p-8 flex flex-col">
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4 block">Zum Semesterende</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Exkneipe</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg">Der lockere Gegenentwurf zur Antrittskneipe: gleicher Saal, deutlich weniger Form, und traditionell der Abend mit den besten Geschichten.</p>
+<span class="mt-auto flex items-center gap-2 font-body-md text-body-md text-on-surface-variant"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kneipsaal, auf dem Hause</span>
 </article>
 </div>
 </section>
-<!-- Membership -->
-<section class="scroll-mt-32" id="membership">
+<!-- Aktiv werden -->
+<section class="scroll-mt-32" id="aktiv-werden">
 <div class="mb-stack-lg text-center max-w-2xl mx-auto">
-<h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">How to Join</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">There is no application form and no entrance exam. Joining us starts the way most good things do — by showing up once and seeing whether it fits.</p>
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">Aktiv werden</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Es gibt kein Auswahlverfahren und keine Frist. Der ganze Prozess besteht daraus, einmal vorbeizukommen und zu schauen, ob dir die Leute liegen.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-stack-lg">
 <div class="bg-surface-container-low rounded-xl p-8 hover:-translate-y-1 transition-transform duration-300 flex flex-col">
 <span class="font-display-lg text-display-lg-mobile text-primary/30 mb-4">01</span>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Come Over</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Drop by one of our open evenings or write us a short message. You will be shown around, fed, and introduced to far too many names at once.</p>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Schreib uns</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Eine Nachricht per WhatsApp reicht. Wir sagen dir, wann der nächste offene Abend ist und wo du klingeln musst. Kein Formular, kein Bewerbungsgespräch.</p>
 </div>
 <div class="bg-surface-container-low rounded-xl p-8 hover:-translate-y-1 transition-transform duration-300 flex flex-col">
 <span class="font-display-lg text-display-lg-mobile text-primary/30 mb-4">02</span>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Take Your Time</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Spend a semester with us as a guest. Join what interests you, skip what does not. Nobody is asked to commit to anything in the first weeks.</p>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Komm auf ein Bier vorbei</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Lern die Aktiven, die Alten Herren und ein paar Professoren der Hochschule kennen — gemütlich, im Haus, ohne dass dir jemand etwas verkaufen will.</p>
 </div>
 <div class="bg-primary text-white rounded-xl p-8 shadow-[0_10px_30px_rgba(32,89,48,0.1)] hover:-translate-y-1 transition-transform duration-300 flex flex-col">
 <span class="font-display-lg text-display-lg-mobile text-primary-fixed-dim/50 mb-4">03</span>
-<h3 class="font-headline-md text-headline-md mb-stack-sm">Stay</h3>
-<p class="font-body-md text-body-md text-white/80">If it feels right, you become part of the house — with a room if you want one, a vote in our decisions, and a network that outlasts your degree.</p>
+<h3 class="font-headline-md text-headline-md mb-stack-sm">Bleib, wenn es passt</h3>
+<p class="font-body-md text-body-md text-white/80">Du entscheidest in deinem Tempo. Wenn es passt, wirst du aktiv — mit Zimmer im Haus, wenn du willst, und einem Netzwerk, das nach dem Abschluss nicht endet.</p>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-8 md:p-12 flex flex-col md:flex-row md:items-center gap-8 justify-between shadow-[0_10px_30px_rgba(32,89,48,0.04)]">
+<div class="max-w-xl">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Die kürzeste Variante: kurz durchklingeln.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Schreib uns auf WhatsApp — meistens antwortet noch am selben Abend jemand. Wenn du lieber telefonierst, geht das genauso.</p>
+</div>
+<div class="flex flex-wrap gap-4 flex-shrink-0">
+<!-- TODO: WhatsApp-Nummer eintragen (49XXXXXXXXXX in allen vier Dateien ersetzen) -->
+<a class="bg-[#25D366] text-[#07301a] font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-[#1ebe5a] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap" href="https://wa.me/49XXXXXXXXXX?text=Hallo%21%20Ich%20studiere%20in%20Aalen%20und%20w%C3%BCrde%20gern%20mal%20bei%20euch%20im%20Hohenstaufenhaus%20vorbeischauen.%20Wann%20passt%20es%20euch%3F" rel="noopener" target="_blank"><svg aria-hidden="true" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.825 9.825 0 016.988 2.896 9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.142 1.595 5.945L0 24l6.335-1.652a11.94 11.94 0 005.71 1.447h.006c6.585 0 11.946-5.335 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg>Auf WhatsApp schreiben</a>
+<a class="bg-transparent border border-primary text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-secondary-container transition-colors flex items-center justify-center gap-2 whitespace-nowrap" href="tel:+4973618127290"><span class="material-symbols-outlined">call</span>07361 8127290</a>
 </div>
 </div>
 </section>
-<!-- Contact -->
-<section class="scroll-mt-32" id="contact">
+<!-- Kontakt -->
+<section class="scroll-mt-32" id="kontakt">
 <div class="bg-primary text-white rounded-xl p-8 md:p-12 shadow-[0_10px_30px_rgba(32,89,48,0.1)] grid grid-cols-1 md:grid-cols-2 gap-10">
 <div>
 <span class="text-primary-fixed-dim font-label-sm text-label-sm uppercase tracking-wider mb-4 block">Kontakt</span>
-<h2 class="font-headline-md text-headline-md mb-stack-md">Say Hello.</h2>
-<p class="font-body-lg text-body-lg text-white/80 mb-stack-lg">Questions about the house, a room, or one of our events? Write us, call us, or simply ring the doorbell — somebody is almost always in.</p>
-<div class="flex flex-col sm:flex-row gap-4">
-<a class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest transition-colors shadow-lg text-center" href="mailto:kontakt@ftv-hohenstaufen.de">E-Mail schreiben</a>
-<a class="bg-transparent border border-white text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors text-center" href="zimmer_modern_redesign.html#kontakt">Zimmer anfragen</a>
+<h2 class="font-headline-md text-headline-md mb-stack-md">Meld dich einfach.</h2>
+<p class="font-body-lg text-body-lg text-white/80 mb-stack-lg">Fragen zum Haus, zu einem Zimmer oder zu einem Termin? Schreib, ruf an oder klingel — im Hohenstaufenhaus ist fast immer jemand da.</p>
+<div class="flex flex-wrap gap-4">
+<!-- TODO: WhatsApp-Nummer eintragen (49XXXXXXXXXX in allen vier Dateien ersetzen) -->
+<a class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest hover:-translate-y-0.5 transition-all duration-200 shadow-lg flex items-center justify-center gap-2 whitespace-nowrap" href="https://wa.me/49XXXXXXXXXX?text=Hallo%21%20Ich%20habe%20eine%20Frage%20an%20die%20FtV%20Hohenstaufen." rel="noopener" target="_blank"><svg aria-hidden="true" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.825 9.825 0 016.988 2.896 9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.142 1.595 5.945L0 24l6.335-1.652a11.94 11.94 0 005.71 1.447h.006c6.585 0 11.946-5.335 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg>WhatsApp</a>
+<a class="bg-transparent border border-white text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center gap-2 whitespace-nowrap" href="mailto:kontakt@ftv-hohenstaufen.de"><span class="material-symbols-outlined">mail</span>E-Mail schreiben</a>
 </div>
 </div>
 <div class="md:border-l md:border-white/15 md:pl-10 flex flex-col justify-center">
-<!-- TODO: echte Kontaktdaten eintragen -->
 <ul class="flex flex-col gap-5">
-<li class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-fixed-dim">location_on</span><span class="font-body-md text-body-md text-white/80">Musterstraße 12<br/>73033 Göppingen</span></li>
-<li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary-fixed-dim">call</span><a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="tel:+4900000000000">+49 (0) 000 000 00 00</a></li>
+<li class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-fixed-dim">location_on</span><a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="https://www.google.com/maps/search/?api=1&amp;query=Mozartstra%C3%9Fe+31%2C+73430+Aalen" rel="noopener" target="_blank">Hohenstaufenhaus<br/>Mozartstraße 31<br/>73430 Aalen<br/><span class="text-white/50">direkt hinter der Mensa · auf Karte öffnen</span></a></li>
+<li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary-fixed-dim">call</span><a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="tel:+4973618127290">07361 8127290</a></li>
 <li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary-fixed-dim">mail</span><a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="mailto:kontakt@ftv-hohenstaufen.de">kontakt@ftv-hohenstaufen.de</a></li>
-<li class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-fixed-dim">schedule</span><span class="font-body-md text-body-md text-white/80">Offene Abende: donnerstags ab 20:00 Uhr</span></li>
+<li class="flex items-center gap-4"><span class="material-symbols-outlined text-primary-fixed-dim">thumb_up</span><a class="font-body-md text-body-md text-white/80 hover:text-white transition-colors" href="https://www.facebook.com/ftv.hohenstaufen/" rel="noopener" target="_blank">FtV Hohenstaufen auf Facebook</a></li>
 </ul>
 </div>
 </div>
@@ -356,8 +378,9 @@
 <div class="bg-primary text-white rounded-xl p-8 md:p-12 shadow-[0_10px_30px_rgba(32,89,48,0.1)]">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
 <div class="md:col-span-1">
-<span class="font-display-lg text-headline-md font-semibold block mb-stack-md">FTV Hohenstaufen</span>
-<p class="font-body-md text-body-md text-white/70">Ein Haus, eine Tischgemeinschaft und ein Netzwerk, das weit über die Studienzeit hinaus trägt. Seit 1888.</p>
+<span class="font-display-lg text-headline-md font-semibold block mb-stack-sm">FtV Hohenstaufen</span>
+<span class="font-body-md text-body-md text-white/50 block mb-stack-md">Freie technische Verbindung Hohenstaufen zu Aalen</span>
+<p class="font-body-md text-body-md text-white/70">Die älteste Studentenverbindung an der Hochschule Aalen. Nichtschlagend, farbentragend in Schwarz-Weiß-Grün — und seit 1963 ziemlich beständig.</p>
 </div>
 <div>
 <span class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-stack-md block">Seiten</span>
@@ -366,36 +389,60 @@
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="das_haus_modern_redesign.html">Das Haus</a></li>
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="zimmer_modern_redesign.html">Zimmer</a></li>
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="veranstaltungen_modern_redesign.html">Veranstaltungen</a></li>
-<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="startseite_modern_redesign.html#contact">Kontakt</a></li>
+<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="startseite_modern_redesign.html#aktiv-werden">Aktiv werden</a></li>
+<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="startseite_modern_redesign.html#kontakt">Kontakt</a></li>
 </ul>
 </div>
 <div>
 <span class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-stack-md block">Kontakt</span>
-<!-- TODO: echte Kontaktdaten eintragen -->
 <ul class="flex flex-col gap-3 font-body-md text-body-md text-white/70">
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">location_on</span><span>Musterstraße 12<br/>73033 Göppingen</span></li>
-<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">call</span><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="tel:+4900000000000">+49 (0) 000 000 00 00</a></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">location_on</span><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="https://www.google.com/maps/search/?api=1&amp;query=Mozartstra%C3%9Fe+31%2C+73430+Aalen" rel="noopener" target="_blank">Hohenstaufenhaus<br/>Mozartstraße 31<br/>73430 Aalen</a></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">call</span><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="tel:+4973618127290">07361 8127290</a></li>
 <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">mail</span><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="mailto:kontakt@ftv-hohenstaufen.de">kontakt@ftv-hohenstaufen.de</a></li>
 </ul>
 </div>
 <div>
 <span class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-stack-md block">Rechtliches</span>
-<!-- TODO: Impressum und Datenschutzerklärung verlinken -->
+<!-- TODO: Impressum, Datenschutz und Satzung auf die bestehenden Seiten verlinken -->
 <ul class="flex flex-col gap-3">
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="#">Impressum</a></li>
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="#">Datenschutz</a></li>
-<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="#">Satzung</a></li>
+<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="#">Newsletter</a></li>
 </ul>
 </div>
 </div>
 <div class="border-t border-white/15 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-<!-- TODO: vollständigen Vereinsnamen ergänzen -->
-<p class="font-body-md text-body-md text-white/60">© 2026 FTV Hohenstaufen. Alle Rechte vorbehalten.</p>
+<p class="font-body-md text-body-md text-white/60">© 2026 Freie technische Verbindung Hohenstaufen zu Aalen</p>
 <div class="flex items-center gap-4">
-<a aria-label="Instagram" class="text-white/70 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
-<a aria-label="E-Mail" class="text-white/70 hover:text-white transition-colors" href="mailto:kontakt@ftv-hohenstaufen.de"><span class="material-symbols-outlined">alternate_email</span></a>
+<a aria-label="Facebook" class="text-white/70 hover:text-white transition-colors" href="https://www.facebook.com/ftv.hohenstaufen/" rel="noopener" target="_blank"><span class="material-symbols-outlined">thumb_up</span></a>
+<a aria-label="E-Mail schreiben" class="text-white/70 hover:text-white transition-colors" href="mailto:kontakt@ftv-hohenstaufen.de"><span class="material-symbols-outlined">alternate_email</span></a>
+<a aria-label="Anrufen" class="text-white/70 hover:text-white transition-colors" href="tel:+4973618127290"><span class="material-symbols-outlined">call</span></a>
 </div>
 </div>
 </div>
 </footer>
+<script>
+    // Mobile-Menue: oeffnen/schliessen, Icon wechseln, bei Klick und Escape schliessen.
+    (function () {
+        var btn = document.getElementById('nav-toggle');
+        var menu = document.getElementById('mobile-menu');
+        var icon = document.getElementById('nav-icon');
+        if (!btn || !menu || !icon) return;
+        function setOpen(open) {
+            menu.classList.toggle('hidden', !open);
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+            icon.textContent = open ? 'close' : 'menu';
+        }
+        btn.addEventListener('click', function () {
+            setOpen(menu.classList.contains('hidden'));
+        });
+        menu.addEventListener('click', function (e) {
+            if (e.target.closest('a')) setOpen(false);
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') setOpen(false);
+        });
+    })();
+</script>
 </body></html>

@@ -3,7 +3,7 @@
 <html class="scroll-smooth" lang="de"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Veranstaltungen | FTV Hohenstaufen</title>
+<title>Veranstaltungen | FtV Hohenstaufen zu Aalen</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -169,102 +169,91 @@
 </head>
 <body class="bg-background text-on-surface font-body-md text-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopNavBar -->
-<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-container-max rounded-full backdrop-blur-xl border border-white/20 shadow-[0_10px_30px_rgba(32,89,48,0.05)] bg-white/70 dark:bg-surface/70 flex justify-between items-center px-8 py-3 z-50 transition-transform duration-300" id="main-nav">
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-container-max rounded-full backdrop-blur-xl border border-white/20 shadow-[0_10px_30px_rgba(32,89,48,0.05)] bg-white/70 dark:bg-surface/70 flex justify-between items-center px-6 md:px-8 py-3 z-50 transition-transform duration-300" id="main-nav">
 <a class="font-display-lg text-headline-md font-semibold text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity" href="startseite_modern_redesign.html">
-            FTV Hohenstaufen
+            FtV Hohenstaufen
         </a>
 <div class="hidden md:flex items-center gap-6">
 <a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="startseite_modern_redesign.html#tradition">Tradition</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="das_haus_modern_redesign.html">Das Haus</a>
 <a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="zimmer_modern_redesign.html">Zimmer</a>
 <a class="text-primary dark:text-primary-fixed-dim font-medium font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="veranstaltungen_modern_redesign.html">Veranstaltungen</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="startseite_modern_redesign.html#contact">Kontakt</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 font-body-md text-body-md hover:text-primary transition-colors py-2 px-3 hover:bg-white/40 dark:hover:bg-surface-container-highest/40 rounded-full" href="startseite_modern_redesign.html#kontakt">Kontakt</a>
 </div>
-<a class="bg-primary text-white font-label-sm text-label-sm uppercase px-6 py-3 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 hidden md:block" href="startseite_modern_redesign.html#contact">
-            Mitglied werden
+<a class="bg-primary text-white font-label-sm text-label-sm uppercase px-6 py-3 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 hidden md:block" href="startseite_modern_redesign.html#aktiv-werden">
+            Aktiv werden
         </a>
-<button class="md:hidden text-primary p-2">
-<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü öffnen" class="md:hidden text-primary p-2 rounded-full hover:bg-secondary-container transition-colors" id="nav-toggle" type="button">
+<span class="material-symbols-outlined" id="nav-icon">menu</span>
 </button>
+<div class="absolute top-full left-0 right-0 mt-3 hidden md:hidden" id="mobile-menu">
+<div class="bg-white/95 dark:bg-surface/95 backdrop-blur-xl border border-white/20 rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.12)] p-4 flex flex-col gap-1">
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="startseite_modern_redesign.html#tradition">Tradition</a>
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="das_haus_modern_redesign.html">Das Haus</a>
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="zimmer_modern_redesign.html">Zimmer</a>
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-primary font-medium" href="veranstaltungen_modern_redesign.html">Veranstaltungen</a>
+<a class="font-body-md text-body-md py-3 px-4 rounded-lg hover:bg-secondary-container transition-colors block text-on-surface-variant" href="startseite_modern_redesign.html#kontakt">Kontakt</a>
+<a class="bg-primary text-white font-label-sm text-label-sm uppercase px-6 py-4 rounded-full hover:bg-primary-container transition-colors text-center mt-2" href="startseite_modern_redesign.html#aktiv-werden">Aktiv werden</a>
+</div>
+</div>
 </nav>
 <main class="w-full max-w-container-max mx-auto px-gutter md:px-0 flex flex-col gap-section-gap pt-[160px] pb-section-gap">
 <!-- Hero -->
 <section class="relative w-full h-[480px] md:h-[620px] rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(32,89,48,0.08)]">
-<!-- TODO: echtes Foto ersetzen -->
-<img alt="Langer gedeckter Tisch im Kneipsaal, Menschen im Gespräch bei warmem Abendlicht" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-events-hero/1920/1080"/>
+<!-- TODO: echtes Foto vom Hohenstaufenhaus einsetzen -->
+<img alt="Abend im Kneipsaal des Hohenstaufenhauses" class="absolute inset-0 w-full h-full object-cover" src="https://picsum.photos/seed/ftv-events-hero/1920/1080"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
 <div class="absolute bottom-0 left-0 w-full p-8 md:p-16 flex flex-col items-start max-w-3xl">
 <span class="bg-white/20 backdrop-blur-md text-white font-label-sm text-label-sm px-4 py-1.5 rounded-full mb-stack-md border border-white/30">Veranstaltungen</span>
-<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-stack-md drop-shadow-lg">Was bei uns im Semester passiert.</h1>
-<p class="font-body-lg text-body-lg text-white/90 max-w-xl">Kneipen, Vorträge, Wanderungen und Abende, die länger werden als geplant. Viele unserer Termine sind offen — komm einfach vorbei.</p>
-</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-stack-md drop-shadow-lg">Semesterprogramm statt Semesterfrust.</h1>
+<p class="font-body-lg text-body-lg text-white/90 max-w-xl mb-stack-lg">Antrittskneipe, Exkneipe, Stammtisch, Vorträge und alles dazwischen. Vieles davon ist offen — du brauchst keine Einladung, nur den Weg hinter die Mensa.</p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest hover:-translate-y-0.5 transition-all duration-200 shadow-lg flex items-center justify-center gap-2 whitespace-nowrap" href="#termine">Zu den Terminen</a>
+<a class="bg-transparent border border-white text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center gap-2 whitespace-nowrap" href="#kalender">Kalender abonnieren</a>
+</div></div>
 </section>
 <!-- Terminliste -->
 <section class="scroll-mt-32" id="termine">
-<div class="mb-stack-lg text-center max-w-2xl mx-auto">
-<h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">Termine im Wintersemester</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Alles, was bei uns ansteht — von der ersten Kneipe bis zum Jahresausklang. Termine mit dem Hinweis <span class="text-on-secondary-container font-medium">Öffentlich</span> stehen allen offen, auch wenn du uns noch gar nicht kennst. Für alles andere brauchst du nur jemanden, der dich mitbringt.</p>
+<div class="mb-stack-lg flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+<div class="max-w-2xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">Termine im Semester</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Alles, was ansteht — von der Antrittskneipe bis zur Exkneipe. Termine mit dem Hinweis <span class="text-on-secondary-container font-medium">Offen für Gäste</span> kannst du einfach besuchen, auch wenn du uns noch gar nicht kennst. Für alles andere brauchst du nur jemanden, der dich mitbringt — frag kurz per WhatsApp, dann regeln wir das.</p>
+</div>
+<div class="flex-shrink-0">
+<!-- TODO: WhatsApp-Nummer eintragen (49XXXXXXXXXX in allen vier Dateien ersetzen) -->
+<a class="bg-[#25D366] text-[#07301a] font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-[#1ebe5a] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap" href="https://wa.me/49XXXXXXXXXX?text=Hallo%21%20Ich%20w%C3%BCrde%20gern%20zu%20einem%20eurer%20Termine%20mitkommen.%20Was%20passt%20als%20N%C3%A4chstes%3F" rel="noopener" target="_blank"><svg aria-hidden="true" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.825 9.825 0 016.988 2.896 9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.142 1.595 5.945L0 24l6.335-1.652a11.94 11.94 0 005.71 1.447h.006c6.585 0 11.946-5.335 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg>Termin per WhatsApp</a>
+</div>
 </div>
 <div class="flex flex-col gap-4">
 <article class="flex flex-col sm:flex-row sm:items-center gap-6 bg-surface-container-lowest rounded-xl border border-surface-container p-6 shadow-[0_10px_30px_rgba(32,89,48,0.03)] hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] hover:-translate-y-0.5 transition-all duration-300">
 <div class="flex-shrink-0 flex sm:flex-col items-center justify-center gap-2 sm:gap-1 w-full sm:w-20 sm:h-20 bg-secondary-container rounded-lg py-3">
-<span class="font-display-lg text-headline-md font-semibold text-primary leading-none">12</span>
-<span class="font-label-sm text-label-sm uppercase text-primary">Sep</span>
-</div>
-<div class="flex-1">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Semesterantrittskneipe</h3>
-<div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-body-md text-body-md text-on-surface-variant mb-stack-sm">
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">schedule</span>19:30 Uhr</span>
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kneipsaal im Haus</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant/80">Der erste Abend des Semesters: alte Lieder, neue Gesichter und die Frage, wer diesmal die Begrüßungsrede hält.</p>
-</div>
-<span class="self-start sm:self-center flex-shrink-0 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Intern</span>
-</article>
-<article class="flex flex-col sm:flex-row sm:items-center gap-6 bg-surface-container-lowest rounded-xl border border-surface-container p-6 shadow-[0_10px_30px_rgba(32,89,48,0.03)] hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] hover:-translate-y-0.5 transition-all duration-300">
-<div class="flex-shrink-0 flex sm:flex-col items-center justify-center gap-2 sm:gap-1 w-full sm:w-20 sm:h-20 bg-secondary-container rounded-lg py-3">
-<span class="font-display-lg text-headline-md font-semibold text-primary leading-none">26</span>
-<span class="font-label-sm text-label-sm uppercase text-primary">Sep</span>
-</div>
-<div class="flex-1">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Tag der offenen Tür</h3>
-<div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-body-md text-body-md text-on-surface-variant mb-stack-sm">
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">schedule</span>14:00 Uhr</span>
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Haus Hohenstaufen</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant/80">Wir schließen alle Türen auf — Zimmer, Bibliothek, Keller, Garten. Kommt vorbei, Kaffee und Kuchen stehen bereit.</p>
-</div>
-<span class="self-start sm:self-center flex-shrink-0 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Öffentlich</span>
-</article>
-<article class="flex flex-col sm:flex-row sm:items-center gap-6 bg-surface-container-lowest rounded-xl border border-surface-container p-6 shadow-[0_10px_30px_rgba(32,89,48,0.03)] hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] hover:-translate-y-0.5 transition-all duration-300">
-<div class="flex-shrink-0 flex sm:flex-col items-center justify-center gap-2 sm:gap-1 w-full sm:w-20 sm:h-20 bg-secondary-container rounded-lg py-3">
-<span class="font-display-lg text-headline-md font-semibold text-primary leading-none">10</span>
+<span class="font-display-lg text-headline-md font-semibold text-primary leading-none">18</span>
 <span class="font-label-sm text-label-sm uppercase text-primary">Okt</span>
 </div>
 <div class="flex-1">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Vortragsabend: Stadtgeschichte von unten</h3>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Antrittskneipe WS 2026/27</h3>
 <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-body-md text-body-md text-on-surface-variant mb-stack-sm">
 <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">schedule</span>20:00 Uhr</span>
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Hausbibliothek</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kneipsaal, auf dem Hause</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant/80">Ein Abend über die Straßen, die wir jeden Tag entlanglaufen — mit anschließender Diskussion und offenem Ausgang.</p>
+<p class="font-body-md text-body-md text-on-surface-variant/80">Der offizielle Auftakt ins Semester: Farben, alte Lieder und der Abend, an dem du die meisten Leute auf einmal kennenlernst.</p>
 </div>
-<span class="self-start sm:self-center flex-shrink-0 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Öffentlich</span>
+<span class="self-start sm:self-center flex-shrink-0 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Auf dem Hause</span>
 </article>
 <article class="flex flex-col sm:flex-row sm:items-center gap-6 bg-surface-container-lowest rounded-xl border border-surface-container p-6 shadow-[0_10px_30px_rgba(32,89,48,0.03)] hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] hover:-translate-y-0.5 transition-all duration-300">
 <div class="flex-shrink-0 flex sm:flex-col items-center justify-center gap-2 sm:gap-1 w-full sm:w-20 sm:h-20 bg-secondary-container rounded-lg py-3">
-<span class="font-display-lg text-headline-md font-semibold text-primary leading-none">24</span>
+<span class="font-display-lg text-headline-md font-semibold text-primary leading-none">23</span>
 <span class="font-label-sm text-label-sm uppercase text-primary">Okt</span>
 </div>
 <div class="flex-1">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Wanderung auf den Hohenstaufen</h3>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Stammtisch für Erstsemester</h3>
 <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-body-md text-body-md text-on-surface-variant mb-stack-sm">
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">schedule</span>09:00 Uhr</span>
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Treffpunkt: vor dem Haus</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">schedule</span>20:00 Uhr</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kellerbar im Haus</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant/80">Einmal im Jahr laufen wir auf den Berg, der uns den Namen gegeben hat. Festes Schuhwerk genügt.</p>
+<p class="font-body-md text-body-md text-on-surface-variant/80">Der einfachste Einstieg überhaupt. Kein Programm, kein Dresscode — komm runter in den Keller und schau es dir an.</p>
 </div>
-<span class="self-start sm:self-center flex-shrink-0 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Öffentlich</span>
+<span class="self-start sm:self-center flex-shrink-0 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Offen für Gäste</span>
 </article>
 <article class="flex flex-col sm:flex-row sm:items-center gap-6 bg-surface-container-lowest rounded-xl border border-surface-container p-6 shadow-[0_10px_30px_rgba(32,89,48,0.03)] hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] hover:-translate-y-0.5 transition-all duration-300">
 <div class="flex-shrink-0 flex sm:flex-col items-center justify-center gap-2 sm:gap-1 w-full sm:w-20 sm:h-20 bg-secondary-container rounded-lg py-3">
@@ -272,14 +261,29 @@
 <span class="font-label-sm text-label-sm uppercase text-primary">Nov</span>
 </div>
 <div class="flex-1">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Altherrenabend</h3>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Vortragsabend</h3>
 <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-body-md text-body-md text-on-surface-variant mb-stack-sm">
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">schedule</span>18:30 Uhr</span>
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kneipsaal im Haus</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">schedule</span>19:30 Uhr</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kneipsaal, auf dem Hause</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant/80">Alte Herren und Aktive an einem Tisch — der Abend, an dem die besten Geschichten erzählt werden.</p>
+<p class="font-body-md text-body-md text-on-surface-variant/80">Ein Abend mit einem Gast aus der Praxis. Danach wird im Keller weiterdiskutiert, meistens länger als geplant.</p>
 </div>
-<span class="self-start sm:self-center flex-shrink-0 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Intern</span>
+<span class="self-start sm:self-center flex-shrink-0 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Offen für Gäste</span>
+</article>
+<article class="flex flex-col sm:flex-row sm:items-center gap-6 bg-surface-container-lowest rounded-xl border border-surface-container p-6 shadow-[0_10px_30px_rgba(32,89,48,0.03)] hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] hover:-translate-y-0.5 transition-all duration-300">
+<div class="flex-shrink-0 flex sm:flex-col items-center justify-center gap-2 sm:gap-1 w-full sm:w-20 sm:h-20 bg-secondary-container rounded-lg py-3">
+<span class="font-display-lg text-headline-md font-semibold text-primary leading-none">21</span>
+<span class="font-label-sm text-label-sm uppercase text-primary">Nov</span>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Grillen & Kellerbar</h3>
+<div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-body-md text-body-md text-on-surface-variant mb-stack-sm">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">schedule</span>19:00 Uhr</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Balkon und Kellerbar</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80">Solange das Wetter mitspielt: Grill an auf dem Balkon, Blick über Aalen, danach runter in den Keller.</p>
+</div>
+<span class="self-start sm:self-center flex-shrink-0 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Offen für Gäste</span>
 </article>
 <article class="flex flex-col sm:flex-row sm:items-center gap-6 bg-surface-container-lowest rounded-xl border border-surface-container p-6 shadow-[0_10px_30px_rgba(32,89,48,0.03)] hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] hover:-translate-y-0.5 transition-all duration-300">
 <div class="flex-shrink-0 flex sm:flex-col items-center justify-center gap-2 sm:gap-1 w-full sm:w-20 sm:h-20 bg-secondary-container rounded-lg py-3">
@@ -290,32 +294,48 @@
 <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Nikolauskneipe</h3>
 <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-body-md text-body-md text-on-surface-variant mb-stack-sm">
 <span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">schedule</span>20:00 Uhr</span>
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kneipsaal im Haus</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kneipsaal, auf dem Hause</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant/80">Traditionell, laut und mit einem Nikolaus, der über das Semester erschreckend gut Bescheid weiß.</p>
 </div>
-<span class="self-start sm:self-center flex-shrink-0 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Intern</span>
+<span class="self-start sm:self-center flex-shrink-0 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Auf dem Hause</span>
 </article>
 <article class="flex flex-col sm:flex-row sm:items-center gap-6 bg-surface-container-lowest rounded-xl border border-surface-container p-6 shadow-[0_10px_30px_rgba(32,89,48,0.03)] hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] hover:-translate-y-0.5 transition-all duration-300">
 <div class="flex-shrink-0 flex sm:flex-col items-center justify-center gap-2 sm:gap-1 w-full sm:w-20 sm:h-20 bg-secondary-container rounded-lg py-3">
-<span class="font-display-lg text-headline-md font-semibold text-primary leading-none">19</span>
-<span class="font-label-sm text-label-sm uppercase text-primary">Dez</span>
+<span class="font-display-lg text-headline-md font-semibold text-primary leading-none">16</span>
+<span class="font-label-sm text-label-sm uppercase text-primary">Jan</span>
 </div>
 <div class="flex-1">
-<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Weihnachtsfeier & Jahresausklang</h3>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Altherrenabend</h3>
 <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-body-md text-body-md text-on-surface-variant mb-stack-sm">
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">schedule</span>18:00 Uhr</span>
-<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Haus Hohenstaufen</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">schedule</span>18:30 Uhr</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kneipsaal, auf dem Hause</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant/80">Wir kochen gemeinsam, singen ein bisschen und lassen das Jahr im Haus ausklingen. Gäste sind herzlich willkommen.</p>
+<p class="font-body-md text-body-md text-on-surface-variant/80">Aktive und Alte Herren an einem Tisch. Der Abend, an dem sich die nützlichsten Kontakte ganz nebenbei ergeben.</p>
 </div>
-<span class="self-start sm:self-center flex-shrink-0 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Öffentlich</span>
+<span class="self-start sm:self-center flex-shrink-0 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Auf dem Hause</span>
+</article>
+<article class="flex flex-col sm:flex-row sm:items-center gap-6 bg-surface-container-lowest rounded-xl border border-surface-container p-6 shadow-[0_10px_30px_rgba(32,89,48,0.03)] hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] hover:-translate-y-0.5 transition-all duration-300">
+<div class="flex-shrink-0 flex sm:flex-col items-center justify-center gap-2 sm:gap-1 w-full sm:w-20 sm:h-20 bg-secondary-container rounded-lg py-3">
+<span class="font-display-lg text-headline-md font-semibold text-primary leading-none">11</span>
+<span class="font-label-sm text-label-sm uppercase text-primary">Jul</span>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">Exkneipe SS 2027</h3>
+<div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-body-md text-body-md text-on-surface-variant mb-stack-sm">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">schedule</span>20:00 Uhr</span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span>Kneipsaal, auf dem Hause</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80">Der lockere Abschluss des Semesters: gleicher Saal, deutlich weniger Form, die besten Geschichten.</p>
+</div>
+<span class="self-start sm:self-center flex-shrink-0 bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase px-4 py-1.5 rounded-full">Auf dem Hause</span>
 </article>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant/80 mt-stack-lg text-center">
-<!-- TODO: echte Termine, Uhrzeiten und Orte eintragen -->
-Alle Termine sind Platzhalter und werden noch durch die tatsächlichen Semestertermine ersetzt.
-</p>
+<!-- TODO: echte Termine aus dem Semesterprogramm eintragen -->
+<div class="mt-stack-lg bg-secondary-container rounded-xl p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+<span class="material-symbols-outlined text-primary flex-shrink-0">info</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Die Termine oben sind Platzhalter, bis das aktuelle Semesterprogramm eingepflegt ist. Verbindlich ist immer der Kalender weiter unten.</p>
+</div>
 </section>
 <!-- Kalender abonnieren -->
 <section class="scroll-mt-32" id="kalender">
@@ -327,22 +347,22 @@ Alle Termine sind Platzhalter und werden noch durch die tatsächlichen Semestert
 <div>
 <span class="text-primary font-label-sm text-label-sm uppercase tracking-wider mb-4 block">Immer aktuell</span>
 <h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Einmal eintragen, nie wieder nachschauen.</h3>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">Unser Kalender ist die verbindliche Quelle für alle Termine im Haus. Wenn sich etwas verschiebt, siehst du es sofort — ohne dass jemand eine Rundmail schreiben muss.</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">Unser Kalender ist die verbindliche Quelle für alle Termine im Haus. Trag ihn einmal in dein Handy ein — verschiebt sich etwas, siehst du es sofort, ohne dass jemand eine Rundmail schreiben muss.</p>
 <ul class="flex flex-col gap-3 mb-stack-lg">
 <li class="flex items-center gap-3 text-on-surface-variant font-body-md text-body-md">
 <span class="material-symbols-outlined text-primary">check_circle</span>
                             Funktioniert mit Google, Apple und Outlook
-                        </li>
+</li>
 <li class="flex items-center gap-3 text-on-surface-variant font-body-md text-body-md">
 <span class="material-symbols-outlined text-primary">check_circle</span>
                             Änderungen kommen automatisch bei dir an
-                        </li>
+</li>
 <li class="flex items-center gap-3 text-on-surface-variant font-body-md text-body-md">
 <span class="material-symbols-outlined text-primary">check_circle</span>
-                            Erinnerung 24 Stunden vor jedem Termin
-                        </li>
+                            Erinnerung vor jedem Termin, wenn du willst
+</li>
 </ul>
-<!-- TODO: echte Kalender-Links eintragen (Google-Kalender-ID bzw. .ics-Datei) -->
+<!-- TODO: echte Kalender-Links eintragen (Google-Kalender-ID bzw. .ics-Datei des bestehenden Kalenders) -->
 <div class="flex flex-wrap gap-4">
 <a class="bg-primary text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap" href="#">
 <span class="material-symbols-outlined">event</span>
@@ -356,19 +376,23 @@ Alle Termine sind Platzhalter und werden noch durch die tatsächlichen Semestert
 </div>
 <div class="rounded-xl overflow-hidden border border-surface-container bg-surface-container-lowest shadow-[0_10px_30px_rgba(32,89,48,0.05)]">
 <!-- TODO: echte Google-Kalender-ID einsetzen (Platzhalter-Einbettung) -->
-<iframe class="w-full h-[420px] border-0" loading="lazy" src="https://calendar.google.com/calendar/embed?src=DEINE_KALENDER_ID%40group.calendar.google.com&amp;ctz=Europe%2FBerlin&amp;mode=AGENDA&amp;showTitle=0&amp;showPrint=0" title="Veranstaltungskalender der FTV Hohenstaufen"></iframe>
+<iframe class="w-full h-[420px] border-0" loading="lazy" src="https://calendar.google.com/calendar/embed?src=DEINE_KALENDER_ID%40group.calendar.google.com&amp;ctz=Europe%2FBerlin&amp;mode=AGENDA&amp;showTitle=0&amp;showPrint=0" title="Veranstaltungskalender der FtV Hohenstaufen"></iframe>
 </div>
 </div>
 </section>
-<!-- Hinweis / CTA -->
+<!-- CTA -->
 <section>
 <div class="bg-primary text-white rounded-xl p-8 md:p-12 shadow-[0_10px_30px_rgba(32,89,48,0.1)] flex flex-col md:flex-row md:items-center gap-8 justify-between">
 <div class="max-w-2xl">
-<span class="material-symbols-outlined text-primary-fixed-dim text-4xl mb-6 block" data-icon="handshake" style="font-variation-settings: 'FILL' 1;">handshake</span>
+<span class="material-symbols-outlined text-primary-fixed-dim text-4xl mb-6 block" style="font-variation-settings: 'FILL' 1;">handshake</span>
 <h2 class="font-headline-md text-headline-md mb-stack-md">Du willst zu einem Termin mitkommen?</h2>
-<p class="font-body-lg text-body-lg text-white/80">Schreib uns kurz eine Nachricht — wir sagen dir, wo du klingeln musst, was du anziehen solltest und wer dich am Abend in Empfang nimmt. Und nein, du musst nichts können außer Hallo sagen.</p>
+<p class="font-body-lg text-body-lg text-white/80">Schreib uns kurz — wir sagen dir, wo du klingeln musst, was du anziehen solltest und wer dich am Abend in Empfang nimmt. Und nein, du musst nichts können außer Hallo sagen.</p>
 </div>
-<a class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest transition-colors shadow-lg flex-shrink-0 self-start md:self-auto" href="startseite_modern_redesign.html#contact">Kontakt aufnehmen</a>
+<div class="flex flex-wrap gap-4 flex-shrink-0 self-start md:self-auto">
+<!-- TODO: WhatsApp-Nummer eintragen (49XXXXXXXXXX in allen vier Dateien ersetzen) -->
+<a class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest hover:-translate-y-0.5 transition-all duration-200 shadow-lg flex items-center justify-center gap-2 whitespace-nowrap" href="https://wa.me/49XXXXXXXXXX?text=Hallo%21%20Ich%20w%C3%BCrde%20gern%20zu%20einem%20eurer%20Termine%20im%20Hohenstaufenhaus%20mitkommen." rel="noopener" target="_blank"><svg aria-hidden="true" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.825 9.825 0 016.988 2.896 9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.142 1.595 5.945L0 24l6.335-1.652a11.94 11.94 0 005.71 1.447h.006c6.585 0 11.946-5.335 11.949-11.896 0-3.176-1.24-6.165-3.495-8.411"/></svg>Auf WhatsApp schreiben</a>
+<a class="bg-transparent border border-white text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center gap-2 whitespace-nowrap" href="startseite_modern_redesign.html#aktiv-werden">Aktiv werden</a>
+</div>
 </div>
 </section>
 </main>
@@ -377,8 +401,9 @@ Alle Termine sind Platzhalter und werden noch durch die tatsächlichen Semestert
 <div class="bg-primary text-white rounded-xl p-8 md:p-12 shadow-[0_10px_30px_rgba(32,89,48,0.1)]">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
 <div class="md:col-span-1">
-<span class="font-display-lg text-headline-md font-semibold block mb-stack-md">FTV Hohenstaufen</span>
-<p class="font-body-md text-body-md text-white/70">Ein Haus, eine Tischgemeinschaft und ein Netzwerk, das weit über die Studienzeit hinaus trägt. Seit 1888.</p>
+<span class="font-display-lg text-headline-md font-semibold block mb-stack-sm">FtV Hohenstaufen</span>
+<span class="font-body-md text-body-md text-white/50 block mb-stack-md">Freie technische Verbindung Hohenstaufen zu Aalen</span>
+<p class="font-body-md text-body-md text-white/70">Die älteste Studentenverbindung an der Hochschule Aalen. Nichtschlagend, farbentragend in Schwarz-Weiß-Grün — und seit 1963 ziemlich beständig.</p>
 </div>
 <div>
 <span class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-stack-md block">Seiten</span>
@@ -387,36 +412,60 @@ Alle Termine sind Platzhalter und werden noch durch die tatsächlichen Semestert
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="das_haus_modern_redesign.html">Das Haus</a></li>
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="zimmer_modern_redesign.html">Zimmer</a></li>
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="veranstaltungen_modern_redesign.html">Veranstaltungen</a></li>
-<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="startseite_modern_redesign.html#contact">Kontakt</a></li>
+<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="startseite_modern_redesign.html#aktiv-werden">Aktiv werden</a></li>
+<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="startseite_modern_redesign.html#kontakt">Kontakt</a></li>
 </ul>
 </div>
 <div>
 <span class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-stack-md block">Kontakt</span>
-<!-- TODO: echte Kontaktdaten eintragen -->
 <ul class="flex flex-col gap-3 font-body-md text-body-md text-white/70">
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">location_on</span><span>Musterstraße 12<br/>73033 Göppingen</span></li>
-<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">call</span><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="tel:+4900000000000">+49 (0) 000 000 00 00</a></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">location_on</span><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="https://www.google.com/maps/search/?api=1&amp;query=Mozartstra%C3%9Fe+31%2C+73430+Aalen" rel="noopener" target="_blank">Hohenstaufenhaus<br/>Mozartstraße 31<br/>73430 Aalen</a></li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">call</span><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="tel:+4973618127290">07361 8127290</a></li>
 <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed-dim text-xl">mail</span><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="mailto:kontakt@ftv-hohenstaufen.de">kontakt@ftv-hohenstaufen.de</a></li>
 </ul>
 </div>
 <div>
 <span class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-stack-md block">Rechtliches</span>
-<!-- TODO: Impressum und Datenschutzerklärung verlinken -->
+<!-- TODO: Impressum, Datenschutz und Satzung auf die bestehenden Seiten verlinken -->
 <ul class="flex flex-col gap-3">
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="#">Impressum</a></li>
 <li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="#">Datenschutz</a></li>
-<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="#">Satzung</a></li>
+<li><a class="text-white/70 hover:text-white transition-colors font-body-md text-body-md" href="#">Newsletter</a></li>
 </ul>
 </div>
 </div>
 <div class="border-t border-white/15 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-<!-- TODO: vollständigen Vereinsnamen ergänzen -->
-<p class="font-body-md text-body-md text-white/60">© 2026 FTV Hohenstaufen. Alle Rechte vorbehalten.</p>
+<p class="font-body-md text-body-md text-white/60">© 2026 Freie technische Verbindung Hohenstaufen zu Aalen</p>
 <div class="flex items-center gap-4">
-<a aria-label="Instagram" class="text-white/70 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
-<a aria-label="E-Mail" class="text-white/70 hover:text-white transition-colors" href="mailto:kontakt@ftv-hohenstaufen.de"><span class="material-symbols-outlined">alternate_email</span></a>
+<a aria-label="Facebook" class="text-white/70 hover:text-white transition-colors" href="https://www.facebook.com/ftv.hohenstaufen/" rel="noopener" target="_blank"><span class="material-symbols-outlined">thumb_up</span></a>
+<a aria-label="E-Mail schreiben" class="text-white/70 hover:text-white transition-colors" href="mailto:kontakt@ftv-hohenstaufen.de"><span class="material-symbols-outlined">alternate_email</span></a>
+<a aria-label="Anrufen" class="text-white/70 hover:text-white transition-colors" href="tel:+4973618127290"><span class="material-symbols-outlined">call</span></a>
 </div>
 </div>
 </div>
 </footer>
+<script>
+    // Mobile-Menue: oeffnen/schliessen, Icon wechseln, bei Klick und Escape schliessen.
+    (function () {
+        var btn = document.getElementById('nav-toggle');
+        var menu = document.getElementById('mobile-menu');
+        var icon = document.getElementById('nav-icon');
+        if (!btn || !menu || !icon) return;
+        function setOpen(open) {
+            menu.classList.toggle('hidden', !open);
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+            icon.textContent = open ? 'close' : 'menu';
+        }
+        btn.addEventListener('click', function () {
+            setOpen(menu.classList.contains('hidden'));
+        });
+        menu.addEventListener('click', function (e) {
+            if (e.target.closest('a')) setOpen(false);
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') setOpen(false);
+        });
+    })();
+</script>
 </body></html>
