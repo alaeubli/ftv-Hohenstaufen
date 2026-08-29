@@ -1,0 +1,48 @@
+name: Termine aus dem Kalender aktualisieren
+
+on:
+  schedule:
+    # Taeglich um 04:15 UTC. Cron laeuft immer in UTC, im Sommer also 06:15 Ortszeit.
+    - cron: "15 4 * * *"
+  workflow_dispatch: {}
+  push:
+    # Nach einer Aenderung am Skript direkt neu erzeugen.
+    paths:
+      - scripts/kalender.py
+      - .github/workflows/kalender.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kalender
+  cancel-in-progress: false
+
+jobs:
+  aktualisieren:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Termine holen und Seite schreiben
+        env:
+          ICS_URL: ${{ secrets.KALENDER_ICS_URL }}
+        run: |
+          if [ -z "$ICS_URL" ]; then
+            echo "::error::Secret KALENDER_ICS_URL ist nicht gesetzt."
+            echo "Anlegen unter Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+          python3 scripts/kalender.py "$ICS_URL"
+
+      - name: Aenderungen committen
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Keine Aenderungen, nichts zu committen."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add veranstaltungen.html data/termine.json
+          git commit -m "Termine aus dem Kalender aktualisiert"
+          git push
