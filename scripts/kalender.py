@@ -173,16 +173,30 @@ def main():
     if uebersprungen:
         print("Uebersprungen: %s" % ", ".join(uebersprungen))
 
-    os.makedirs(os.path.dirname(JSON_DATEI), exist_ok=True)
-    with open(JSON_DATEI, "w", encoding="utf-8") as fh:
-        json.dump({
-            "aktualisiert": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
-            "semester": semester,
-            "termine": [{"start": e["start"].strftime("%Y-%m-%dT%H:%M:%S"),
-                         "ende": e["ende"].strftime("%Y-%m-%dT%H:%M:%S") if e["ende"] else None,
-                         "titel": e["name"], "ort": e["ort"]} for e in kommend],
-            "ohne_festen_termin": sonstige,
-        }, fh, ensure_ascii=False, indent=2)
+    inhalt = {
+        "semester": semester,
+        "termine": [{"start": e["start"].strftime("%Y-%m-%dT%H:%M:%S"),
+                     "ende": e["ende"].strftime("%Y-%m-%dT%H:%M:%S") if e["ende"] else None,
+                     "titel": e["name"], "ort": e["ort"]} for e in kommend],
+        "ohne_festen_termin": sonstige,
+    }
+    # Der Zeitstempel allein ist kein Grund, die Datei neu zu schreiben. Sonst
+    # entstuende bei jedem Lauf ein Commit, obwohl sich nichts geaendert hat.
+    alt = None
+    if os.path.exists(JSON_DATEI):
+        try:
+            with open(JSON_DATEI, encoding="utf-8") as fh:
+                alt = json.load(fh)
+        except (OSError, json.JSONDecodeError):
+            alt = None
+    if alt is None or {k: v for k, v in alt.items() if k != "aktualisiert"} != inhalt:
+        os.makedirs(os.path.dirname(JSON_DATEI), exist_ok=True)
+        with open(JSON_DATEI, "w", encoding="utf-8") as fh:
+            json.dump(dict(aktualisiert=datetime.now().strftime("%Y-%m-%dT%H:%M:%S"), **inhalt),
+                      fh, ensure_ascii=False, indent=2)
+        print("%s aktualisiert." % JSON_DATEI)
+    else:
+        print("%s unveraendert." % JSON_DATEI)
 
     with open(HTML_DATEI, encoding="utf-8") as fh:
         seite = fh.read()

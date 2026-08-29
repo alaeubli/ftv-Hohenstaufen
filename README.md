@@ -51,7 +51,9 @@ Geschrieben werden:
   `SONSTIGES`
 * `data/termine.json` mit denselben Terminen als Rohdaten
 
-Committet wird nur, wenn sich wirklich etwas geaendert hat.
+Committet wird nur, wenn sich wirklich etwas geaendert hat. Der Zeitstempel in
+`data/termine.json` zaehlt dabei nicht als Aenderung, sonst entstuende bei jedem
+Lauf ein Commit.
 
 **Gut zu wissen:**
 
