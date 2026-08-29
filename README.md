@@ -30,11 +30,20 @@ https://hohenstaufen-aalen.gaudeam.de/api/v1/open_events.json
 
 Auf der Website muss niemand etwas pflegen. Termin in Gaudeam anlegen, fertig.
 
-Die Action laeuft taeglich um 04:15 UTC, nach jeder Aenderung am Skript und auf
+Die Action laeuft montags um 04:15 UTC, nach jeder Aenderung am Skript und auf
 Knopfdruck unter **Actions → Termine aktualisieren → Run workflow**. Ein Secret
 braucht es nicht, die Schnittstelle ist oeffentlich. Sollte sich die Adresse
 einmal aendern, legt man unter **Settings → Secrets and variables → Actions →
 Variables** eine Variable `TERMINE_URL` an; die sticht die Voreinstellung.
+
+Zwei Eigenheiten von GitHub, die man kennen sollte:
+
+* Geplante Laeufe starten **nur auf dem Standardbranch**. Solange dieser Stand
+  auf einem Feature-Branch liegt, passiert nach Zeitplan nichts. Nach dem Merge
+  nach `main` laeuft es von selbst.
+* Liegt im Repository 60 Tage lang keine Aktivitaet, schaltet GitHub geplante
+  Workflows ab und meldet das per Mail. Ein Klick auf *Enable workflow*
+  reaktiviert sie.
 
 Geschrieben werden:
 

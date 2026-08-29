@@ -2,8 +2,9 @@ name: Termine aktualisieren
 
 on:
   schedule:
-    # Taeglich um 04:15 UTC. Cron laeuft immer in UTC, im Sommer also 06:15 Ortszeit.
-    - cron: "15 4 * * *"
+    # Montags um 04:15 UTC. Cron laeuft immer in UTC, im Sommer also 06:15 Ortszeit.
+    # Achtung: geplante Laeufe starten nur auf dem Standardbranch des Repositories.
+    - cron: "15 4 * * 1"
   workflow_dispatch: {}
   push:
     # Nach einer Aenderung am Skript direkt neu erzeugen.
