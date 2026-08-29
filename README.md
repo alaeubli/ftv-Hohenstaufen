@@ -21,48 +21,53 @@ Repository und werden direkt von GitHub Pages ausgeliefert.
 
 ## Termine automatisch aktualisieren
 
-Die Terminliste auf `veranstaltungen.html` wird von einer GitHub Action aus dem
-Vereinskalender befüllt. Auf der Seite muss niemand etwas pflegen: Termin im
-Kalender anlegen, fertig.
+Die Terminliste auf `veranstaltungen.html` wird von einer GitHub Action aus der
+Vereins-Schnittstelle befuellt:
 
-**Einrichten:**
+```
+https://hohenstaufen-aalen.gaudeam.de/api/v1/open_events.json
+```
 
-1. Im Kalender die private iCal-Adresse kopieren.
-   Google Kalender: *Einstellungen → Kalender auswählen → Privateadresse im
-   iCal-Format*. Die Adresse endet auf `.ics`.
-2. Im Repository unter **Settings → Secrets and variables → Actions → New
-   repository secret** ein Secret mit dem Namen `KALENDER_ICS_URL` anlegen und
-   die Adresse einfügen.
-3. Unter **Actions → Termine aus dem Kalender aktualisieren → Run workflow**
-   einmal von Hand starten.
+Auf der Website muss niemand etwas pflegen. Termin in Gaudeam anlegen, fertig.
 
-Danach läuft die Action täglich um 04:15 UTC. Sie schreibt:
+Die Action laeuft taeglich um 04:15 UTC, nach jeder Aenderung am Skript und auf
+Knopfdruck unter **Actions → Termine aktualisieren → Run workflow**. Ein Secret
+braucht es nicht, die Schnittstelle ist oeffentlich. Sollte sich die Adresse
+einmal aendern, legt man unter **Settings → Secrets and variables → Actions →
+Variables** eine Variable `TERMINE_URL` an; die sticht die Voreinstellung.
 
-* `veranstaltungen.html` – die fertige Terminliste zwischen den Markern
-  `<!-- TERMINE:START -->` und `<!-- TERMINE:END -->`
-* `data/termine.json` – dieselben Termine als Rohdaten
+Geschrieben werden:
 
-Geändert wird nur, wenn sich wirklich etwas geändert hat. Es entsteht also
-nicht jeden Tag ein Commit.
+* `veranstaltungen.html` zwischen den Markern `TERMINE`, `SEMESTER` und
+  `SONSTIGES`
+* `data/termine.json` mit denselben Terminen als Rohdaten
+
+Committet wird nur, wenn sich wirklich etwas geaendert hat.
 
 **Gut zu wissen:**
 
-* Angezeigt werden die nächsten zwölf kommenden Termine. Vergangene fallen
-  automatisch raus.
-* Ganztägige Termine bekommen statt einer Uhrzeit den Hinweis „ganztägig“.
-* Serientermine (wöchentlicher Stammtisch und Ähnliches) werden übersprungen
-  und im Aktionsprotokoll gezählt. Wer sie auf der Seite haben will, legt sie
-  im Kalender als Einzeltermine an.
-* Titel, Ort und Beschreibung aus dem Kalender landen unverändert auf der
-  Seite, werden aber HTML-escaped. Ein Kalendereintrag kann also keinen Code
-  einschleusen.
-* Solange das Secret fehlt, bricht die Action mit einer klaren Meldung ab und
-  die Beispieltermine auf der Seite bleiben stehen.
+* Angezeigt werden die naechsten zwoelf Termine, vergangene fallen automatisch
+  raus. Steht nichts an, erscheint ein freundlicher Hinweis statt einer leeren
+  Liste.
+* Das Feld `semester` landet in der Ueberschrift, aus „Termine im Semester“
+  wird also „Termine im WS 26/27“.
+* Eintraege aus `other_events` (Formate ohne festen Termin, etwa Fuchsenabende)
+  stehen als Hinweis unter der Liste.
+* Orte werden fuer Gaeste ausgeschrieben: `adH` wird zu „auf dem Hause“, die
+  eigene Adresse zu „Hohenstaufenhaus, Mozartstr. 31“. Die Zuordnung steht im
+  Skript unter `ORTE`.
+* Die Zeitangaben kommen im Format `MM/TT/JJJJ`. Steht an erster Stelle eine
+  Zahl groesser zwoelf, liest das Skript stattdessen `TT/MM/JJJJ`. Ein Wechsel
+  des Formats verschiebt die Termine also nicht stillschweigend um Monate.
+* Termine ohne Namen oder mit unlesbarem Datum werden uebersprungen und im
+  Aktionsprotokoll namentlich genannt.
+* Titel und Ort werden HTML-escaped. Ein Eintrag aus der Schnittstelle kann
+  keinen Code auf die Seite bringen.
 
-Manuell testen lässt sich das Skript mit einer beliebigen ICS-Adresse:
+Manuell testen:
 
 ```
-python3 scripts/kalender.py "https://.../basic.ics"
+python3 scripts/kalender.py "https://hohenstaufen-aalen.gaudeam.de/api/v1/open_events.json"
 ```
 
 ## Noch offen

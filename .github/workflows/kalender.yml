@@ -1,4 +1,4 @@
-name: Termine aus dem Kalender aktualisieren
+name: Termine aktualisieren
 
 on:
   schedule:
@@ -26,14 +26,11 @@ jobs:
 
       - name: Termine holen und Seite schreiben
         env:
-          ICS_URL: ${{ secrets.KALENDER_ICS_URL }}
-        run: |
-          if [ -z "$ICS_URL" ]; then
-            echo "::error::Secret KALENDER_ICS_URL ist nicht gesetzt."
-            echo "Anlegen unter Settings > Secrets and variables > Actions."
-            exit 1
-          fi
-          python3 scripts/kalender.py "$ICS_URL"
+          # Oeffentliche Schnittstelle, deshalb kein Secret noetig.
+          # Ueber eine Repository-Variable gleichen Namens laesst sie sich
+          # ueberschreiben, falls die Adresse sich einmal aendert.
+          TERMINE_URL: ${{ vars.TERMINE_URL || 'https://hohenstaufen-aalen.gaudeam.de/api/v1/open_events.json' }}
+        run: python3 scripts/kalender.py "$TERMINE_URL"
 
       - name: Aenderungen committen
         run: |
@@ -44,5 +41,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add veranstaltungen.html data/termine.json
-          git commit -m "Termine aus dem Kalender aktualisiert"
+          git commit -m "Termine aktualisiert"
           git push
