@@ -10,6 +10,8 @@ Repository und werden direkt von GitHub Pages ausgeliefert.
 | `zimmer.html`          | Zimmer mieten          |
 | `veranstaltungen.html` | Veranstaltungen        |
 | `404.html`             | Fehlerseite            |
+| `impressum.html`       | Impressum              |
+| `datenschutz.html`     | Datenschutz            |
 
 `.nojekyll` sorgt dafür, dass Pages die Dateien unverändert ausliefert.
 
@@ -89,4 +91,10 @@ python3 scripts/kalender.py "https://hohenstaufen-aalen.gaudeam.de/api/v1/open_e
   allen Dateien ersetzen, dann sind alle WhatsApp-Buttons aktiv.
 * Telefonnummer und E-Mail-Adresse gegenprüfen
 * Mietpreise und die tatsächlichen Zimmergrößen eintragen
-* Impressum, Datenschutz und Newsletter verlinken (stehen im Footer auf `#`)
+* **Impressum und Datenschutz sind Entwuerfe.** Die rot markierten Stellen
+  ergaenzen (Vorstand, Vereinsregister, verantwortliche Person) und beides vor
+  dem Livegang juristisch pruefen lassen.
+* **Google Fonts wird von Google-Servern geladen.** Dabei geht die IP-Adresse
+  der Besucher an Google. Das LG Muenchen I hat das 2022 als Verstoss gegen die
+  DSGVO gewertet (Az. 3 O 17493/20). Sauberer waere, die Schriften selbst
+  auszuliefern. Gleiches gilt fuer die Tailwind-Bibliothek.
