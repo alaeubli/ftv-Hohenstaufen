@@ -41,7 +41,7 @@
 <!-- Hero -->
 <section class="relative w-full min-h-[440px] md:h-[620px] rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(32,89,48,0.08)] flex flex-col justify-end">
 <!-- TODO: echtes Foto vom Hohenstaufenhaus einsetzen -->
-<img alt="Das Hohenstaufenhaus in der Mozartstraße 31 in Aalen" class="absolute inset-0 w-full h-full object-cover scale-110 blur-lg md:blur-xl" src="assets/platzhalter.svg" data-seed="ftv-haus-hero"/>
+<img alt="Das Hohenstaufenhaus in der Mozartstraße 31 in Aalen" class="absolute inset-0 w-full h-full object-cover scale-110 blur-lg md:blur-xl" src="assets/bilder/haus-aussen.jpg"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 md:from-black/70 md:via-black/20 md:to-transparent"></div>
 <div class="relative w-full p-6 sm:p-8 md:p-16 flex flex-col items-start max-w-3xl">
 <span class="inline-flex items-center gap-3 font-label-sm text-label-sm uppercase text-white mb-stack-md drop-shadow-lg"><span aria-hidden="true" class="w-8 h-px bg-primary-fixed-dim"></span>Das Hohenstaufenhaus</span>
@@ -67,7 +67,7 @@
 </div>
 <div class="w-full md:w-1/2 relative h-56 sm:h-72 md:h-auto md:min-h-[520px]">
 <!-- TODO: echtes Foto vom Haus oder vom Balkonblick einsetzen -->
-<img alt="Blick vom Balkon des Hohenstaufenhauses über Aalen" class="absolute inset-0 w-full h-full object-cover" src="assets/platzhalter.svg"/>
+<img alt="Balkon des Hohenstaufenhauses mit Tisch und Blick ins Grüne" class="absolute inset-0 w-full h-full object-cover" src="assets/bilder/balkon.jpg"/>
 </div>
 </div>
 </section>
@@ -78,10 +78,13 @@
 <p class="font-body-md text-body-md text-on-surface-variant">Neben den privaten Zimmern lebt das Haus von den Räumen, die allen gehören. Da passiert das meiste, woran man sich später erinnert.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<div class="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(32,89,48,0.03)] border border-surface-container hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] transition-all duration-300 p-8 md:col-span-2 flex flex-col justify-center md:min-h-[300px]">
-<svg aria-hidden="true" class="text-primary mb-6 w-9 h-9" fill="currentColor" viewBox="0 -960 960 960"><path d="M240-120v-60h210v-244L120-780v-60h720v60L510-424v244h210v60H240Zm41-575h398l83-81H198l83 81Z"/></svg>
-<h3 class="font-headline-md text-headline-md mb-2 text-on-surface">Der Kneipsaal</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Der Grund, warum Feiern bei uns anders aussieht als in einer WG-Küche. Hier finden Antrittskneipe und Exkneipe statt, hier sitzen Aktive und Alte Herren am selben Tisch. An einem einzigen Abend lernst du mehr Leute kennen als im ganzen ersten Semester in der Vorlesung.</p>
+<div class="rounded-xl overflow-hidden md:col-span-2 relative min-h-[260px] md:min-h-[300px] shadow-[0_10px_30px_rgba(32,89,48,0.05)]">
+<img alt="Der Kneipsaal mit langer Tafel, Fahnen und Kerzenleuchtern" class="absolute inset-0 w-full h-full object-cover" src="assets/bilder/kneipsaal.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/10"></div>
+<div class="absolute bottom-0 left-0 w-full p-6 sm:p-8">
+<h3 class="font-headline-md text-headline-md text-white mb-2">Der Kneipsaal</h3>
+<p class="font-body-md text-body-md text-white/90 max-w-lg">Der Grund, warum Feiern bei uns anders aussieht als in einer WG-Küche. Hier finden Antrittskneipe und Exkneipe statt, hier sitzen Aktive und Alte Herren am selben Tisch.</p>
+</div>
 </div>
 <div class="bg-primary text-white rounded-xl p-6 sm:p-8 shadow-[0_10px_30px_rgba(32,89,48,0.1)] hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-center md:min-h-[300px]">
 <svg aria-hidden="true" class="text-primary-fixed-dim mb-6 w-9 h-9" fill="currentColor" viewBox="0 -960 960 960"><path d="M250-120v-352q-52-14-91-53t-39-95q0-53 30.5-94.5T229-772q23-48 68.5-78T400-880q35 0 65.5 12t55.5 33q10-2 19-3.5t20-1.5q66 0 113 47t47 113q0 22-9 44t-23 36h92q25 0 42.5 17.5T840-540v280q0 25-17.5 42.5T780-200H670v80H250Zm-70-500q0 38 31 64t69 26q32 0 58-17.5t53-50.5q23-28 55-50t74-22h140q0-45-26.5-77.5T560-780q-18 0-35.5 5.5L507-769l-19-16q-18-16-41-25.5t-47-9.5q-35 0-67 18t-47 50l-14 30-32 11q-26 9-43 36t-17 55Zm490 360h110v-280H670v280Z"/></svg>
@@ -95,20 +98,28 @@
 </div>
 <div class="rounded-xl overflow-hidden md:col-span-2 relative min-h-[260px] md:min-h-[300px] shadow-[0_10px_30px_rgba(32,89,48,0.05)]">
 <!-- TODO: echtes Foto vom Garten einsetzen -->
-<img alt="Garten des Hohenstaufenhauses mit Terrasse und Grillstelle" class="absolute inset-0 w-full h-full object-cover scale-105 blur-md" src="assets/platzhalter.svg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+<img alt="Terrasse im Garten mit langen Tischen unter der Markise" class="absolute inset-0 w-full h-full object-cover" src="assets/bilder/garten-terrasse.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/10"></div>
 <div class="absolute bottom-0 left-0 w-full p-6 sm:p-8">
 <h3 class="font-headline-md text-headline-md text-white mb-2">Garten, Terrasse und Grillstelle</h3>
 <p class="font-body-md text-body-md text-white/90 max-w-lg">Ab Mai wandert das halbe Haus nach draußen. Der Garten ist groß genug für eine Runde Spikeball, die Terrasse trägt den langen Tisch, und die Grillstelle läuft an den ersten warmen Abenden fast von allein.</p>
 </div>
 </div>
-<div class="rounded-xl overflow-hidden md:col-span-3 relative min-h-[260px] md:min-h-[300px] shadow-[0_10px_30px_rgba(32,89,48,0.05)]">
+<div class="rounded-xl overflow-hidden md:col-span-2 relative min-h-[260px] md:min-h-[300px] shadow-[0_10px_30px_rgba(32,89,48,0.05)]">
 <!-- TODO: echtes Foto der Küche einsetzen -->
-<img alt="Die Gemeinschaftsküche im Hohenstaufenhaus" class="absolute inset-0 w-full h-full object-cover scale-105 blur-md" src="assets/platzhalter.svg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+<img alt="Die Gemeinschaftsküche im Hohenstaufenhaus" class="absolute inset-0 w-full h-full object-cover" src="assets/bilder/kueche.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/10"></div>
 <div class="absolute bottom-0 left-0 w-full p-8">
 <h3 class="font-headline-md text-headline-md text-white mb-2">Die Küche</h3>
 <p class="font-body-md text-body-md text-white/90 max-w-lg">Voll ausgestattet mit Herd, Backofen, Spülmaschine und zwei Kühlschränken. Reicht auch, wenn mehrere gleichzeitig auf die Idee kommen, doch noch was zu kochen. Dazu drei Bäder, damit morgens niemand Schlange steht.</p>
+</div>
+</div>
+<div class="rounded-xl overflow-hidden relative min-h-[260px] md:min-h-[300px] shadow-[0_10px_30px_rgba(32,89,48,0.05)]">
+<img alt="Zimmer mit Klavier, alter Wanduhr und gerahmten Fotos" class="absolute inset-0 w-full h-full object-cover" src="assets/bilder/klavierzimmer.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/10"></div>
+<div class="absolute bottom-0 left-0 w-full p-6 sm:p-8">
+<h3 class="font-headline-md text-headline-md text-white mb-2">Das Klavierzimmer</h3>
+<p class="font-body-md text-body-md text-white/90">Klavier, alte Wanduhr, Fotos von Generationen an der Wand. Der ruhigste Raum im Haus.</p>
 </div>
 </div>
 </div>

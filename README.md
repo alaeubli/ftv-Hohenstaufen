@@ -43,7 +43,7 @@ die Schriften Montserrat und Inter von Fontsource (SIL Open Font License).
 
 ## Fotos einsetzen
 
-Die Bildflaechen zeigen noch `assets/platzhalter.svg`. So kommen echte Fotos rein:
+Die Fotos liegen in `assets/bilder/`. Neue Fotos so aufbereiten:
 
 ```
 pip install pillow
@@ -53,8 +53,10 @@ python3 scripts/bilder-vorbereiten.py haus-aussen.jpg garten.jpg kneipsaal.jpg
 Das Skript verkleinert auf hoechstens 1920 Pixel Breite, speichert als JPEG und
 **entfernt saemtliche EXIF-Daten**. Kameras und Handys schreiben dort oft
 GPS-Koordinaten hinein, die sonst mit dem Bild oeffentlich waeren. Ergebnis
-landet in `assets/bilder/`. Danach im HTML `assets/platzhalter.svg` durch den
-neuen Dateinamen ersetzen.
+landet in `assets/bilder/`. Danach im HTML den Dateinamen eintragen.
+
+Von den sieben vermieteten Zimmern gibt es noch keine Fotos, die Karten auf der
+Zimmerseite zeigen deshalb nur Etage und Groesse.
 
 Hintergrundbilder werden im Stylesheet unscharf gezeichnet, damit man nur
 Silhouetten sieht und der Text darauf lesbar bleibt:
