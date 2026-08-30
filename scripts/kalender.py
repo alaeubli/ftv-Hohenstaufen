@@ -113,8 +113,8 @@ def liste_bauen(eintraege):
 <div class="flex-1 min-w-0">
 <h3 class="font-headline-md text-body-lg sm:text-headline-md text-on-surface mb-stack-sm break-words hyphens-auto">{titel}</h3>
 <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-1 sm:gap-x-6 font-body-md text-body-md text-on-surface-variant">
-<span class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-primary text-lg flex-shrink-0">schedule</span>{uhrzeit}</span>
-<span class="flex items-center gap-2 min-w-0"><span class="material-symbols-outlined text-primary text-lg flex-shrink-0">location_on</span><span class="min-w-0 break-words">{ort}</span></span>
+<span class="flex items-center gap-2 min-w-0"><svg aria-hidden="true" class="text-primary flex-shrink-0 w-[18px] h-[18px]" fill="currentColor" viewBox="0 -960 960 960"><path d="m627-287 45-45-159-160v-201h-60v225l174 181ZM480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-82 31.5-155t86-127.5Q252-817 325-848.5T480-880q82 0 155 31.5t127.5 86Q817-708 848.5-635T880-480q0 82-31.5 155t-86 127.5Q708-143 635-111.5T480-80Zm0-400Zm0 340q140 0 240-100t100-240q0-140-100-240T480-820q-140 0-240 100T140-480q0 140 100 240t240 100Z"/></svg>{uhrzeit}</span>
+<span class="flex items-center gap-2 min-w-0"><svg aria-hidden="true" class="text-primary flex-shrink-0 w-[18px] h-[18px]" fill="currentColor" viewBox="0 -960 960 960"><path d="M480.09-490q28.91 0 49.41-20.59 20.5-20.59 20.5-49.5t-20.59-49.41q-20.59-20.5-49.5-20.5t-49.41 20.59q-20.5 20.59-20.5 49.5t20.59 49.41q20.59 20.5 49.5 20.5ZM480-159q133-121 196.5-219.5T740-552q0-117.79-75.29-192.9Q589.42-820 480-820t-184.71 75.1Q220-669.79 220-552q0 75 65 173.5T480-159Zm0 79Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><span class="min-w-0 break-words">{ort}</span></span>
 </div>
 </div>
 </article>'''.format(tag=d.day, monat=MONATE[d.month - 1],
@@ -132,7 +132,7 @@ def sonstiges_bauen(namen):
         "%s und %s" % (", ".join(escape(n) for n in namen[:-1]), escape(namen[-1]))
     return ('<div class="mt-stack-lg bg-surface-container-low rounded-xl p-6 flex flex-col '
             'sm:flex-row sm:items-center gap-4">\n'
-            '<span class="material-symbols-outlined text-primary flex-shrink-0">more_horiz</span>\n'
+            '<svg aria-hidden="true" class="text-primary flex-shrink-0 w-6 h-6" fill="currentColor" viewBox="0 -960 960 960"><path d="M207.86-432Q188-432 174-446.14t-14-34Q160-500 174.14-514t34-14Q228-528 242-513.86t14 34Q256-460 241.86-446t-34 14Zm272 0Q460-432 446-446.14t-14-34Q432-500 446.14-514t34-14Q500-528 514-513.86t14 34Q528-460 513.86-446t-34 14Zm272 0Q732-432 718-446.14t-14-34Q704-500 718.14-514t34-14Q772-528 786-513.86t14 34Q800-460 785.86-446t-34 14Z"/></svg>\n'
             '<p class="font-body-md text-body-md text-on-surface-variant">Dazu kommen über das '
             'Semester verteilt %s. Die Termine dafür stehen noch nicht fest, frag uns einfach '
             'kurz per WhatsApp.</p>\n</div>' % aufzaehlung)

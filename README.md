@@ -1,7 +1,8 @@
 # Website der FtV Hohenstaufen zu Aalen
 
-Statische Website ohne Build-Schritt. Die HTML-Dateien liegen fertig im
-Repository und werden direkt von GitHub Pages ausgeliefert.
+Statische Website. Die HTML-Dateien liegen fertig im Repository und werden
+direkt von GitHub Pages ausgeliefert. Schriften, Symbole, Bilder und CSS liegen
+unter `assets/`, es wird nichts von fremden Servern nachgeladen.
 
 | Datei                  | Seite                  |
 |------------------------|------------------------|
@@ -12,6 +13,7 @@ Repository und werden direkt von GitHub Pages ausgeliefert.
 | `404.html`             | Fehlerseite            |
 | `impressum.html`       | Impressum              |
 | `datenschutz.html`     | Datenschutz            |
+| `assets/`              | CSS, Schriften, Platzhalterbild |
 
 `.nojekyll` sorgt dafür, dass Pages die Dateien unverändert ausliefert.
 
@@ -20,6 +22,24 @@ Repository und werden direkt von GitHub Pages ausgeliefert.
 1. Branch nach `main` mergen.
 2. **Settings → Pages** → Source *Deploy from a branch*, Branch `main`, Ordner `/ (root)`.
 3. Bei eigener Domain zusätzlich eine Datei `CNAME` mit dem Domainnamen anlegen.
+
+## CSS neu erzeugen
+
+Die Gestaltung steckt in `assets/styles.css`. Die Datei wird aus
+`assets/src.css` und den Klassen in den HTML-Dateien erzeugt. **Wer im HTML
+neue Tailwind-Klassen einbaut, muss sie danach neu erzeugen**, sonst fehlt die
+passende Regel und das Element sieht kaputt aus:
+
+```
+bash scripts/build-css.sh
+```
+
+Das Skript installiert beim ersten Lauf die noetigen Pakete. Reine Textaenderungen
+brauchen keinen Durchlauf.
+
+Die Symbole sind als SVG direkt im HTML eingebettet, es wird also keine
+Icon-Schrift geladen. Die Pfaddaten stammen aus Material Symbols (Apache 2.0),
+die Schriften Montserrat und Inter von Fontsource (SIL Open Font License).
 
 ## Termine automatisch aktualisieren
 
@@ -94,7 +114,4 @@ python3 scripts/kalender.py "https://hohenstaufen-aalen.gaudeam.de/api/v1/open_e
 * **Impressum und Datenschutz sind Entwuerfe.** Die rot markierten Stellen
   ergaenzen (Vorstand, Vereinsregister, verantwortliche Person) und beides vor
   dem Livegang juristisch pruefen lassen.
-* **Google Fonts wird von Google-Servern geladen.** Dabei geht die IP-Adresse
-  der Besucher an Google. Das LG Muenchen I hat das 2022 als Verstoss gegen die
-  DSGVO gewertet (Az. 3 O 17493/20). Sauberer waere, die Schriften selbst
-  auszuliefern. Gleiches gilt fuer die Tailwind-Bibliothek.
+
