@@ -41,6 +41,32 @@ Die Symbole sind als SVG direkt im HTML eingebettet, es wird also keine
 Icon-Schrift geladen. Die Pfaddaten stammen aus Material Symbols (Apache 2.0),
 die Schriften Montserrat und Inter von Fontsource (SIL Open Font License).
 
+## Fotos einsetzen
+
+Die Bildflaechen zeigen noch `assets/platzhalter.svg`. So kommen echte Fotos rein:
+
+```
+pip install pillow
+python3 scripts/bilder-vorbereiten.py haus-aussen.jpg garten.jpg kneipsaal.jpg
+```
+
+Das Skript verkleinert auf hoechstens 1920 Pixel Breite, speichert als JPEG und
+**entfernt saemtliche EXIF-Daten**. Kameras und Handys schreiben dort oft
+GPS-Koordinaten hinein, die sonst mit dem Bild oeffentlich waeren. Ergebnis
+landet in `assets/bilder/`. Danach im HTML `assets/platzhalter.svg` durch den
+neuen Dateinamen ersetzen.
+
+Hintergrundbilder werden im Stylesheet unscharf gezeichnet, damit man nur
+Silhouetten sieht und der Text darauf lesbar bleibt:
+
+* Hero: `blur-lg md:blur-xl` zusammen mit `scale-110`
+* Bildkarten mit Text darauf: `blur-md` mit `scale-105`
+* Bilder ohne Text darauf und die Zimmerfotos bleiben scharf
+
+Das `scale` ist noetig, weil die Unschaerfe sonst an den Bildraendern ausfranst.
+Staerker oder schwaecher: die Klasse im HTML aendern und `bash scripts/build-css.sh`
+laufen lassen.
+
 ## Termine automatisch aktualisieren
 
 Die Terminliste auf `veranstaltungen.html` wird von einer GitHub Action aus der
