@@ -142,12 +142,19 @@ von der Liste auf der Seite abweichen.
 
 Auf `veranstaltungen.html` stehen drei Wege hinein, alle auf dieselbe Datei:
 
-* **Kalender abonnieren** oeffnet ueber `webcal://` direkt den Abo-Dialog von
-  iPhone, Mac, Outlook, Thunderbird und den meisten Android-Apps.
+* **Kalender abonnieren** oeffnet die Adresse direkt; anhand des Content-Type
+  `text/calendar` reicht das System sie an die Kalender-App weiter.
+
+  Hier stand frueher ein `webcal://`-Link. Der ist zwar der eigentlich dafuer
+  gedachte Weg, aber manche Apps schneiden beim Import nur `webcal:` ab und
+  behalten `//host/pfad` ohne Schema uebrig, womit der Abruf scheitert. Deshalb
+  jetzt `https://`. **Nicht auf `webcal://` zurueckstellen**, ohne es vorher auf
+  einem echten Geraet zu probieren.
 * **iCal-Datei laden** ist eine Momentaufnahme zum einmaligen Einlesen. Wer sie
   importiert, bekommt spaetere Verschiebungen **nicht** mit.
 * Die Adresse im Klartext zum Selbstkopieren. Das ist der Weg fuer den Google
-  Kalender: dort **Weitere Kalender → Per URL**. Google holt fremde Kalender
+  Kalender (**Weitere Kalender → Per URL**) und fuer jede App, die von sich aus
+  nicht nach einem Abo fragt. Nur so entsteht sicher ein Abo und kein Import. Google holt fremde Kalender
   allerdings nur ein- bis zweimal am Tag ab, kurzfristige Aenderungen kommen
   dort also spaeter an als bei Apple oder Outlook.
 
