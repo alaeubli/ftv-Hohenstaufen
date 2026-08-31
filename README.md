@@ -142,8 +142,11 @@ von der Liste auf der Seite abweichen.
 
 Auf `veranstaltungen.html` stehen drei Wege hinein, alle auf dieselbe Datei:
 
-* **Kalender abonnieren** benutzt `webcal://`. Das ist das dafuer gedachte
-  Schema und ergibt bei iPhone, Mac, Outlook und Thunderbird ein echtes Abo.
+* **Kalender abonnieren** benutzt `webcal:` mit der vollstaendigen
+  https-Adresse dahinter, also **ein Doppelpunkt und keine zwei
+  Schraegstriche**: `webcal:https://.../termine.ics`. Das ist eine gueltige
+  opake URI, Browser lassen sie unveraendert, und eine App, die nur `webcal:`
+  abschneidet, behaelt genau die richtige https-Adresse uebrig.
 * **iCal-Datei laden** ist eine Momentaufnahme zum einmaligen Einlesen. Wer sie
   importiert, bekommt spaetere Verschiebungen **nicht** mit.
 * Die Adresse im Klartext zum Selbstkopieren. Das ist der Weg fuer den Google
@@ -152,11 +155,18 @@ Auf `veranstaltungen.html` stehen drei Wege hinein, alle auf dieselbe Datei:
   allerdings nur ein- bis zweimal am Tag ab, kurzfristige Aenderungen kommen
   dort also spaeter an als bei Apple oder Outlook.
 
-**Kein `webcal://https://...` daraus machen.** Nach `webcal://` erwartet jeder
-URL-Parser einen Hostnamen und liest dort `https` als Rechnernamen; Chromium
-formt die Adresse zu `webcal://https//alaeubli.github.io/...` um, den Host
-`https` gibt es nicht. Wenn eine App am `webcal://`-Knopf scheitert, ist die
-Adresse im Klartext der Weg, nicht ein zweites Schema in der URL.
+Zwei naheliegende Schreibweisen funktionieren **nicht**, beide wurden probiert:
+
+* `webcal://https://...` mit zwei Schraegstrichen. Nach `//` erwartet jeder
+  URL-Parser einen Hostnamen und liest dort `https` als Rechnernamen; Chromium
+  formt das zu `webcal://https//alaeubli.github.io/...` um.
+* `webcal://host/pfad`, die nach Norm richtige Form. Genau daran scheitern die
+  Apps, die beim Import nur `webcal:` abschneiden: uebrig bleibt `//host/pfad`
+  ohne Schema.
+
+Der Preis der jetzigen Form: eine App, die das Schema stur durch `https:`
+ersetzt, bekommt `https:https://...`. Fuer die steht die Adresse im Klartext
+darunter, das ist der Weg, der ueberall geht.
 
 Die Adresse muss absolut sein, weil Kalender-Apps sie von aussen abrufen. Sie
 kommt aus der Umgebungsvariablen `SITE_URL`; voreingestellt ist die

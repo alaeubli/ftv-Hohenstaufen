@@ -285,17 +285,22 @@ def kalenderlinks_bauen(site_url):
     """Baut die drei Wege in den eigenen Kalender: abonnieren, herunterladen
     und die Adresse zum Selbstkopieren. Alle drei zeigen auf dieselbe
     Datei, unterschiedlich ist nur, was der Client daraus macht."""
-    # Beide Schemata anbieten, weil keines ueberall funktioniert:
-    #   webcal:// ist das dafuer gedachte und ergibt ein echtes Abo, manche
-    #     Apps schneiden aber nur "webcal:" ab und behalten "//host/pfad"
-    #     ohne Schema uebrig, womit der Abruf scheitert.
-    #   https:// erreicht jede App, dort entscheidet sie aber selbst, ob sie
-    #     abonniert oder nur einmalig importiert.
-    # Kein "webcal://https://...": nach webcal:// erwartet jeder Parser einen
-    # Hostnamen und liest dort "https" als Rechnernamen. Das ist keine
-    # gueltige Adresse.
+    # Der Abo-Knopf traegt "webcal:" mit der vollstaendigen https-Adresse
+    # dahinter, also ein Doppelpunkt und keine zwei Schraegstriche. Das ist
+    # eine gueltige opake URI: Schema "webcal", Rest der Pfad. Browser lassen
+    # sie unveraendert, und eine App, die nur "webcal:" abschneidet, behaelt
+    # genau die richtige https-Adresse uebrig.
+    #
+    # Achtung, zwei Varianten, die NICHT funktionieren:
+    #   webcal://https://...  Nach "//" erwartet jeder Parser einen Hostnamen
+    #                         und liest dort "https" als Rechnernamen.
+    #   webcal://host/pfad    Korrekt nach Norm, aber genau die Form, an der
+    #                         abschneidende Apps scheitern ("//host/pfad").
+    # Wessen App das Schema stur durch "https:" ersetzt, bekommt hier
+    # "https:https://..." und kommt nicht ans Ziel. Fuer die steht die Adresse
+    # im Klartext darunter, das ist der Weg, der ueberall geht.
     https = "%s/%s" % (site_url.rstrip("/"), ICS_DATEI)
-    webcal = re.sub(r"^https?://", "webcal://", https)
+    webcal = "webcal:%s" % https
     return '''<div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
 <a class="bg-primary text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap" href="{webcal}">
 <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 -960 960 960"><path d="M596.82-220Q556-220 528-248.18q-28-28.19-28-69Q500-358 528.18-386q28.19-28 69-28Q638-414 666-385.82q28 28.19 28 69Q694-276 665.82-248q-28.19 28-69 28ZM180-80q-24 0-42-18t-18-42v-620q0-24 18-42t42-18h65v-60h65v60h340v-60h65v60h65q24 0 42 18t18 42v620q0 24-18 42t-42 18H180Zm0-60h600v-430H180v430Zm0-490h600v-130H180v130Zm0 0v-130 130Z"/></svg>Kalender abonnieren</a>
