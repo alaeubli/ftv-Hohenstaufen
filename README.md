@@ -142,14 +142,8 @@ von der Liste auf der Seite abweichen.
 
 Auf `veranstaltungen.html` stehen drei Wege hinein, alle auf dieselbe Datei:
 
-* **Kalender abonnieren** oeffnet die Adresse direkt; anhand des Content-Type
-  `text/calendar` reicht das System sie an die Kalender-App weiter.
-
-  Hier stand frueher ein `webcal://`-Link. Der ist zwar der eigentlich dafuer
-  gedachte Weg, aber manche Apps schneiden beim Import nur `webcal:` ab und
-  behalten `//host/pfad` ohne Schema uebrig, womit der Abruf scheitert. Deshalb
-  jetzt `https://`. **Nicht auf `webcal://` zurueckstellen**, ohne es vorher auf
-  einem echten Geraet zu probieren.
+* **Kalender abonnieren** benutzt `webcal://`. Das ist das dafuer gedachte
+  Schema und ergibt bei iPhone, Mac, Outlook und Thunderbird ein echtes Abo.
 * **iCal-Datei laden** ist eine Momentaufnahme zum einmaligen Einlesen. Wer sie
   importiert, bekommt spaetere Verschiebungen **nicht** mit.
 * Die Adresse im Klartext zum Selbstkopieren. Das ist der Weg fuer den Google
@@ -157,6 +151,12 @@ Auf `veranstaltungen.html` stehen drei Wege hinein, alle auf dieselbe Datei:
   nicht nach einem Abo fragt. Nur so entsteht sicher ein Abo und kein Import. Google holt fremde Kalender
   allerdings nur ein- bis zweimal am Tag ab, kurzfristige Aenderungen kommen
   dort also spaeter an als bei Apple oder Outlook.
+
+**Kein `webcal://https://...` daraus machen.** Nach `webcal://` erwartet jeder
+URL-Parser einen Hostnamen und liest dort `https` als Rechnernamen; Chromium
+formt die Adresse zu `webcal://https//alaeubli.github.io/...` um, den Host
+`https` gibt es nicht. Wenn eine App am `webcal://`-Knopf scheitert, ist die
+Adresse im Klartext der Weg, nicht ein zweites Schema in der URL.
 
 Die Adresse muss absolut sein, weil Kalender-Apps sie von aussen abrufen. Sie
 kommt aus der Umgebungsvariablen `SITE_URL`; voreingestellt ist die

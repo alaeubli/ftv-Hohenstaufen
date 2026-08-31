@@ -285,20 +285,26 @@ def kalenderlinks_bauen(site_url):
     """Baut die drei Wege in den eigenen Kalender: abonnieren, herunterladen
     und die Adresse zum Selbstkopieren. Alle drei zeigen auf dieselbe
     Datei, unterschiedlich ist nur, was der Client daraus macht."""
-    # Bewusst https und nicht webcal://: manche Kalender-Apps schneiden beim
-    # Import nur "webcal:" ab und behalten "//host/pfad" ohne Schema uebrig,
-    # womit der Abruf scheitert. Mit https kommt der Client ueber den
-    # Content-Type text/calendar zum selben Ziel.
+    # Beide Schemata anbieten, weil keines ueberall funktioniert:
+    #   webcal:// ist das dafuer gedachte und ergibt ein echtes Abo, manche
+    #     Apps schneiden aber nur "webcal:" ab und behalten "//host/pfad"
+    #     ohne Schema uebrig, womit der Abruf scheitert.
+    #   https:// erreicht jede App, dort entscheidet sie aber selbst, ob sie
+    #     abonniert oder nur einmalig importiert.
+    # Kein "webcal://https://...": nach webcal:// erwartet jeder Parser einen
+    # Hostnamen und liest dort "https" als Rechnernamen. Das ist keine
+    # gueltige Adresse.
     https = "%s/%s" % (site_url.rstrip("/"), ICS_DATEI)
+    webcal = re.sub(r"^https?://", "webcal://", https)
     return '''<div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
-<a class="bg-primary text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap" href="{datei}">
+<a class="bg-primary text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap" href="{webcal}">
 <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 -960 960 960"><path d="M596.82-220Q556-220 528-248.18q-28-28.19-28-69Q500-358 528.18-386q28.19-28 69-28Q638-414 666-385.82q28 28.19 28 69Q694-276 665.82-248q-28.19 28-69 28ZM180-80q-24 0-42-18t-18-42v-620q0-24 18-42t42-18h65v-60h65v60h340v-60h65v60h65q24 0 42 18t18 42v620q0 24-18 42t-42 18H180Zm0-60h600v-430H180v430Zm0-490h600v-130H180v130Zm0 0v-130 130Z"/></svg>Kalender abonnieren</a>
 <a class="bg-transparent border border-primary text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-secondary-container transition-colors flex items-center justify-center gap-2 whitespace-nowrap w-full sm:w-auto" download="ftv-hohenstaufen-termine.ics" href="{datei}">
 <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 -960 960 960"><path d="M480-313 287-506l43-43 120 120v-371h60v371l120-120 43 43-193 193ZM220-160q-24 0-42-18t-18-42v-143h60v143h520v-143h60v143q0 24-18 42t-42 18H220Z"/></svg>iCal-Datei laden</a>
 </div>
-<p class="mt-stack-md font-body-md text-body-md text-on-surface-variant">Fragt deine App nicht von selbst nach, trag diese Adresse dort von Hand als Kalender-Abo ein. Im Google Kalender geht das unter <span class="text-on-surface">Weitere Kalender &rarr; Per URL</span>.</p>
+<p class="mt-stack-md font-body-md text-body-md text-on-surface-variant">Passiert beim ersten Knopf nichts oder meldet deine App eine ungültige Adresse, trag diese Adresse dort von Hand als Kalender-Abo ein. Das klappt überall und ist im Google Kalender ohnehin der einzige Weg: <span class="text-on-surface">Weitere Kalender &rarr; Per URL</span>.</p>
 <p class="mt-2 font-body-md text-body-md text-primary break-all"><a class="underline underline-offset-4 hover:no-underline" href="{datei}">{datei}</a></p>
-<p class="mt-stack-md font-body-md text-body-md text-on-surface-variant">Der Knopf links abonniert den Kalender, Änderungen kommen dann von allein an. Die Datei rechts ist eine Momentaufnahme: einmal eingelesen, erfährt sie von späteren Verschiebungen nichts mehr.</p>'''.format(datei=escape(https, quote=True))
+<p class="mt-stack-md font-body-md text-body-md text-on-surface-variant">Ein Abo hält sich von allein aktuell. Die heruntergeladene Datei ist dagegen eine Momentaufnahme: einmal eingelesen, erfährt sie von späteren Verschiebungen nichts mehr.</p>'''.format(webcal=escape(webcal, quote=True), datei=escape(https, quote=True))
 
 
 def ersetzen(seite, marker, inhalt):
