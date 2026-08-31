@@ -58,6 +58,29 @@ landet in `assets/bilder/`. Danach im HTML den Dateinamen eintragen.
 Von den sieben vermieteten Zimmern gibt es noch keine Fotos, die Karten auf der
 Zimmerseite zeigen deshalb nur Etage und Groesse.
 
+## Das Wappen
+
+`assets/bilder/wappen.png` ist freigestellt, hat also einen Alphakanal. **Nicht
+durch `scripts/bilder-vorbereiten.py` schicken**: das Skript speichert als JPEG
+und wuerde die Transparenz zerstoeren, das Wappen bekaeme einen schwarzen
+Kasten. Es steht an drei Stellen:
+
+* im Traditionsabschnitt der Startseite ueber der Ueberschrift
+* in der Fusszeile jeder Seite, in einem hellen Kreis. Der Kreis ist noetig,
+  weil die schwarze Helmdecke auf dem dunkelgruenen Grund sonst untergeht.
+* als Favicon und Apple-Touch-Icon
+
+Fuers Favicon (`assets/favicon-32.png`) ist **nur der Schild** ausgeschnitten,
+ohne Helm und Helmdecke. Das ganze Wappen wird bei 32 Pixeln zu einem Farbfleck,
+der Schild bleibt mit seinen vier Feldern erkennbar. Das Apple-Touch-Icon
+(180 Pixel) zeigt dagegen das ganze Wappen, dort ist Platz genug; es hat einen
+hellen Grund, weil iOS Transparenz sonst mit Schwarz unterlegt.
+
+Die Vorlage ist nur 146 x 165 Pixel gross. Deshalb wird sie nirgends groesser
+als 112 Pixel angezeigt, hochskaliert wuerde sie auf feinen Displays weich.
+**Wer eine groessere Fassung oder ein SVG auftreibt, kann sie ersetzen** und die
+Anzeigegroesse im Traditionsabschnitt anheben.
+
 Hintergrundbilder werden im Stylesheet unscharf gezeichnet, damit man nur
 Silhouetten sieht und der Text darauf lesbar bleibt:
 
