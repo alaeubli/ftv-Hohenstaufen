@@ -80,8 +80,10 @@ https://hohenstaufen-aalen.gaudeam.de/api/v1/open_events.json
 
 Auf der Website muss niemand etwas pflegen. Termin in Gaudeam anlegen, fertig.
 
-Die Action laeuft montags um 04:15 UTC, nach jeder Aenderung am Skript und auf
-Knopfdruck unter **Actions → Termine aktualisieren → Run workflow**. Ein Secret
+Die Action laeuft taeglich um 04:15 UTC, nach jeder Aenderung am Skript und auf
+Knopfdruck unter **Actions → Termine aktualisieren → Run workflow**. Taeglich
+deshalb, weil `termine.ics` abonniert wird: was hier nicht ankommt, sieht auch
+in keinem fremden Kalender jemand. Aendert sich nichts, entsteht kein Commit. Ein Secret
 braucht es nicht, die Schnittstelle ist oeffentlich. Sollte sich die Adresse
 einmal aendern, legt man unter **Settings → Secrets and variables → Actions →
 Variables** eine Variable `TERMINE_URL` an; die sticht die Voreinstellung.
@@ -169,6 +171,13 @@ Weitere Eigenheiten:
 * Zeiten tragen die Zone `Europe/Berlin`, ein Abo aus dem Ausland verrutscht
   also nicht.
 * Wie bei `data/termine.json` zaehlt der Zeitstempel nicht als Aenderung.
+
+Bis eine Verschiebung im fremden Kalender ankommt, vergehen zwei Wartezeiten:
+erst laeuft die Action (taeglich), dann sieht die Kalender-App der Person nach.
+Wie oft sie das tut, entscheidet sie selbst; `REFRESH-INTERVAL` in der Datei ist
+nur eine Bitte um alle zwoelf Stunden, an die sich Apple und Thunderbird halten
+und Google nicht. Wirklich kurzfristige Absagen gehoeren deshalb weiter in die
+Gruppe, nicht allein in den Kalender.
 
 ## Noch offen
 

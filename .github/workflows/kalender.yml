@@ -2,9 +2,12 @@ name: Termine aktualisieren
 
 on:
   schedule:
-    # Montags um 04:15 UTC. Cron laeuft immer in UTC, im Sommer also 06:15 Ortszeit.
+    # Taeglich um 04:15 UTC. Cron laeuft immer in UTC, im Sommer also 06:15
+    # Ortszeit. Taeglich statt woechentlich, weil termine.ics abonniert wird:
+    # was hier nicht ankommt, sieht auch niemand im eigenen Kalender. Ohne
+    # echte Aenderung entsteht kein Commit, leere Laeufe kosten also nichts.
     # Achtung: geplante Laeufe starten nur auf dem Standardbranch des Repositories.
-    - cron: "15 4 * * 1"
+    - cron: "15 4 * * *"
   workflow_dispatch: {}
   push:
     # Nach einer Aenderung am Skript direkt neu erzeugen.
