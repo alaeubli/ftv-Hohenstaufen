@@ -231,12 +231,12 @@
             var v = function (n) { return (form.elements[n].value || '').trim(); };
             var subject = 'Zimmeranfrage über die Website – ' + v('name');
             var body = 'Name: ' + v('name') + '\nE-Mail: ' + v('email') + '\n\n' + v('nachricht');
-            window.location.href = 'mailto:zimmer@ftv-hohenstaufen.de'
+            window.location.href = 'mailto:wohnen@ftv-hohenstaufen.de'
                 + '?subject=' + encodeURIComponent(subject)
                 + '&body=' + encodeURIComponent(body);
             if (hint) {
                 hint.textContent = 'Dein E-Mail-Programm sollte sich jetzt geöffnet haben. '
-                    + 'Falls nicht, schreib uns direkt an zimmer@ftv-hohenstaufen.de oder per WhatsApp.';
+                    + 'Falls nicht, schreib uns direkt an wohnen@ftv-hohenstaufen.de oder per WhatsApp.';
                 hint.className = 'font-body-md text-body-md text-primary-fixed-dim';
             }
         });
@@ -272,7 +272,7 @@
 <textarea class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 font-body-md text-body-md text-white placeholder:text-white/50 focus:border-primary-fixed-dim focus:ring-2 focus:ring-primary-fixed-dim/40 focus:outline-none transition-colors resize-y" id="nachricht" name="nachricht" placeholder="Ab wann suchst du ein Zimmer? Gibt es etwas, das du vorher wissen möchtest?" required="" rows="5"></textarea>
 </div>
 <button class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest hover:-translate-y-0.5 transition-all duration-200 shadow-lg flex items-center justify-center gap-2 whitespace-nowrap w-full" type="submit">Anfrage senden</button>
-<p class="font-body-md text-body-md text-white/60" id="form-hint">Der Button öffnet dein E-Mail-Programm mit fertig ausgefüllter Nachricht an zimmer@ftv-hohenstaufen.de.</p>
+<p class="font-body-md text-body-md text-white/60" id="form-hint">Der Button öffnet dein E-Mail-Programm mit fertig ausgefüllter Nachricht an wohnen@ftv-hohenstaufen.de.</p>
 </form>
 </div>
 </div>
