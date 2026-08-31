@@ -31,6 +31,9 @@ jobs:
           # Ueber eine Repository-Variable gleichen Namens laesst sie sich
           # ueberschreiben, falls die Adresse sich einmal aendert.
           TERMINE_URL: ${{ vars.TERMINE_URL || 'https://hohenstaufen-aalen.gaudeam.de/api/v1/open_events.json' }}
+          # Adresse der Website. Sie steht in den Abo-Links der Kalenderdatei,
+          # die muessen absolut sein. Bei eigener Domain hier die Variable setzen.
+          SITE_URL: ${{ vars.SITE_URL || 'https://alaeubli.github.io/ftv-Hohenstaufen' }}
         run: python3 scripts/kalender.py "$TERMINE_URL"
 
       - name: Aenderungen committen
@@ -41,6 +44,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add veranstaltungen.html data/termine.json
+          git add veranstaltungen.html data/termine.json termine.ics
           git commit -m "Termine aktualisiert"
           git push

@@ -97,9 +97,10 @@ Zwei Eigenheiten von GitHub, die man kennen sollte:
 
 Geschrieben werden:
 
-* `veranstaltungen.html` zwischen den Markern `TERMINE`, `SEMESTER` und
-  `SONSTIGES`
+* `veranstaltungen.html` zwischen den Markern `TERMINE`, `SEMESTER`,
+  `SONSTIGES` und `KALENDERLINKS`
 * `data/termine.json` mit denselben Terminen als Rohdaten
+* `termine.ics`, der abonnierbare Kalender
 
 Committet wird nur, wenn sich wirklich etwas geaendert hat. Der Zeitstempel in
 `data/termine.json` zaehlt dabei nicht als Aenderung, sonst entstuende bei jedem
@@ -131,6 +132,44 @@ Manuell testen:
 python3 scripts/kalender.py "https://hohenstaufen-aalen.gaudeam.de/api/v1/open_events.json"
 ```
 
+## Der Kalender zum Abonnieren
+
+`termine.ics` entsteht im selben Lauf aus denselben Daten. Es gibt also keinen
+zweiten Ort, an dem jemand Termine pflegen muesste, und die Datei kann nicht
+von der Liste auf der Seite abweichen.
+
+Auf `veranstaltungen.html` stehen drei Wege hinein, alle auf dieselbe Datei:
+
+* **Kalender abonnieren** oeffnet ueber `webcal://` direkt den Abo-Dialog von
+  iPhone, Mac, Outlook, Thunderbird und den meisten Android-Apps.
+* **iCal-Datei laden** ist eine Momentaufnahme zum einmaligen Einlesen. Wer sie
+  importiert, bekommt spaetere Verschiebungen **nicht** mit.
+* Die Adresse im Klartext zum Selbstkopieren. Das ist der Weg fuer den Google
+  Kalender: dort **Weitere Kalender → Per URL**. Google holt fremde Kalender
+  allerdings nur ein- bis zweimal am Tag ab, kurzfristige Aenderungen kommen
+  dort also spaeter an als bei Apple oder Outlook.
+
+Die Adresse muss absolut sein, weil Kalender-Apps sie von aussen abrufen. Sie
+kommt aus der Umgebungsvariablen `SITE_URL`; voreingestellt ist die
+GitHub-Pages-Adresse. **Kommt eine eigene Domain dazu, unter Settings → Secrets
+and variables → Actions → Variables eine Variable `SITE_URL` anlegen**, sonst
+zeigen die Abo-Links weiter auf die alte Adresse.
+
+Weitere Eigenheiten:
+
+* Im Kalender stehen **alle** Termine des Semesters, auch vergangene. Auf der
+  Seite stehen nur die naechsten zwoelf.
+* Als Ort steht dort die vollstaendige Anschrift statt „auf dem Hause“, damit
+  die Navigation im Handy etwas damit anfangen kann.
+* Termine ohne Ende bekommen zwei Stunden Dauer, sonst zeigen viele Apps einen
+  Eintrag von null Minuten.
+* Die Kennung eines Termins wird aus Titel und Startzeit abgeleitet und bleibt
+  damit ueber alle Laeufe gleich. Verschiebt sich ein Termin um die Uhrzeit,
+  gilt er als neuer Eintrag und der alte verschwindet aus dem Abo.
+* Zeiten tragen die Zone `Europe/Berlin`, ein Abo aus dem Ausland verrutscht
+  also nicht.
+* Wie bei `data/termine.json` zaehlt der Zeitstempel nicht als Aenderung.
+
 ## Noch offen
 
 * Echte Fotos statt der Platzhalter von `picsum.photos` (im Quelltext mit
@@ -138,7 +177,7 @@ python3 scripts/kalender.py "https://hohenstaufen-aalen.gaudeam.de/api/v1/open_e
 * WhatsApp-Nummer: überall steht der Platzhalter `49XXXXXXXXXX`. Einmal in
   allen Dateien ersetzen, dann sind alle WhatsApp-Buttons aktiv.
 * Telefonnummer und E-Mail-Adresse gegenprüfen
-* Mietpreise und die tatsächlichen Zimmergrößen eintragen
+* Mietpreise eintragen
 * **Impressum und Datenschutz sind Entwuerfe.** Die rot markierten Stellen
   ergaenzen (Vorstand, Vereinsregister, verantwortliche Person) und beides vor
   dem Livegang juristisch pruefen lassen.
