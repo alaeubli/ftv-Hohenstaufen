@@ -188,8 +188,6 @@ Gruppe, nicht allein in den Kalender.
 
 ## Noch offen
 
-* Echte Fotos statt der Platzhalter von `picsum.photos` (im Quelltext mit
-  `TODO` markiert)
 * WhatsApp-Nummer: überall steht der Platzhalter `49XXXXXXXXXX`. Einmal in
   allen Dateien ersetzen, dann sind alle WhatsApp-Buttons aktiv.
 * Telefonnummer und E-Mail-Adresse gegenprüfen
