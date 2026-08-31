@@ -4,6 +4,9 @@
 
 Aufruf:  python3 scripts/kalender.py <URL zur open_events.json>
 
+Die Adresse der eigenen Website steht in der Umgebungsvariablen SITE_URL; sie
+landet in den Abo-Links. Ohne sie greift STANDARD_SITE_URL.
+
 Erwartetes Format:
     {"semester": "WS 26/27",
      "scheduled_events": [{"name": ..., "place": ..., "date": [start, ende]}, ...],
@@ -11,9 +14,10 @@ Erwartetes Format:
 
 Zeitangaben kommen als "MM/DD/YYYY HH:MM:SS" in Ortszeit.
 
-Geschrieben werden data/termine.json (Rohdaten) und drei Bereiche in
-veranstaltungen.html, jeweils zwischen Markern. Dadurch steht die Liste
-direkt im Quelltext: ohne JavaScript sichtbar und fuer Suchmaschinen lesbar.
+Geschrieben werden data/termine.json (Rohdaten), termine.ics (abonnierbarer
+Kalender) und vier Bereiche in veranstaltungen.html, jeweils zwischen Markern.
+Dadurch steht die Liste direkt im Quelltext: ohne JavaScript sichtbar und fuer
+Suchmaschinen lesbar.
 
 Bewusst ohne Fremdbibliotheken, damit die Action nichts installieren muss.
 """
@@ -22,20 +26,34 @@ import os
 import re
 import sys
 import urllib.request
-from datetime import datetime
+from datetime import datetime, timedelta
+from hashlib import sha1
 from html import escape
 
 MONATE = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun",
           "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
 HTML_DATEI = "veranstaltungen.html"
 JSON_DATEI = "data/termine.json"
+ICS_DATEI = "termine.ics"
 MAX_TERMINE = 12
+# Termine ohne Ende bekommen im Kalender diese Dauer, sonst zeigen viele Apps
+# einen Eintrag von null Minuten an.
+STANDARDDAUER_STUNDEN = 2
+# Fallback, falls die Action keine SITE_URL mitgibt. Ohne absolute Adresse
+# waere der Abo-Link wertlos: Kalender-Apps rufen ihn von aussen ab.
+STANDARD_SITE_URL = "https://alaeubli.github.io/ftv-Hohenstaufen"
 
 # Die API liefert Orte knapp und im Verbindungsjargon. Fuer Gaeste ausschreiben.
 EIGENE_ADRESSE = "Mozartstr. 31, 73430 Aalen, Deutschland"
 ORTE = {
     EIGENE_ADRESSE: "Hohenstaufenhaus, Mozartstr. 31",
     "adH": "auf dem Hause",
+}
+# Im Kalender steht der Ort in der Navigation. "auf dem Hause" hilft dort
+# niemandem weiter, deshalb dort die vollstaendige Anschrift.
+ORTE_KALENDER = {
+    EIGENE_ADRESSE: "Hohenstaufenhaus, Mozartstr. 31, 73430 Aalen",
+    "adH": "Hohenstaufenhaus, Mozartstr. 31, 73430 Aalen",
 }
 
 
@@ -69,6 +87,13 @@ def ort_lesbar(roh):
     return re.sub(r",\s*Deutschland\s*$", "", roh)
 
 
+def ort_kalender(roh):
+    roh = (roh or "").strip()
+    if roh in ORTE_KALENDER:
+        return ORTE_KALENDER[roh]
+    return roh or "Hohenstaufenhaus, Mozartstr. 31, 73430 Aalen"
+
+
 def uhrzeit_text(start, ende):
     """Zeigt eine Spanne, wenn Anfang und Ende am selben Tag liegen."""
     if ende and ende.date() == start.date() and ende > start:
@@ -93,7 +118,8 @@ def termine_lesen(daten):
             uebersprungen.append("%s (%s)" % (name, fehler))
             continue
         eintraege.append({"start": start, "ende": ende, "name": name,
-                          "ort": ort_lesbar(roh.get("place"))})
+                          "ort": ort_lesbar(roh.get("place")),
+                          "ort_ics": ort_kalender(roh.get("place"))})
     return eintraege, uebersprungen
 
 
@@ -136,6 +162,139 @@ def sonstiges_bauen(namen):
             '<p class="font-body-md text-body-md text-on-surface-variant">Dazu kommen über das '
             'Semester verteilt %s. Die Termine dafür stehen noch nicht fest, frag uns einfach '
             'kurz per WhatsApp.</p>\n</div>' % aufzaehlung)
+
+
+# --- Kalenderdatei -----------------------------------------------------------
+# Bewusst von Hand gebaut statt mit einer Bibliothek, damit die Action nichts
+# installieren muss. Die Regeln stehen in RFC 5545.
+
+# Die Termine kommen ohne Zeitzone, gemeint ist immer Ortszeit. Damit ein Abo
+# aus dem Ausland nicht um Stunden verrutscht, wird die Zone mitgeliefert. Die
+# Umstellungsregeln fuer Europe/Berlin gelten unveraendert seit 1996.
+VTIMEZONE = """BEGIN:VTIMEZONE
+TZID:Europe/Berlin
+X-LIC-LOCATION:Europe/Berlin
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE"""
+
+
+def ics_text(wert):
+    """Backslash, Semikolon, Komma und Zeilenumbrueche haben in einer
+    Kalenderdatei eine Bedeutung und muessen maskiert werden."""
+    return (str(wert).replace("\\", "\\\\").replace(";", "\\;")
+            .replace(",", "\\,").replace("\r\n", "\\n").replace("\n", "\\n"))
+
+
+def ics_falten(zeile):
+    """RFC 5545 erlaubt hoechstens 75 Oktette je Zeile. Gezaehlt wird in
+    Bytes, nicht in Zeichen: ein Umlaut belegt in UTF-8 zwei davon."""
+    roh = zeile.encode("utf-8")
+    if len(roh) <= 75:
+        return zeile
+    stuecke, rest = [], roh
+    grenze = 75
+    while len(rest) > grenze:
+        schnitt = grenze
+        # Nicht mitten in ein Mehrbyte-Zeichen schneiden.
+        while schnitt > 0 and (rest[schnitt] & 0xC0) == 0x80:
+            schnitt -= 1
+        stuecke.append(rest[:schnitt].decode("utf-8"))
+        rest = rest[schnitt:]
+        grenze = 74  # Folgezeilen beginnen mit einem Leerzeichen.
+    stuecke.append(rest.decode("utf-8"))
+    return "\r\n ".join(stuecke)
+
+
+def ics_uid(eintrag):
+    """Aus Titel und Startzeit abgeleitet, damit ein Termin bei jedem Lauf
+    dieselbe Kennung behaelt. Sonst wuerde jede Aktualisierung im Abo als
+    neuer Termin erscheinen und der alte bliebe stehen."""
+    kern = "%s|%s" % (eintrag["start"].strftime("%Y%m%dT%H%M%S"), eintrag["name"])
+    return "%s@hohenstaufen-aalen.de" % sha1(kern.encode("utf-8")).hexdigest()
+
+
+def ics_bauen(eintraege, semester, zeitstempel):
+    zeilen = ["BEGIN:VCALENDAR",
+              "VERSION:2.0",
+              "PRODID:-//FtV Hohenstaufen zu Aalen//Termine//DE",
+              "CALSCALE:GREGORIAN",
+              "METHOD:PUBLISH",
+              "X-WR-CALNAME:FtV Hohenstaufen zu Aalen",
+              "X-WR-TIMEZONE:Europe/Berlin",
+              "X-WR-CALDESC:Termine der Forstlich-technischen Verbindung "
+              "Hohenstaufen zu Aalen%s" % (" (%s)" % semester if semester else ""),
+              # Bitte an die Kalender-App, nicht oefter als stuendlich nachzusehen.
+              "REFRESH-INTERVAL;VALUE=DURATION:PT12H",
+              "X-PUBLISHED-TTL:PT12H"]
+    zeilen.extend(VTIMEZONE.split("\n"))
+    for e in sorted(eintraege, key=lambda x: x["start"]):
+        ende = e["ende"]
+        if not ende or ende <= e["start"]:
+            ende = e["start"] + timedelta(hours=STANDARDDAUER_STUNDEN)
+        zeilen.extend([
+            "BEGIN:VEVENT",
+            "UID:%s" % ics_uid(e),
+            "DTSTAMP:%s" % zeitstempel,
+            "DTSTART;TZID=Europe/Berlin:%s" % e["start"].strftime("%Y%m%dT%H%M%S"),
+            "DTEND;TZID=Europe/Berlin:%s" % ende.strftime("%Y%m%dT%H%M%S"),
+            "SUMMARY:%s" % ics_text(e["name"]),
+            "LOCATION:%s" % ics_text(e["ort_ics"]),
+            "STATUS:CONFIRMED",
+            "TRANSP:OPAQUE",
+            "END:VEVENT"])
+    zeilen.append("END:VCALENDAR")
+    return "\r\n".join(ics_falten(z) for z in zeilen) + "\r\n"
+
+
+def ics_schreiben(eintraege, semester):
+    """Schreibt nur, wenn sich wirklich ein Termin geaendert hat. Der
+    Zeitstempel allein zaehlt nicht, sonst entstuende bei jedem Lauf ein
+    Commit."""
+    def ohne_zeitstempel(text):
+        return [z for z in text.splitlines() if not z.startswith("DTSTAMP:")]
+
+    neu = ics_bauen(eintraege, semester, datetime.utcnow().strftime("%Y%m%dT%H%M%SZ"))
+    if os.path.exists(ICS_DATEI):
+        try:
+            with open(ICS_DATEI, encoding="utf-8") as fh:
+                alt = fh.read()
+            if ohne_zeitstempel(alt) == ohne_zeitstempel(neu):
+                print("%s unveraendert." % ICS_DATEI)
+                return
+        except OSError:
+            pass
+    with open(ICS_DATEI, "w", encoding="utf-8", newline="") as fh:
+        fh.write(neu)
+    print("%s aktualisiert (%d Termine)." % (ICS_DATEI, len(eintraege)))
+
+
+def kalenderlinks_bauen(site_url):
+    """Baut die drei Wege in den eigenen Kalender: abonnieren, herunterladen
+    und die Adresse zum Selbstkopieren."""
+    https = "%s/%s" % (site_url.rstrip("/"), ICS_DATEI)
+    webcal = re.sub(r"^https?://", "webcal://", https)
+    return '''<div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
+<a class="bg-primary text-white font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap" href="{webcal}">
+<svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 -960 960 960"><path d="M596.82-220Q556-220 528-248.18q-28-28.19-28-69Q500-358 528.18-386q28.19-28 69-28Q638-414 666-385.82q28 28.19 28 69Q694-276 665.82-248q-28.19 28-69 28ZM180-80q-24 0-42-18t-18-42v-620q0-24 18-42t42-18h65v-60h65v60h340v-60h65v60h65q24 0 42 18t18 42v620q0 24-18 42t-42 18H180Zm0-60h600v-430H180v430Zm0-490h600v-130H180v130Zm0 0v-130 130Z"/></svg>Kalender abonnieren</a>
+<a class="bg-transparent border border-primary text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-secondary-container transition-colors flex items-center justify-center gap-2 whitespace-nowrap w-full sm:w-auto" download="ftv-hohenstaufen-termine.ics" href="{datei}">
+<svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 -960 960 960"><path d="M480-313 287-506l43-43 120 120v-371h60v371l120-120 43 43-193 193ZM220-160q-24 0-42-18t-18-42v-143h60v143h520v-143h60v143q0 24-18 42t-42 18H220Z"/></svg>iCal-Datei laden</a>
+</div>
+<p class="mt-stack-md font-body-md text-body-md text-on-surface-variant">Klappt der Knopf nicht, etwa im Google Kalender: dort unter <span class="text-on-surface">Weitere Kalender &rarr; Per URL</span> diese Adresse eintragen.</p>
+<p class="mt-2 font-body-md text-body-md text-primary break-all"><a class="underline underline-offset-4 hover:no-underline" href="{datei}">{datei}</a></p>
+<p class="mt-stack-md font-body-md text-body-md text-on-surface-variant">Der Knopf links abonniert den Kalender, Änderungen kommen dann von allein an. Die Datei rechts ist eine Momentaufnahme: einmal eingelesen, erfährt sie von späteren Verschiebungen nichts mehr.</p>'''.format(webcal=escape(webcal, quote=True), datei=escape(https, quote=True))
 
 
 def ersetzen(seite, marker, inhalt):
@@ -198,11 +357,18 @@ def main():
     else:
         print("%s unveraendert." % JSON_DATEI)
 
+    # In den Kalender kommen alle Termine des Semesters, auch die vergangenen.
+    # Wer abonniert hat, soll spaeter noch nachsehen koennen, wann was war.
+    ics_schreiben(alle, semester)
+
+    site_url = (os.environ.get("SITE_URL") or "").strip() or STANDARD_SITE_URL
+
     with open(HTML_DATEI, encoding="utf-8") as fh:
         seite = fh.read()
     neu = ersetzen(seite, "TERMINE", liste_bauen(kommend))
     neu = ersetzen(neu, "SEMESTER", "im " + escape(semester) if semester else "im Semester")
     neu = ersetzen(neu, "SONSTIGES", sonstiges_bauen(sonstige))
+    neu = ersetzen(neu, "KALENDERLINKS", kalenderlinks_bauen(site_url))
     if neu == seite:
         print("Keine Aenderung noetig.")
         return
