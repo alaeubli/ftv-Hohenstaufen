@@ -43,24 +43,28 @@ STANDARDDAUER_STUNDEN = 2
 # waere der Abo-Link wertlos: Kalender-Apps rufen ihn von aussen ab.
 STANDARD_SITE_URL = "https://alaeubli.github.io/ftv-Hohenstaufen"
 
-# Ein Ort wird nur angezeigt, wenn er sicher stimmt. Lieber gar keine Angabe
-# als eine falsche: wer vor der falschen Tuer steht, kommt nicht wieder.
-# Deshalb genau drei Faelle:
-#   eigenes Haus -> "Hohenstaufenhaus, Mozartstrasse 31". Bewusst die Adresse
-#                   und nicht "auf dem Haus": wer noch nie da war, kann mit
-#                   dem Verbindungsjargon nichts anfangen.
+# "adH" ist in Gaudeam der Wert, der auch dann stehen bleibt, wenn ein Termin
+# gar nicht im Haus stattfindet: Exkursionen und Webinare trugen ihn zuletzt
+# genauso wie die Kneipen. Er ist damit keine Ortsangabe, sondern eine
+# Voreinstellung, und wird deshalb wie ein leeres Feld behandelt. Eine
+# ausgeschriebene Adresse dagegen hat jemand bewusst eingetragen, der gilt.
+#   "adH" und Jargon -> nichts. Lieber keine Angabe als eine falsche: wer vor
+#                   der falschen Tuer steht, kommt nicht wieder.
+#   eigene Adresse -> "Hohenstaufenhaus, Mozartstrasse 31". Bewusst die
+#                   Adresse: wer noch nie da war, kann mit "auf dem Haus"
+#                   nichts anfangen.
 #   online       -> "Online". Im Kalender bleibt stehen, was eingetragen war,
 #                   damit ein Einwahllink dort anklickbar ist.
-#   alles andere -> nichts. Ein fremder Ort und ein leeres Feld werden gleich
-#                   behandelt, weil das Skript in beiden Faellen nicht wissen
-#                   kann, ob die Angabe stimmt. Beim Termin steht dann keine
-#                   Ortszeile, und wer es genau wissen will, fragt nach.
+#   fremder Ort  -> so uebernehmen, wie er kommt, nur ohne ", Deutschland".
+#   leeres Feld  -> nichts.
 HAUS_KURZ = "Hohenstaufenhaus, Mozartstraße 31"
 HAUSANSCHRIFT = "Hohenstaufenhaus, Mozartstraße 31, 73430 Aalen"
 ONLINE = "Online"
-# Schreibweisen, die alle das eigene Haus meinen. Verglichen wird klein-
-# geschrieben und ohne Punkte, "adH" und "AdH." landen also beide hier.
-EIGENES_HAUS = {
+# Schreibweisen, die "im Haus" bedeuten, ohne eine Adresse zu nennen. Genau
+# die sind unzuverlaessig, weil sie in Gaudeam voreingestellt sind und auch
+# an Terminen ausser Haus stehen bleiben. Verglichen wird kleingeschrieben und
+# ohne Punkte, "adH" und "AdH." landen also beide hier.
+HAUS_JARGON = {
     "adh", "auf dem haus", "auf dem hause", "aufm haus", "im haus", "haus",
     "zuhause", "daheim", "hohenstaufenhaus", "hohenstaufen-haus",
     "verbindungshaus",
@@ -110,14 +114,23 @@ def ort_saeubern(roh):
     return text.strip(" ,.").strip()
 
 
-def ist_eigenes_haus(roh):
-    """Erkennt alle Schreibweisen des eigenen Hauses, damit derselbe Ort nicht
-    einmal als "adH" und einmal als Anschrift auf der Seite steht."""
-    schluessel = ort_saeubern(roh).lower().replace("\u00df", "ss").replace(".", "")
-    schluessel = re.sub(r"\s+", " ", schluessel).strip()
-    if not schluessel:
-        return False
-    return schluessel in EIGENES_HAUS or bool(EIGENE_STRASSE.search(schluessel))
+def _schluessel(roh):
+    """Vergleichsform: klein, ohne Punkte, ohne scharfes s."""
+    text = ort_saeubern(roh).lower().replace("\u00df", "ss").replace(".", "")
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def ist_haus_jargon(roh):
+    """"adH" und Verwandte: sagen "im Haus", nennen aber keine Adresse. In
+    Gaudeam voreingestellt und deshalb nicht belastbar."""
+    schluessel = _schluessel(roh)
+    return bool(schluessel) and schluessel in HAUS_JARGON
+
+
+def ist_eigene_adresse(roh):
+    """Die eigene Anschrift in jeder Schreibweise. Die hat jemand bewusst
+    eingetragen, der Termin ist also wirklich im Haus."""
+    return bool(EIGENE_STRASSE.search(_schluessel(roh)))
 
 
 def ist_online(roh):
@@ -133,28 +146,29 @@ def ist_online(roh):
 
 
 def ort_lesbar(roh):
-    """Fuer die Website. Gibt nur zurueck, was sicher stimmt: das eigene Haus
-    und "Online". Alles andere ergibt einen leeren Text, dann faellt die
-    Ortszeile beim Termin ganz weg."""
-    if ist_eigenes_haus(roh):
+    """Fuer die Website. "adH" ergibt einen leeren Text, dann faellt die
+    Ortszeile beim Termin ganz weg; alles Uebrige wird angezeigt."""
+    if ist_haus_jargon(roh):
+        return ""
+    if ist_eigene_adresse(roh):
         return HAUS_KURZ
     if ist_online(roh):
         return ONLINE
-    return ""
+    return ort_saeubern(roh)
 
 
 def ort_kalender(roh):
     """Fuer die Kalenderdatei. Dort landet der Ort in der Navigation, deshalb
     fuers eigene Haus die Anschrift mit Postleitzahl. Bei Online-Terminen
     bleibt stehen, was eingetragen war: ein Einwahllink ist im Kalender
-    anklickbar, "Online" waere dort verschenkt. Was fuer die Seite nicht gut
-    genug ist, kommt auch nicht in den Kalender: eine falsche Anschrift dort
-    schickt die Navigation an den falschen Ort."""
-    if ist_eigenes_haus(roh):
+    anklickbar, "Online" waere dort verschenkt. "adH" bekommt wie auf der
+    Seite gar kein Feld: eine falsche Anschrift im Kalender schickt die
+    Navigation an den falschen Ort."""
+    if ist_haus_jargon(roh):
+        return ""
+    if ist_eigene_adresse(roh):
         return HAUSANSCHRIFT
-    if ist_online(roh):
-        return ort_saeubern(roh)
-    return ""
+    return ort_saeubern(roh)
 
 
 def uhrzeit_text(start, ende):
@@ -183,7 +197,8 @@ def termine_lesen(daten):
         eintraege.append({"start": start, "ende": ende, "name": name,
                           "ort": ort_lesbar(roh.get("place")),
                           "ort_ics": ort_kalender(roh.get("place")),
-                          "online": ist_online(roh.get("place"))})
+                          "online": (ist_online(roh.get("place"))
+                                     and not ist_eigene_adresse(roh.get("place")))})
     return eintraege, uebersprungen
 
 

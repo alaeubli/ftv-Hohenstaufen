@@ -140,23 +140,26 @@ Lauf ein Commit.
   wird also „Termine im WS 26/27“.
 * Eintraege aus `other_events` (Formate ohne festen Termin, etwa Fuchsenabende)
   stehen als Hinweis unter der Liste.
-* **Ein Ort wird nur angezeigt, wenn er sicher stimmt.** Lieber keine Angabe
-  als eine falsche: wer vor der falschen Tuer steht, kommt nicht wieder. Damit
-  bleiben drei Faelle. Alle Schreibweisen des eigenen Hauses (`adH`, „auf dem
-  Hause“, „Hohenstaufenhaus“, die eigene Anschrift in jeder Variante) werden zu
-  **„Hohenstaufenhaus, Mozartstraße 31“**. Bewusst die Adresse und nicht „auf
-  dem Haus“: wer noch nie da war, kann mit dem Verbindungsjargon nichts
-  anfangen. Ein **Online-Termin** wird zu „Online“ und bekommt statt der
-  Stecknadel ein Kamerasymbol. **Alles andere zeigt gar keinen Ort**: ein
-  fremder Ort genauso wie ein leeres Feld, weil das Skript in beiden Faellen
-  nicht pruefen kann, ob die Angabe stimmt. Die Erkennung steht im Skript unter
-  `EIGENES_HAUS`, `EIGENE_STRASSE` und `ONLINE_WORTE`, ein neuer Sonderfall
-  gehoert dort hin.
-* **Der Ort auf der Seite ist nur so gut wie der Eintrag in Gaudeam.** Steht
-  dort `adH`, gilt der Termin als Termin im Haus, auch wenn er in Wahrheit bei
-  einer Firma oder in einer Bar stattfindet. Das Skript kann das nicht wissen.
-  Ein Termin ausser Haus gehoert deshalb in Gaudeam **weg von `adH`**: echten
-  Ort eintragen oder das Feld leeren, dann steht auf der Seite keine Ortszeile.
+* **`adH` zaehlt nicht als Ortsangabe.** In Gaudeam bleibt dieser Wert auch an
+  Terminen stehen, die gar nicht im Haus stattfinden: zuletzt trugen ihn die
+  Exkursion zu einer Firma und ein Webinar genauso wie die Kneipen. Er ist
+  damit eine Voreinstellung und keine Aussage, und wird behandelt wie ein
+  leeres Feld: **beim Termin steht dann kein Ort.** Lieber keine Angabe als
+  eine falsche, wer vor der falschen Tuer steht kommt nicht wieder. Dasselbe
+  gilt fuer „auf dem Hause“ und „Hohenstaufenhaus“, auch die nennen keine
+  Adresse.
+* Eine **ausgeschriebene Adresse** hat dagegen jemand bewusst eingetragen, die
+  gilt. Die eigene Anschrift in jeder Schreibweise wird zu
+  **„Hohenstaufenhaus, Mozartstraße 31“**; wer noch nie da war, kann mit „auf
+  dem Haus“ nichts anfangen. Ein **Online-Termin** wird zu „Online“ und bekommt
+  statt der Stecknadel ein Kamerasymbol. Jeder **fremde Ort** wird uebernommen,
+  wie er kommt, nur ohne das angehaengte „, Deutschland“. Die Erkennung steht
+  im Skript unter `HAUS_JARGON`, `EIGENE_STRASSE` und `ONLINE_WORTE`, ein neuer
+  Sonderfall gehoert dort hin.
+* **Damit ein Ort auf der Seite erscheint, muss er in Gaudeam stehen.** Ein
+  Termin ausser Haus gehoert weg von `adH`: echten Ort eintragen, dann steht er
+  auch auf der Seite, oder „Online“, dann steht dort „Online“. Wer `adH`
+  stehen laesst, bekommt keine Ortszeile.
 * **Online-Termine erkennt das Skript nur am Ortsfeld, nie am Titel.** Ein
   Vortrag kann online laufen oder gemeinsam im Kneipsaal geschaut werden, und
   das steht nirgends ausser im Ort. Damit ein Termin als „Online“ erscheint,
@@ -231,9 +234,9 @@ Weitere Eigenheiten:
 * Als Ort steht dort die Anschrift mit Postleitzahl, damit die Navigation im
   Handy etwas damit anfangen kann. Bei einem Online-Termin bleibt stehen, was
   eingetragen war: ein Einwahllink ist im Kalender anklickbar, ein blosses
-  „Online“ waere dort verschenkt. Was fuer die Seite nicht sicher genug ist,
-  kommt auch nicht in den Kalender und bekommt gar kein `LOCATION`-Feld: eine
-  falsche Anschrift dort schickt die Navigation an den falschen Ort.
+  „Online“ waere dort verschenkt. `adH` bekommt wie auf der Seite gar kein
+  `LOCATION`-Feld: eine falsche Anschrift dort schickt die Navigation an den
+  falschen Ort.
 * Termine ohne Ende bekommen zwei Stunden Dauer, sonst zeigen viele Apps einen
   Eintrag von null Minuten.
 * Die Kennung eines Termins wird aus Titel und Startzeit abgeleitet und bleibt
