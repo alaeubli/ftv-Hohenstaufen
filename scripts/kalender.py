@@ -45,14 +45,19 @@ STANDARD_SITE_URL = "https://alaeubli.github.io/ftv-Hohenstaufen"
 
 # Die Schnittstelle liefert den Ort mal als "adH", mal als vollstaendige
 # Anschrift, mal gar nicht. Auf der Seite soll dafuer immer dasselbe stehen.
-# Es gibt genau drei Faelle:
-#   eigenes Haus -> "auf dem Haus" (im Kalender die vollstaendige Anschrift)
+# Es gibt vier Faelle:
+#   eigenes Haus -> "Hohenstaufenhaus, Mozartstrasse 31". Bewusst die Adresse
+#                   und nicht "auf dem Haus": wer noch nie da war, kann mit
+#                   dem Verbindungsjargon nichts anfangen.
+#   online       -> "Online". Im Kalender bleibt stehen, was eingetragen war,
+#                   damit ein Einwahllink dort anklickbar ist.
 #   fremder Ort  -> so uebernehmen, wie er kommt, nur ohne ", Deutschland"
 #   leeres Feld  -> leer lassen; beim Termin steht dann gar kein Ort, statt
 #                   dass wir einen erfinden und Gaeste vor der falschen Tuer
 #                   stehen
-AUF_DEM_HAUS = "auf dem Haus"
-HAUSANSCHRIFT = "Hohenstaufenhaus, Mozartstr. 31, 73430 Aalen"
+HAUS_KURZ = "Hohenstaufenhaus, Mozartstraße 31"
+HAUSANSCHRIFT = "Hohenstaufenhaus, Mozartstraße 31, 73430 Aalen"
+ONLINE = "Online"
 # Schreibweisen, die alle das eigene Haus meinen. Verglichen wird klein-
 # geschrieben und ohne Punkte, "adH" und "AdH." landen also beide hier.
 EIGENES_HAUS = {
@@ -63,6 +68,17 @@ EIGENES_HAUS = {
 # Faengt jede Schreibweise der eigenen Strasse ab: "Mozartstr. 31",
 # "Mozartstrasse 31, 73430 Aalen", "Mozartstrasse 31, Aalen, Deutschland".
 EIGENE_STRASSE = re.compile(r"mozartstr(?:asse)?\s*31\b")
+# Online-Termine erkennt das Skript am Ort, nie am Titel: ein "Webinar" kann
+# sehr wohl gemeinsam im Kneipsaal geschaut werden, und dann ist der Ort das
+# Haus. Wer einen Termin in Gaudeam als "Online" oder mit Einwahllink
+# eintraegt, bekommt hier "Online".
+ONLINE_WORTE = ("online", "zoom", "teams", "webex", "bigbluebutton", "jitsi",
+                "discord", "skype", "meet.google", "gotomeeting",
+                "videokonferenz", "videocall", "remote")
+ONLINE_LINK = re.compile(r"https?://")
+# Ein Kartenlink ist kein Einwahllink, sondern ein sehr realer Ort.
+KARTEN_LINK = re.compile(r"(google\.[a-z.]+/maps|goo\.gl/maps|maps\.app\.goo\.gl"
+                         r"|openstreetmap|apple\.com/maps|osm\.org)")
 
 
 def zeit(rohwert):
@@ -104,17 +120,33 @@ def ist_eigenes_haus(roh):
     return schluessel in EIGENES_HAUS or bool(EIGENE_STRASSE.search(schluessel))
 
 
+def ist_online(roh):
+    """Erkennt einen Online-Termin am Ort. Der Titel wird bewusst nicht
+    herangezogen: ein Vortrag kann online stattfinden oder gemeinsam im Haus
+    geschaut werden, und das steht nur im Ortsfeld."""
+    text = ort_saeubern(roh).lower()
+    if not text:
+        return False
+    if ONLINE_LINK.search(text) and not KARTEN_LINK.search(text):
+        return True
+    return any(wort in text for wort in ONLINE_WORTE)
+
+
 def ort_lesbar(roh):
     """Fuer die Website. Ein leeres Feld bleibt leer, dann faellt die Ortszeile
     beim Termin ganz weg."""
     if ist_eigenes_haus(roh):
-        return AUF_DEM_HAUS
+        return HAUS_KURZ
+    if ist_online(roh):
+        return ONLINE
     return ort_saeubern(roh)
 
 
 def ort_kalender(roh):
     """Fuer die Kalenderdatei. Dort landet der Ort in der Navigation, deshalb
-    fuers eigene Haus die vollstaendige Anschrift statt "auf dem Haus"."""
+    fuers eigene Haus die Anschrift mit Postleitzahl. Bei Online-Terminen
+    bleibt stehen, was eingetragen war: ein Einwahllink ist im Kalender
+    anklickbar, "Online" waere dort verschenkt."""
     if ist_eigenes_haus(roh):
         return HAUSANSCHRIFT
     return ort_saeubern(roh)
@@ -145,7 +177,8 @@ def termine_lesen(daten):
             continue
         eintraege.append({"start": start, "ende": ende, "name": name,
                           "ort": ort_lesbar(roh.get("place")),
-                          "ort_ics": ort_kalender(roh.get("place"))})
+                          "ort_ics": ort_kalender(roh.get("place")),
+                          "online": ist_online(roh.get("place"))})
     return eintraege, uebersprungen
 
 
@@ -159,6 +192,13 @@ ORTZEILE = ('<span class="flex items-center gap-2 min-w-0">'
             '480-820t-184.71 75.1Q220-669.79 220-552q0 75 65 173.5T480-159Zm0 79Q319-217 239.5-334.5T160-552q0-150 '
             '96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg>'
             '<span class="min-w-0 break-words">%s</span></span>')
+# Dieselbe Zeile fuer Online-Termine, nur mit Kamera statt Stecknadel.
+ONLINEZEILE = ('<span class="flex items-center gap-2 min-w-0">'
+               '<svg aria-hidden="true" class="text-primary flex-shrink-0 w-[18px] h-[18px]" '
+               'fill="currentColor" viewBox="0 -960 960 960"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 '
+               '23.5-56.5T160-800h480q33 0 56.5 23.5T720-720v180l160-160v520L720-340v100q0 33-23.5 '
+               '56.5T640-160H160Zm0-60h480v-480H160v480Z"/></svg>'
+               '<span class="min-w-0 break-words">%s</span></span>')
 
 
 def liste_bauen(eintraege):
@@ -173,7 +213,8 @@ def liste_bauen(eintraege):
         # nach einem Fehler aus.
         ort = ""
         if e["ort"]:
-            ort = ("\n" + ORTZEILE) % escape(e["ort"])
+            vorlage = ONLINEZEILE if e.get("online") else ORTZEILE
+            ort = ("\n" + vorlage) % escape(e["ort"])
         teile.append('''<article class="flex gap-4 sm:gap-6 items-start sm:items-center bg-surface-container-lowest rounded-xl border border-surface-container p-4 sm:p-6 shadow-[0_10px_30px_rgba(32,89,48,0.03)] hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] hover:-translate-y-0.5 transition-all duration-300">
 <div class="flex-shrink-0 flex flex-col items-center justify-center w-14 h-14 sm:w-20 sm:h-20 bg-secondary-container rounded-lg">
 <span class="font-display-lg text-body-lg sm:text-headline-md font-semibold text-primary leading-none">{tag:02d}</span>
@@ -377,6 +418,20 @@ def main():
         sys.exit("Fehler: die URL liefert kein gueltiges JSON (%s)." % fehler)
     if not isinstance(daten, dict) or "scheduled_events" not in daten:
         sys.exit("Fehler: im JSON fehlt das Feld scheduled_events.")
+
+    # Was die Schnittstelle mitschickt, steht so im Aktionsprotokoll. Damit
+    # faellt auf, wenn Gaudeam ein neues Feld liefert, das hier noch niemand
+    # auswertet -- etwa eine eigene Kennzeichnung fuer Online-Termine.
+    roh_termine = [t for t in (daten.get("scheduled_events") or []) if isinstance(t, dict)]
+    felder = sorted({schluessel for t in roh_termine for schluessel in t})
+    if felder:
+        print("Felder je Termin: %s" % ", ".join(felder))
+        unbekannt = [f for f in felder if f not in ("name", "place", "date")]
+        if unbekannt:
+            print("Davon nicht ausgewertet: %s" % ", ".join(unbekannt))
+    orte = sorted({(t.get("place") or "").strip() for t in roh_termine})
+    if orte:
+        print("Orte in den Rohdaten: %s" % " | ".join(repr(o) for o in orte))
 
     alle, uebersprungen = termine_lesen(daten)
     heute = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
