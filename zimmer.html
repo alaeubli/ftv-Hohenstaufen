@@ -57,7 +57,7 @@
 <section>
 <div class="mb-stack-lg text-center max-w-2xl mx-auto">
 <h2 class="font-headline-md text-headline-md text-primary mb-stack-sm">Was zum Zimmer dazugehört</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Zum eigenen Zimmer kommt die Mitbenutzung von zwei Küchen, den Bädern, der Waschküche, Garten, Balkon, Kneipsaal und Kellerbar – dazu die Hausgemeinschaft.</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Zum eigenen Zimmer kommt die Mitbenutzung von zwei Küchen, den Bädern, der Waschküche, Garten, Balkon, Kneipsaal und Kellerbar, dazu die Hausgemeinschaft.</p>
 </div>
 <div class="bg-surface-container-low rounded-xl p-6 sm:p-8 md:p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 shadow-[0_10px_30px_rgba(32,89,48,0.04)]">
 <div class="flex flex-col">
@@ -163,7 +163,7 @@
 <div class="bg-primary text-white rounded-xl p-6 sm:p-8 shadow-[0_10px_30px_rgba(32,89,48,0.1)] hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-center">
 <svg aria-hidden="true" class="text-primary-fixed-dim mb-6 w-9 h-9" fill="currentColor" viewBox="0 -960 960 960"><path d="M40-689q0-96 67.5-163.5T271-920l-1 60q-71 0-120.5 49.5T100-690l-60 1Zm155 490q-91-91-91.5-218T194-635l88-88 33 33q21 21 21.5 50T315-589l-46 46q-9 9-9 21t9 21l12 13q27 27 27 65.5T281-357l-20 20 34 34 20-20q41-41 41-99t-41-99l33-34q21-21 30-47.5t4-51.5l167-167q9-9 21.5-9t21.5 9q9 9 9 21.5t-9 21.5L373-559l61 61 276-275q9-9 21-9t21 9q9 9 9 21t-9 21L477-456l61 62 247-247q9-9 21.5-9t21.5 9q9 9 9 21t-9 21L581-352l61 62 189-189q9-9 21.5-9t21.5 9q9 9 9 21t-9 21L633-196q-91 91-218.5 90T195-199ZM689-40l1-60q71 0 120.5-49.5T860-270l60-1q0 96-67.5 163.5T689-40Z"/></svg>
 <h3 class="font-headline-md text-headline-md mb-2">Was ist gerade frei?</h3>
-<p class="font-body-md text-body-md text-white/80 mb-stack-lg">Schreib uns kurz, dann sagen wir dir, was aktuell frei ist. Wenn gerade nichts passt, melden wir uns, sobald sich etwas ergibt – das vergessen wir nicht.</p>
+<p class="font-body-md text-body-md text-white/80 mb-stack-lg">Schreib uns kurz, dann sagen wir dir, was aktuell frei ist. Wenn gerade nichts passt, melden wir uns, sobald sich etwas ergibt. Das vergessen wir nicht.</p>
 <a class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest hover:-translate-y-0.5 transition-all duration-200 shadow-lg flex items-center justify-center gap-2 whitespace-nowrap self-start" href="#kontakt">Zimmer anfragen</a>
 </div>
 </div>
@@ -231,7 +231,7 @@
             e.preventDefault();
             if (!form.checkValidity()) { form.reportValidity(); return; }
             var v = function (n) { return (form.elements[n].value || '').trim(); };
-            var subject = 'Zimmeranfrage über die Website – ' + v('name');
+            var subject = 'Zimmeranfrage über die Website: ' + v('name');
             var body = 'Name: ' + v('name') + '\nE-Mail: ' + v('email') + '\n\n' + v('nachricht');
             window.location.href = 'mailto:wohnen@ftv-hohenstaufen.de'
                 + '?subject=' + encodeURIComponent(subject)

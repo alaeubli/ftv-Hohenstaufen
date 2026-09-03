@@ -155,7 +155,7 @@ Lauf ein Commit.
   das steht nirgends ausser im Ort. Damit ein Termin als „Online“ erscheint,
   gehoert in Gaudeam ins Ortsfeld „Online“, der Dienst (Zoom, Teams,
   BigBlueButton …) oder gleich der Einwahllink. Steht dort weiter `adH`, gilt
-  der Termin als Termin im Haus – auch wenn er „Webinar“ heisst. Ein Kartenlink
+  der Termin als Termin im Haus, auch wenn er „Webinar“ heisst. Ein Kartenlink
   (Google Maps, OpenStreetMap) zaehlt ausdruecklich nicht als Einwahllink.
 * Das Aktionsprotokoll listet bei jedem Lauf, **welche Felder** die
   Schnittstelle je Termin liefert, welche davon das Skript nicht auswertet, und
