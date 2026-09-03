@@ -1,54 +1,54 @@
 {
-  "aktualisiert": "2026-08-29T19:45:00",
+  "aktualisiert": "2026-09-03T12:32:48",
   "semester": "WS 26/27",
   "termine": [
     {
       "start": "2026-10-17T19:00:00",
       "ende": "2026-10-17T23:00:00",
       "titel": "Semesterantrittskneipe",
-      "ort": "Hohenstaufenhaus, Mozartstr. 31"
+      "ort": "Hohenstaufenhaus, Mozartstraße 31"
     },
     {
       "start": "2026-10-24T20:00:00",
       "ende": "2026-10-24T23:00:00",
       "titel": "Stiftungsfest der FtV Horlogia Furtwangen",
-      "ort": "auf dem Hause"
+      "ort": "Hohenstaufenhaus, Mozartstraße 31"
     },
     {
       "start": "2026-11-10T09:30:00",
       "ende": "2026-11-10T18:00:00",
       "titel": "Exkursion zur Firma Franke GmbH",
-      "ort": "auf dem Hause"
+      "ort": "Hohenstaufenhaus, Mozartstraße 31"
     },
     {
       "start": "2026-11-19T19:30:00",
       "ende": "2026-11-19T23:00:00",
       "titel": "Webinar: KI für Einsteiger",
-      "ort": "auf dem Hause"
+      "ort": "Hohenstaufenhaus, Mozartstraße 31"
     },
     {
       "start": "2026-12-05T19:00:00",
       "ende": "2026-12-05T23:00:00",
-      "titel": "Butlers Nikolausabend",
-      "ort": "Hohenstaufenhaus, Mozartstr. 31"
+      "titel": "Nikolausabend",
+      "ort": "Hohenstaufenhaus, Mozartstraße 31"
     },
     {
       "start": "2027-01-16T19:00:00",
       "ende": "2027-01-16T23:00:00",
       "titel": "Krambambulikneipe",
-      "ort": "Hohenstaufenhaus, Mozartstr. 31"
+      "ort": "Hohenstaufenhaus, Mozartstraße 31"
     },
     {
       "start": "2027-02-10T19:00:00",
       "ende": "2027-02-10T23:00:00",
       "titel": "Digitaler Stammtisch",
-      "ort": "auf dem Hause"
+      "ort": "Hohenstaufenhaus, Mozartstraße 31"
     },
     {
       "start": "2027-02-27T19:00:00",
       "ende": "2027-02-27T23:00:00",
-      "titel": "Semesterschlusskneipe",
-      "ort": "Hohenstaufenhaus, Mozartstr. 31"
+      "titel": "Semesterexkneipe",
+      "ort": "Hohenstaufenhaus, Mozartstraße 31"
     }
   ],
   "ohne_festen_termin": [

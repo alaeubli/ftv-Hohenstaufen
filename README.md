@@ -140,9 +140,28 @@ Lauf ein Commit.
   wird also „Termine im WS 26/27“.
 * Eintraege aus `other_events` (Formate ohne festen Termin, etwa Fuchsenabende)
   stehen als Hinweis unter der Liste.
-* Orte werden fuer Gaeste ausgeschrieben: `adH` wird zu „auf dem Hause“, die
-  eigene Adresse zu „Hohenstaufenhaus, Mozartstr. 31“. Die Zuordnung steht im
-  Skript unter `ORTE`.
+* Beim Ort kennt das Skript vier Faelle. Alle Schreibweisen des eigenen Hauses
+  (`adH`, „auf dem Hause“, „Hohenstaufenhaus“, die eigene Anschrift in jeder
+  Variante) werden zu **„Hohenstaufenhaus, Mozartstraße 31“**. Bewusst die
+  Adresse und nicht „auf dem Haus“: wer noch nie da war, kann mit dem
+  Verbindungsjargon nichts anfangen. Ein **Online-Termin** wird zu „Online“ und
+  bekommt statt der Stecknadel ein Kamerasymbol. Ein **fremder Ort** wird
+  uebernommen, wie er kommt, nur ohne das angehaengte „, Deutschland“. Ein
+  **leeres Feld** bleibt leer: dann steht bei dem Termin gar kein Ort. Die
+  Erkennung steht im Skript unter `EIGENES_HAUS`, `EIGENE_STRASSE` und
+  `ONLINE_WORTE`, ein neuer Sonderfall gehoert dort hin.
+* **Online-Termine erkennt das Skript nur am Ortsfeld, nie am Titel.** Ein
+  Vortrag kann online laufen oder gemeinsam im Kneipsaal geschaut werden, und
+  das steht nirgends ausser im Ort. Damit ein Termin als „Online“ erscheint,
+  gehoert in Gaudeam ins Ortsfeld „Online“, der Dienst (Zoom, Teams,
+  BigBlueButton …) oder gleich der Einwahllink. Steht dort weiter `adH`, gilt
+  der Termin als Termin im Haus, auch wenn er „Webinar“ heisst. Ein Kartenlink
+  (Google Maps, OpenStreetMap) zaehlt ausdruecklich nicht als Einwahllink.
+* Das Aktionsprotokoll listet bei jedem Lauf, **welche Felder** die
+  Schnittstelle je Termin liefert, welche davon das Skript nicht auswertet, und
+  **welche Orte** in den Rohdaten stehen. Wer wissen will, wie Gaudeam etwas
+  uebergibt, schaut unter **Actions → Termine aktualisieren** in den letzten
+  Lauf, statt zu raten.
 * Die Zeitangaben kommen im Format `MM/TT/JJJJ`. Steht an erster Stelle eine
   Zahl groesser zwoelf, liest das Skript stattdessen `TT/MM/JJJJ`. Ein Wechsel
   des Formats verschiebt die Termine also nicht stillschweigend um Monate.
@@ -201,8 +220,11 @@ Weitere Eigenheiten:
 
 * Im Kalender stehen **alle** Termine des Semesters, auch vergangene. Auf der
   Seite stehen nur die naechsten zwoelf.
-* Als Ort steht dort die vollstaendige Anschrift statt „auf dem Hause“, damit
-  die Navigation im Handy etwas damit anfangen kann.
+* Als Ort steht dort die Anschrift mit Postleitzahl, damit die Navigation im
+  Handy etwas damit anfangen kann. Bei einem Online-Termin bleibt stehen, was
+  eingetragen war: ein Einwahllink ist im Kalender anklickbar, ein blosses
+  „Online“ waere dort verschenkt. Ein Termin ohne Ort bekommt gar kein
+  `LOCATION`-Feld.
 * Termine ohne Ende bekommen zwei Stunden Dauer, sonst zeigen viele Apps einen
   Eintrag von null Minuten.
 * Die Kennung eines Termins wird aus Titel und Startzeit abgeleitet und bleibt
@@ -224,7 +246,8 @@ Gruppe, nicht allein in den Kalender.
 * WhatsApp-Nummer: überall steht der Platzhalter `49XXXXXXXXXX`. Einmal in
   allen Dateien ersetzen, dann sind alle WhatsApp-Buttons aktiv.
 * Telefonnummer und E-Mail-Adresse gegenprüfen
-* Mietpreise eintragen
+* Mietpreise stehen bewusst nicht auf der Seite, sie werden auf Anfrage
+  genannt. Die Zimmerseite sagt nur, dass die Miete All-in ist.
 * **Impressum und Datenschutz sind Entwuerfe.** Die rot markierten Stellen
   ergaenzen (Vorstand, Vereinsregister, verantwortliche Person) und beides vor
   dem Livegang juristisch pruefen lassen.
