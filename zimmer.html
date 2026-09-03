@@ -6,7 +6,7 @@
 <title>Zimmer mieten in Aalen | FtV Hohenstaufen</title>
 <link href="assets/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="assets/apple-touch-icon.png" rel="apple-touch-icon"/>
-<link href="assets/styles.css?v=9504cf42" rel="stylesheet"/>
+<link href="assets/styles.css?v=f6992bb6" rel="stylesheet"/>
 </head>
 <body class="bg-background text-on-surface font-body-md text-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopNavBar -->
@@ -220,27 +220,49 @@
 </section>
 </main>
 <script>
-    // Das Formular kommt ohne Backend aus: es baut aus den Feldern eine fertige
-    // E-Mail und uebergibt sie an das Mailprogramm des Besuchers.
+    // Die Formulare kommen ohne Backend aus: sie bauen aus den Feldern eine
+    // fertige E-Mail und uebergeben sie an das Mailprogramm des Besuchers.
+    // Empfaenger, Betreff und Hinweistext stehen als data-Attribute am
+    // Formular, damit hier auf jeder Seite derselbe Code steht.
     // TODO: bei Bedarf durch ein echtes Backend ersetzen (action/method).
     document.addEventListener('DOMContentLoaded', function () {
-        var form = document.getElementById('zimmer-form');
-        var hint = document.getElementById('form-hint');
-        if (!form) return;
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            if (!form.checkValidity()) { form.reportValidity(); return; }
-            var v = function (n) { return (form.elements[n].value || '').trim(); };
-            var subject = 'Zimmeranfrage über die Website: ' + v('name');
-            var body = 'Name: ' + v('name') + '\nE-Mail: ' + v('email') + '\n\n' + v('nachricht');
-            window.location.href = 'mailto:wohnen@ftv-hohenstaufen.de'
-                + '?subject=' + encodeURIComponent(subject)
-                + '&body=' + encodeURIComponent(body);
-            if (hint) {
-                hint.textContent = 'Dein E-Mail-Programm sollte sich jetzt geöffnet haben. '
-                    + 'Falls nicht, schreib uns direkt an wohnen@ftv-hohenstaufen.de oder per WhatsApp.';
-                hint.className = 'font-body-md text-body-md text-primary-fixed-dim';
-            }
+        var formulare = document.querySelectorAll('form[data-empfaenger]');
+        Array.prototype.forEach.call(formulare, function (form) {
+            var empfaenger = form.getAttribute('data-empfaenger');
+            var hinweis = form.querySelector('[data-formhinweis]');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (!form.checkValidity()) { form.reportValidity(); return; }
+                var v = function (n) {
+                    var feld = form.elements[n];
+                    return feld ? (feld.value || '').trim() : '';
+                };
+                var text = 'Name: ' + v('name') + '\nE-Mail: ' + v('email')
+                    + '\n\n' + v('nachricht');
+                // Eine Einwilligung muss nachweisbar sein (Art. 7 Abs. 1 DSGVO).
+                // Deshalb wandern Wortlaut und Zeitpunkt mit in die Mail und
+                // nicht bloss ein Ja oder Nein. Der Wortlaut wird aus dem
+                // Markup gelesen, damit Anzeige und Nachweis nicht auseinander
+                // laufen, wenn jemand den Satz spaeter aendert.
+                var kasten = form.elements['terminmails'];
+                var wortlaut = form.querySelector('[data-einwilligungstext]');
+                text += '\n\n-- Einwilligung Terminmails --\n';
+                if (kasten && kasten.checked) {
+                    text += 'Erteilt: JA'
+                        + '\nWortlaut: ' + (wortlaut ? wortlaut.textContent.trim() : '')
+                        + '\nZeitpunkt: ' + new Date().toLocaleString('de-DE');
+                } else {
+                    text += 'Erteilt: nein';
+                }
+                window.location.href = 'mailto:' + empfaenger
+                    + '?subject=' + encodeURIComponent(form.getAttribute('data-betreff') + ': ' + v('name'))
+                    + '&body=' + encodeURIComponent(text);
+                if (hinweis) {
+                    hinweis.textContent = 'Dein E-Mail-Programm sollte sich jetzt geöffnet haben. '
+                        + 'Falls nicht, schreib uns direkt an ' + empfaenger + ' oder per WhatsApp.';
+                    hinweis.className = 'font-body-md text-body-md text-primary-fixed-dim';
+                }
+            });
         });
     });
 </script>
@@ -260,7 +282,7 @@
 </div>
 <div class="p-6 sm:p-8 md:p-12 bg-white/5 border-t border-white/10 md:border-t-0 md:border-l">
 <h3 class="font-headline-md text-headline-md mb-stack-lg">Oder schreib uns hier</h3>
-<form class="flex flex-col gap-stack-lg" id="zimmer-form" novalidate="">
+<form class="flex flex-col gap-stack-lg" data-betreff="Zimmeranfrage über die Website" data-empfaenger="wohnen@ftv-hohenstaufen.de" id="zimmer-form" novalidate="">
 <div>
 <label class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-2 block" for="name">Name</label>
 <input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 font-body-md text-body-md text-white placeholder:text-white/50 focus:border-primary-fixed-dim focus:ring-2 focus:ring-primary-fixed-dim/40 focus:outline-none transition-colors" id="name" name="name" placeholder="Wie heißt du?" required="" type="text"/>
@@ -273,8 +295,15 @@
 <label class="font-label-sm text-label-sm uppercase text-primary-fixed-dim mb-2 block" for="nachricht">Nachricht</label>
 <textarea class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 font-body-md text-body-md text-white placeholder:text-white/50 focus:border-primary-fixed-dim focus:ring-2 focus:ring-primary-fixed-dim/40 focus:outline-none transition-colors resize-y" id="nachricht" name="nachricht" placeholder="Ab wann suchst du ein Zimmer? Gibt es etwas, das du vorher wissen möchtest?" required="" rows="5"></textarea>
 </div>
+<div>
+<label class="flex items-start gap-3 cursor-pointer" for="terminmails-zimmer">
+<input class="mt-1 w-5 h-5 flex-shrink-0 accent-white cursor-pointer" id="terminmails-zimmer" name="terminmails" type="checkbox" value="ja"/>
+<span class="font-body-md text-body-md text-white/80" data-einwilligungstext="">Ich möchte regelmäßig per E-Mail über Termine und Veranstaltungen der FtV Hohenstaufen zu Aalen informiert werden.</span>
+</label>
+<p class="mt-2 ml-8 font-body-md text-body-md text-white/60">Die Einwilligung ist freiwillig und keine Voraussetzung dafür, dass wir dir antworten. Du kannst sie jederzeit ohne Angabe von Gründen widerrufen, formlos an <a class="underline underline-offset-4 hover:no-underline" href="mailto:kontakt@ftv-hohenstaufen.de">kontakt@ftv-hohenstaufen.de</a> oder über den Abmeldelink in jeder E-Mail. Was mit deinen Daten passiert, steht in der <a class="underline underline-offset-4 hover:no-underline" href="datenschutz.html">Datenschutzerklärung</a>.</p>
+</div>
 <button class="bg-white text-primary font-body-md text-body-md font-medium px-8 py-4 rounded-full hover:bg-surface-container-highest hover:-translate-y-0.5 transition-all duration-200 shadow-lg flex items-center justify-center gap-2 whitespace-nowrap w-full" type="submit">Anfrage senden</button>
-<p class="font-body-md text-body-md text-white/60" id="form-hint">Der Button öffnet dein E-Mail-Programm mit fertig ausgefüllter Nachricht an wohnen@ftv-hohenstaufen.de.</p>
+<p class="font-body-md text-body-md text-white/60" data-formhinweis="" id="form-hint">Der Button öffnet dein E-Mail-Programm mit fertig ausgefüllter Nachricht an wohnen@ftv-hohenstaufen.de.</p>
 </form>
 </div>
 </div>
