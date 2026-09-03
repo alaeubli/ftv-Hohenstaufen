@@ -43,18 +43,18 @@ STANDARDDAUER_STUNDEN = 2
 # waere der Abo-Link wertlos: Kalender-Apps rufen ihn von aussen ab.
 STANDARD_SITE_URL = "https://alaeubli.github.io/ftv-Hohenstaufen"
 
-# Die Schnittstelle liefert den Ort mal als "adH", mal als vollstaendige
-# Anschrift, mal gar nicht. Auf der Seite soll dafuer immer dasselbe stehen.
-# Es gibt vier Faelle:
+# Ein Ort wird nur angezeigt, wenn er sicher stimmt. Lieber gar keine Angabe
+# als eine falsche: wer vor der falschen Tuer steht, kommt nicht wieder.
+# Deshalb genau drei Faelle:
 #   eigenes Haus -> "Hohenstaufenhaus, Mozartstrasse 31". Bewusst die Adresse
 #                   und nicht "auf dem Haus": wer noch nie da war, kann mit
 #                   dem Verbindungsjargon nichts anfangen.
 #   online       -> "Online". Im Kalender bleibt stehen, was eingetragen war,
 #                   damit ein Einwahllink dort anklickbar ist.
-#   fremder Ort  -> so uebernehmen, wie er kommt, nur ohne ", Deutschland"
-#   leeres Feld  -> leer lassen; beim Termin steht dann gar kein Ort, statt
-#                   dass wir einen erfinden und Gaeste vor der falschen Tuer
-#                   stehen
+#   alles andere -> nichts. Ein fremder Ort und ein leeres Feld werden gleich
+#                   behandelt, weil das Skript in beiden Faellen nicht wissen
+#                   kann, ob die Angabe stimmt. Beim Termin steht dann keine
+#                   Ortszeile, und wer es genau wissen will, fragt nach.
 HAUS_KURZ = "Hohenstaufenhaus, Mozartstraße 31"
 HAUSANSCHRIFT = "Hohenstaufenhaus, Mozartstraße 31, 73430 Aalen"
 ONLINE = "Online"
@@ -133,23 +133,28 @@ def ist_online(roh):
 
 
 def ort_lesbar(roh):
-    """Fuer die Website. Ein leeres Feld bleibt leer, dann faellt die Ortszeile
-    beim Termin ganz weg."""
+    """Fuer die Website. Gibt nur zurueck, was sicher stimmt: das eigene Haus
+    und "Online". Alles andere ergibt einen leeren Text, dann faellt die
+    Ortszeile beim Termin ganz weg."""
     if ist_eigenes_haus(roh):
         return HAUS_KURZ
     if ist_online(roh):
         return ONLINE
-    return ort_saeubern(roh)
+    return ""
 
 
 def ort_kalender(roh):
     """Fuer die Kalenderdatei. Dort landet der Ort in der Navigation, deshalb
     fuers eigene Haus die Anschrift mit Postleitzahl. Bei Online-Terminen
     bleibt stehen, was eingetragen war: ein Einwahllink ist im Kalender
-    anklickbar, "Online" waere dort verschenkt."""
+    anklickbar, "Online" waere dort verschenkt. Was fuer die Seite nicht gut
+    genug ist, kommt auch nicht in den Kalender: eine falsche Anschrift dort
+    schickt die Navigation an den falschen Ort."""
     if ist_eigenes_haus(roh):
         return HAUSANSCHRIFT
-    return ort_saeubern(roh)
+    if ist_online(roh):
+        return ort_saeubern(roh)
+    return ""
 
 
 def uhrzeit_text(start, ende):
@@ -434,9 +439,17 @@ def main():
         unbekannt = [f for f in felder if f not in ("name", "place", "date")]
         if unbekannt:
             print("Davon nicht ausgewertet: %s" % ", ".join(unbekannt))
-    orte = sorted({(t.get("place") or "").strip() for t in roh_termine})
-    if orte:
-        print("Orte in den Rohdaten: %s" % " | ".join(repr(o) for o in orte))
+    # Je Termin und nicht nur als Liste: nur so faellt auf, welcher Eintrag in
+    # Gaudeam einen falschen Ort traegt. Ein Termin, der gar nicht im Haus
+    # stattfindet, aber auf "adH" steht, schickt sonst Gaeste in die
+    # Mozartstrasse. Sichtbar wird das hier, nicht auf der Seite.
+    if roh_termine:
+        print("Ort je Termin (Gaudeam -> was auf der Seite steht):")
+        for t in roh_termine:
+            rohort = (t.get("place") or "").strip()
+            gezeigt = ort_lesbar(rohort) or "(keine Ortszeile)"
+            print("  %-44s %-42s -> %s"
+                  % ((t.get("name") or "(ohne Namen)").strip()[:44], repr(rohort), gezeigt))
 
     alle, uebersprungen = termine_lesen(daten)
     heute = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)

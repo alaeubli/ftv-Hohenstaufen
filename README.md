@@ -140,16 +140,23 @@ Lauf ein Commit.
   wird also „Termine im WS 26/27“.
 * Eintraege aus `other_events` (Formate ohne festen Termin, etwa Fuchsenabende)
   stehen als Hinweis unter der Liste.
-* Beim Ort kennt das Skript vier Faelle. Alle Schreibweisen des eigenen Hauses
-  (`adH`, „auf dem Hause“, „Hohenstaufenhaus“, die eigene Anschrift in jeder
-  Variante) werden zu **„Hohenstaufenhaus, Mozartstraße 31“**. Bewusst die
-  Adresse und nicht „auf dem Haus“: wer noch nie da war, kann mit dem
-  Verbindungsjargon nichts anfangen. Ein **Online-Termin** wird zu „Online“ und
-  bekommt statt der Stecknadel ein Kamerasymbol. Ein **fremder Ort** wird
-  uebernommen, wie er kommt, nur ohne das angehaengte „, Deutschland“. Ein
-  **leeres Feld** bleibt leer: dann steht bei dem Termin gar kein Ort. Die
-  Erkennung steht im Skript unter `EIGENES_HAUS`, `EIGENE_STRASSE` und
-  `ONLINE_WORTE`, ein neuer Sonderfall gehoert dort hin.
+* **Ein Ort wird nur angezeigt, wenn er sicher stimmt.** Lieber keine Angabe
+  als eine falsche: wer vor der falschen Tuer steht, kommt nicht wieder. Damit
+  bleiben drei Faelle. Alle Schreibweisen des eigenen Hauses (`adH`, „auf dem
+  Hause“, „Hohenstaufenhaus“, die eigene Anschrift in jeder Variante) werden zu
+  **„Hohenstaufenhaus, Mozartstraße 31“**. Bewusst die Adresse und nicht „auf
+  dem Haus“: wer noch nie da war, kann mit dem Verbindungsjargon nichts
+  anfangen. Ein **Online-Termin** wird zu „Online“ und bekommt statt der
+  Stecknadel ein Kamerasymbol. **Alles andere zeigt gar keinen Ort**: ein
+  fremder Ort genauso wie ein leeres Feld, weil das Skript in beiden Faellen
+  nicht pruefen kann, ob die Angabe stimmt. Die Erkennung steht im Skript unter
+  `EIGENES_HAUS`, `EIGENE_STRASSE` und `ONLINE_WORTE`, ein neuer Sonderfall
+  gehoert dort hin.
+* **Der Ort auf der Seite ist nur so gut wie der Eintrag in Gaudeam.** Steht
+  dort `adH`, gilt der Termin als Termin im Haus, auch wenn er in Wahrheit bei
+  einer Firma oder in einer Bar stattfindet. Das Skript kann das nicht wissen.
+  Ein Termin ausser Haus gehoert deshalb in Gaudeam **weg von `adH`**: echten
+  Ort eintragen oder das Feld leeren, dann steht auf der Seite keine Ortszeile.
 * **Online-Termine erkennt das Skript nur am Ortsfeld, nie am Titel.** Ein
   Vortrag kann online laufen oder gemeinsam im Kneipsaal geschaut werden, und
   das steht nirgends ausser im Ort. Damit ein Termin als „Online“ erscheint,
@@ -159,9 +166,10 @@ Lauf ein Commit.
   (Google Maps, OpenStreetMap) zaehlt ausdruecklich nicht als Einwahllink.
 * Das Aktionsprotokoll listet bei jedem Lauf, **welche Felder** die
   Schnittstelle je Termin liefert, welche davon das Skript nicht auswertet, und
-  **welche Orte** in den Rohdaten stehen. Wer wissen will, wie Gaudeam etwas
-  uebergibt, schaut unter **Actions → Termine aktualisieren** in den letzten
-  Lauf, statt zu raten.
+  **je Termin den Ort aus Gaudeam samt dem, was daraus auf der Seite wird**.
+  Genau dort sieht man, welcher Eintrag falsch getaggt ist. Wer wissen will,
+  wie Gaudeam etwas uebergibt, schaut unter **Actions → Termine
+  aktualisieren** in den letzten Lauf, statt zu raten.
 * Die Zeitangaben kommen im Format `MM/TT/JJJJ`. Steht an erster Stelle eine
   Zahl groesser zwoelf, liest das Skript stattdessen `TT/MM/JJJJ`. Ein Wechsel
   des Formats verschiebt die Termine also nicht stillschweigend um Monate.
@@ -223,8 +231,9 @@ Weitere Eigenheiten:
 * Als Ort steht dort die Anschrift mit Postleitzahl, damit die Navigation im
   Handy etwas damit anfangen kann. Bei einem Online-Termin bleibt stehen, was
   eingetragen war: ein Einwahllink ist im Kalender anklickbar, ein blosses
-  „Online“ waere dort verschenkt. Ein Termin ohne Ort bekommt gar kein
-  `LOCATION`-Feld.
+  „Online“ waere dort verschenkt. Was fuer die Seite nicht sicher genug ist,
+  kommt auch nicht in den Kalender und bekommt gar kein `LOCATION`-Feld: eine
+  falsche Anschrift dort schickt die Navigation an den falschen Ort.
 * Termine ohne Ende bekommen zwei Stunden Dauer, sonst zeigen viele Apps einen
   Eintrag von null Minuten.
 * Die Kennung eines Termins wird aus Titel und Startzeit abgeleitet und bleibt
