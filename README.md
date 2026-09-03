@@ -140,9 +140,13 @@ Lauf ein Commit.
   wird also „Termine im WS 26/27“.
 * Eintraege aus `other_events` (Formate ohne festen Termin, etwa Fuchsenabende)
   stehen als Hinweis unter der Liste.
-* Orte werden fuer Gaeste ausgeschrieben: `adH` wird zu „auf dem Hause“, die
-  eigene Adresse zu „Hohenstaufenhaus, Mozartstr. 31“. Die Zuordnung steht im
-  Skript unter `ORTE`.
+* Beim Ort kennt das Skript genau drei Faelle. Alle Schreibweisen des eigenen
+  Hauses (`adH`, „auf dem Hause“, „Hohenstaufenhaus“, die eigene Anschrift in
+  jeder Variante) werden zu „auf dem Haus“ – damit derselbe Ort nicht einmal so
+  und einmal als Adresse dasteht. Ein fremder Ort wird uebernommen, wie er
+  kommt, nur ohne das angehaengte „, Deutschland“. Ein leeres Feld bleibt leer:
+  dann steht bei dem Termin gar kein Ort. Die Erkennung steht im Skript unter
+  `EIGENES_HAUS` und `EIGENE_STRASSE`, ein neuer Sonderfall gehoert dort hin.
 * Die Zeitangaben kommen im Format `MM/TT/JJJJ`. Steht an erster Stelle eine
   Zahl groesser zwoelf, liest das Skript stattdessen `TT/MM/JJJJ`. Ein Wechsel
   des Formats verschiebt die Termine also nicht stillschweigend um Monate.
@@ -201,8 +205,9 @@ Weitere Eigenheiten:
 
 * Im Kalender stehen **alle** Termine des Semesters, auch vergangene. Auf der
   Seite stehen nur die naechsten zwoelf.
-* Als Ort steht dort die vollstaendige Anschrift statt „auf dem Hause“, damit
-  die Navigation im Handy etwas damit anfangen kann.
+* Als Ort steht dort die vollstaendige Anschrift statt „auf dem Haus“, damit
+  die Navigation im Handy etwas damit anfangen kann. Ein Termin ohne Ort
+  bekommt gar kein `LOCATION`-Feld.
 * Termine ohne Ende bekommen zwei Stunden Dauer, sonst zeigen viele Apps einen
   Eintrag von null Minuten.
 * Die Kennung eines Termins wird aus Titel und Startzeit abgeleitet und bleibt
@@ -224,7 +229,8 @@ Gruppe, nicht allein in den Kalender.
 * WhatsApp-Nummer: überall steht der Platzhalter `49XXXXXXXXXX`. Einmal in
   allen Dateien ersetzen, dann sind alle WhatsApp-Buttons aktiv.
 * Telefonnummer und E-Mail-Adresse gegenprüfen
-* Mietpreise eintragen
+* Mietpreise stehen bewusst nicht auf der Seite, sie werden auf Anfrage
+  genannt. Die Zimmerseite sagt nur, dass die Miete All-in ist.
 * **Impressum und Datenschutz sind Entwuerfe.** Die rot markierten Stellen
   ergaenzen (Vorstand, Vereinsregister, verantwortliche Person) und beides vor
   dem Livegang juristisch pruefen lassen.

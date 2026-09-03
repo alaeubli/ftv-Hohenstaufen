@@ -43,18 +43,26 @@ STANDARDDAUER_STUNDEN = 2
 # waere der Abo-Link wertlos: Kalender-Apps rufen ihn von aussen ab.
 STANDARD_SITE_URL = "https://alaeubli.github.io/ftv-Hohenstaufen"
 
-# Die API liefert Orte knapp und im Verbindungsjargon. Fuer Gaeste ausschreiben.
-EIGENE_ADRESSE = "Mozartstr. 31, 73430 Aalen, Deutschland"
-ORTE = {
-    EIGENE_ADRESSE: "Hohenstaufenhaus, Mozartstr. 31",
-    "adH": "auf dem Hause",
+# Die Schnittstelle liefert den Ort mal als "adH", mal als vollstaendige
+# Anschrift, mal gar nicht. Auf der Seite soll dafuer immer dasselbe stehen.
+# Es gibt genau drei Faelle:
+#   eigenes Haus -> "auf dem Haus" (im Kalender die vollstaendige Anschrift)
+#   fremder Ort  -> so uebernehmen, wie er kommt, nur ohne ", Deutschland"
+#   leeres Feld  -> leer lassen; beim Termin steht dann gar kein Ort, statt
+#                   dass wir einen erfinden und Gaeste vor der falschen Tuer
+#                   stehen
+AUF_DEM_HAUS = "auf dem Haus"
+HAUSANSCHRIFT = "Hohenstaufenhaus, Mozartstr. 31, 73430 Aalen"
+# Schreibweisen, die alle das eigene Haus meinen. Verglichen wird klein-
+# geschrieben und ohne Punkte, "adH" und "AdH." landen also beide hier.
+EIGENES_HAUS = {
+    "adh", "auf dem haus", "auf dem hause", "aufm haus", "im haus", "haus",
+    "zuhause", "daheim", "hohenstaufenhaus", "hohenstaufen-haus",
+    "verbindungshaus",
 }
-# Im Kalender steht der Ort in der Navigation. "auf dem Hause" hilft dort
-# niemandem weiter, deshalb dort die vollstaendige Anschrift.
-ORTE_KALENDER = {
-    EIGENE_ADRESSE: "Hohenstaufenhaus, Mozartstr. 31, 73430 Aalen",
-    "adH": "Hohenstaufenhaus, Mozartstr. 31, 73430 Aalen",
-}
+# Faengt jede Schreibweise der eigenen Strasse ab: "Mozartstr. 31",
+# "Mozartstrasse 31, 73430 Aalen", "Mozartstrasse 31, Aalen, Deutschland".
+EIGENE_STRASSE = re.compile(r"mozartstr(?:asse)?\s*31\b")
 
 
 def zeit(rohwert):
@@ -78,20 +86,38 @@ def zeit(rohwert):
     return datetime(jahr, monat, tag, stunde, minute, sekunde)
 
 
+def ort_saeubern(roh):
+    """Vereinheitlicht Leerzeichen und schneidet das ", Deutschland" ab, das
+    die Schnittstelle an vollstaendige Anschriften haengt."""
+    text = re.sub(r"\s+", " ", (roh or "").strip())
+    text = re.sub(r",?\s*Deutschland\.?$", "", text, flags=re.I)
+    return text.strip(" ,.").strip()
+
+
+def ist_eigenes_haus(roh):
+    """Erkennt alle Schreibweisen des eigenen Hauses, damit derselbe Ort nicht
+    einmal als "adH" und einmal als Anschrift auf der Seite steht."""
+    schluessel = ort_saeubern(roh).lower().replace("\u00df", "ss").replace(".", "")
+    schluessel = re.sub(r"\s+", " ", schluessel).strip()
+    if not schluessel:
+        return False
+    return schluessel in EIGENES_HAUS or bool(EIGENE_STRASSE.search(schluessel))
+
+
 def ort_lesbar(roh):
-    roh = (roh or "").strip()
-    if not roh:
-        return "Hohenstaufenhaus"
-    if roh in ORTE:
-        return ORTE[roh]
-    return re.sub(r",\s*Deutschland\s*$", "", roh)
+    """Fuer die Website. Ein leeres Feld bleibt leer, dann faellt die Ortszeile
+    beim Termin ganz weg."""
+    if ist_eigenes_haus(roh):
+        return AUF_DEM_HAUS
+    return ort_saeubern(roh)
 
 
 def ort_kalender(roh):
-    roh = (roh or "").strip()
-    if roh in ORTE_KALENDER:
-        return ORTE_KALENDER[roh]
-    return roh or "Hohenstaufenhaus, Mozartstr. 31, 73430 Aalen"
+    """Fuer die Kalenderdatei. Dort landet der Ort in der Navigation, deshalb
+    fuers eigene Haus die vollstaendige Anschrift statt "auf dem Haus"."""
+    if ist_eigenes_haus(roh):
+        return HAUSANSCHRIFT
+    return ort_saeubern(roh)
 
 
 def uhrzeit_text(start, ende):
@@ -123,6 +149,18 @@ def termine_lesen(daten):
     return eintraege, uebersprungen
 
 
+# Die Ortszeile einer Terminkarte. Steht separat, weil sie entfaellt,
+# wenn zu einem Termin kein Ort bekannt ist.
+ORTZEILE = ('<span class="flex items-center gap-2 min-w-0">'
+            '<svg aria-hidden="true" class="text-primary flex-shrink-0 w-[18px] h-[18px]" '
+            'fill="currentColor" viewBox="0 -960 960 960"><path d="M480.09-490q28.91 0 49.41-20.59 '
+            '20.5-20.59 20.5-49.5t-20.59-49.41q-20.59-20.5-49.5-20.5t-49.41 20.59q-20.5 20.59-20.5 '
+            '49.5t20.59 49.41q20.59 20.5 49.5 20.5ZM480-159q133-121 196.5-219.5T740-552q0-117.79-75.29-192.9Q589.42-820 '
+            '480-820t-184.71 75.1Q220-669.79 220-552q0 75 65 173.5T480-159Zm0 79Q319-217 239.5-334.5T160-552q0-150 '
+            '96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg>'
+            '<span class="min-w-0 break-words">%s</span></span>')
+
+
 def liste_bauen(eintraege):
     if not eintraege:
         return ('<p class="font-body-md text-body-md text-on-surface-variant text-center">'
@@ -131,6 +169,11 @@ def liste_bauen(eintraege):
     teile = []
     for e in eintraege:
         d = e["start"]
+        # Ohne Ort keine Ortszeile: eine Stecknadel ohne Text daneben sieht
+        # nach einem Fehler aus.
+        ort = ""
+        if e["ort"]:
+            ort = ("\n" + ORTZEILE) % escape(e["ort"])
         teile.append('''<article class="flex gap-4 sm:gap-6 items-start sm:items-center bg-surface-container-lowest rounded-xl border border-surface-container p-4 sm:p-6 shadow-[0_10px_30px_rgba(32,89,48,0.03)] hover:shadow-[0_15px_40px_rgba(32,89,48,0.06)] hover:-translate-y-0.5 transition-all duration-300">
 <div class="flex-shrink-0 flex flex-col items-center justify-center w-14 h-14 sm:w-20 sm:h-20 bg-secondary-container rounded-lg">
 <span class="font-display-lg text-body-lg sm:text-headline-md font-semibold text-primary leading-none">{tag:02d}</span>
@@ -139,14 +182,13 @@ def liste_bauen(eintraege):
 <div class="flex-1 min-w-0">
 <h3 class="font-headline-md text-body-lg sm:text-headline-md text-on-surface mb-stack-sm break-words">{titel}</h3>
 <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-1 sm:gap-x-6 font-body-md text-body-md text-on-surface-variant">
-<span class="flex items-center gap-2 min-w-0"><svg aria-hidden="true" class="text-primary flex-shrink-0 w-[18px] h-[18px]" fill="currentColor" viewBox="0 -960 960 960"><path d="m627-287 45-45-159-160v-201h-60v225l174 181ZM480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-82 31.5-155t86-127.5Q252-817 325-848.5T480-880q82 0 155 31.5t127.5 86Q817-708 848.5-635T880-480q0 82-31.5 155t-86 127.5Q708-143 635-111.5T480-80Zm0-400Zm0 340q140 0 240-100t100-240q0-140-100-240T480-820q-140 0-240 100T140-480q0 140 100 240t240 100Z"/></svg>{uhrzeit}</span>
-<span class="flex items-center gap-2 min-w-0"><svg aria-hidden="true" class="text-primary flex-shrink-0 w-[18px] h-[18px]" fill="currentColor" viewBox="0 -960 960 960"><path d="M480.09-490q28.91 0 49.41-20.59 20.5-20.59 20.5-49.5t-20.59-49.41q-20.59-20.5-49.5-20.5t-49.41 20.59q-20.5 20.59-20.5 49.5t20.59 49.41q20.59 20.5 49.5 20.5ZM480-159q133-121 196.5-219.5T740-552q0-117.79-75.29-192.9Q589.42-820 480-820t-184.71 75.1Q220-669.79 220-552q0 75 65 173.5T480-159Zm0 79Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/></svg><span class="min-w-0 break-words">{ort}</span></span>
+<span class="flex items-center gap-2 min-w-0"><svg aria-hidden="true" class="text-primary flex-shrink-0 w-[18px] h-[18px]" fill="currentColor" viewBox="0 -960 960 960"><path d="m627-287 45-45-159-160v-201h-60v225l174 181ZM480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-82 31.5-155t86-127.5Q252-817 325-848.5T480-880q82 0 155 31.5t127.5 86Q817-708 848.5-635T880-480q0 82-31.5 155t-86 127.5Q708-143 635-111.5T480-80Zm0-400Zm0 340q140 0 240-100t100-240q0-140-100-240T480-820q-140 0-240 100T140-480q0 140 100 240t240 100Z"/></svg>{uhrzeit}</span>{ort}
 </div>
 </div>
 </article>'''.format(tag=d.day, monat=MONATE[d.month - 1],
                      titel=escape(e["name"]),
                      uhrzeit=escape(uhrzeit_text(d, e["ende"])),
-                     ort=escape(e["ort"])))
+                     ort=ort))
     return "\n".join(teile)
 
 
@@ -250,11 +292,12 @@ def ics_bauen(eintraege, semester, zeitstempel):
             "DTSTAMP:%s" % zeitstempel,
             "DTSTART;TZID=Europe/Berlin:%s" % e["start"].strftime("%Y%m%dT%H%M%S"),
             "DTEND;TZID=Europe/Berlin:%s" % ende.strftime("%Y%m%dT%H%M%S"),
-            "SUMMARY:%s" % ics_text(e["name"]),
-            "LOCATION:%s" % ics_text(e["ort_ics"]),
-            "STATUS:CONFIRMED",
-            "TRANSP:OPAQUE",
-            "END:VEVENT"])
+            "SUMMARY:%s" % ics_text(e["name"])])
+        # Ohne Ort kein LOCATION-Feld. Ein leeres zeigen manche Apps als
+        # Zeile ohne Inhalt an.
+        if e["ort_ics"]:
+            zeilen.append("LOCATION:%s" % ics_text(e["ort_ics"]))
+        zeilen.extend(["STATUS:CONFIRMED", "TRANSP:OPAQUE", "END:VEVENT"])
     zeilen.append("END:VCALENDAR")
     return "\r\n".join(ics_falten(z) for z in zeilen) + "\r\n"
 
