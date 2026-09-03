@@ -26,7 +26,7 @@ import os
 import re
 import sys
 import urllib.request
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from hashlib import sha1
 from html import escape
 
@@ -350,7 +350,12 @@ def ics_schreiben(eintraege, semester):
     def ohne_zeitstempel(text):
         return [z for z in text.splitlines() if not z.startswith("DTSTAMP:")]
 
-    neu = ics_bauen(eintraege, semester, datetime.utcnow().strftime("%Y%m%dT%H%M%SZ"))
+    # DTSTAMP steht nach RFC 5545 in UTC. Bewusst datetime.now(timezone.utc)
+    # und nicht datetime.utcnow(): das liefert eine Zeit ohne Zone, die nur so
+    # tut, als waere sie UTC, und ist deshalb abgekuendigt. timezone.utc statt
+    # datetime.UTC, weil letzteres erst ab Python 3.11 existiert.
+    jetzt = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    neu = ics_bauen(eintraege, semester, jetzt)
     if os.path.exists(ICS_DATEI):
         try:
             with open(ICS_DATEI, encoding="utf-8") as fh:
