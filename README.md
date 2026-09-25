@@ -195,11 +195,9 @@ von der Liste auf der Seite abweichen.
 
 Auf `veranstaltungen.html` stehen drei Wege hinein, alle auf dieselbe Datei:
 
-* **Kalender abonnieren** benutzt `webcal:` mit der vollstaendigen
-  https-Adresse dahinter, also **ein Doppelpunkt und keine zwei
-  Schraegstriche**: `webcal:https://.../termine.ics`. Das ist eine gueltige
-  opake URI, Browser lassen sie unveraendert, und eine App, die nur `webcal:`
-  abschneidet, behaelt genau die richtige https-Adresse uebrig.
+* **Kalender abonnieren** benutzt die Form `webcal://host/pfad`, hier also
+  `webcal://.../termine.ics`. Unterstuetzt das Geraet `webcal`, oeffnet der
+  Knopf direkt die Kalender-App mit dieser Abo-Adresse.
 * **iCal-Datei laden** ist eine Momentaufnahme zum einmaligen Einlesen. Wer sie
   importiert, bekommt spaetere Verschiebungen **nicht** mit.
 * Die Adresse im Klartext zum Selbstkopieren. Das ist der Weg fuer den Google
@@ -208,24 +206,21 @@ Auf `veranstaltungen.html` stehen drei Wege hinein, alle auf dieselbe Datei:
   allerdings nur ein- bis zweimal am Tag ab, kurzfristige Aenderungen kommen
   dort also spaeter an als bei Apple oder Outlook.
 
-Zwei naheliegende Schreibweisen funktionieren **nicht**, beide wurden probiert:
+Zwei aehnliche Schreibweisen funktionieren **nicht**:
 
-* `webcal://https://...` mit zwei Schraegstrichen. Nach `//` erwartet jeder
-  URL-Parser einen Hostnamen und liest dort `https` als Rechnernamen; Chromium
-  formt das zu `webcal://https//alaeubli.github.io/...` um.
-* `webcal://host/pfad`, die nach Norm richtige Form. Genau daran scheitern die
-  Apps, die beim Import nur `webcal:` abschneiden: uebrig bleibt `//host/pfad`
-  ohne Schema.
-
-Der Preis der jetzigen Form: eine App, die das Schema stur durch `https:`
-ersetzt, bekommt `https:https://...`. Fuer die steht die Adresse im Klartext
-darunter, das ist der Weg, der ueberall geht.
+* `webcal://https://...` mit zwei Schemas hintereinander. Nach `//` erwartet
+  jeder URL-Parser einen Hostnamen und liest dort `https` als Rechnernamen;
+  Chromium formt das zu `webcal://https//alaeubli.github.io/...` um.
+* `webcal:https://.../termine.ics` ohne `//`. Manche Apps kommen damit klar,
+  die Seite verwendet jetzt aber bewusst die gewuenschte Form
+  `webcal://host/pfad`.
 
 Die Adresse muss absolut sein, weil Kalender-Apps sie von aussen abrufen. Sie
 kommt aus der Umgebungsvariablen `SITE_URL`; voreingestellt ist die
 GitHub-Pages-Adresse. **Kommt eine eigene Domain dazu, unter Settings → Secrets
 and variables → Actions → Variables eine Variable `SITE_URL` anlegen**, sonst
-zeigen die Abo-Links weiter auf die alte Adresse.
+zeigen die Abo-Links weiter auf die alte Adresse. Die Variable muss mit
+`http://` oder `https://` beginnen.
 
 Weitere Eigenheiten:
 
@@ -263,4 +258,3 @@ Gruppe, nicht allein in den Kalender.
 * **Impressum und Datenschutz sind Entwuerfe.** Die rot markierten Stellen
   ergaenzen (Vorstand, Vereinsregister, verantwortliche Person) und beides vor
   dem Livegang juristisch pruefen lassen.
-
