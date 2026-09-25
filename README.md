@@ -219,7 +219,8 @@ Die Adresse muss absolut sein, weil Kalender-Apps sie von aussen abrufen. Sie
 kommt aus der Umgebungsvariablen `SITE_URL`; voreingestellt ist die
 GitHub-Pages-Adresse. **Kommt eine eigene Domain dazu, unter Settings → Secrets
 and variables → Actions → Variables eine Variable `SITE_URL` anlegen**, sonst
-zeigen die Abo-Links weiter auf die alte Adresse.
+zeigen die Abo-Links weiter auf die alte Adresse. Die Variable muss mit
+`http://` oder `https://` beginnen.
 
 Weitere Eigenheiten:
 
