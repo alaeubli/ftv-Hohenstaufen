@@ -1,7 +1,56 @@
 {
-  "aktualisiert": "2026-09-30T10:26:54",
-  "semester": "SS 26",
-  "termine": [],
+  "aktualisiert": "2026-10-01T10:54:18",
+  "semester": "WS 26/27",
+  "termine": [
+    {
+      "start": "2026-10-17T19:00:00",
+      "ende": "2026-10-17T23:00:00",
+      "titel": "Semesterantrittskneipe",
+      "ort": "Hohenstaufenhaus, Mozartstraße 31"
+    },
+    {
+      "start": "2026-10-24T20:00:00",
+      "ende": "2026-10-24T23:00:00",
+      "titel": "Stiftungsfest der FtV Horlogia Furtwangen",
+      "ort": ""
+    },
+    {
+      "start": "2026-11-10T09:30:00",
+      "ende": "2026-11-10T18:00:00",
+      "titel": "Exkursion zur Firma Franke GmbH",
+      "ort": ""
+    },
+    {
+      "start": "2026-11-19T19:30:00",
+      "ende": "2026-11-19T23:00:00",
+      "titel": "Webinar: KI für Einsteiger",
+      "ort": ""
+    },
+    {
+      "start": "2026-12-19T19:00:00",
+      "ende": "2026-12-19T23:00:00",
+      "titel": "Adventsabend",
+      "ort": "Hohenstaufenhaus, Mozartstraße 31"
+    },
+    {
+      "start": "2027-01-16T19:00:00",
+      "ende": "2027-01-16T23:00:00",
+      "titel": "Krambambulikneipe",
+      "ort": "Hohenstaufenhaus, Mozartstraße 31"
+    },
+    {
+      "start": "2027-02-10T19:00:00",
+      "ende": "2027-02-10T23:00:00",
+      "titel": "Digitaler Stammtisch",
+      "ort": ""
+    },
+    {
+      "start": "2027-02-27T19:00:00",
+      "ende": "2027-02-27T23:00:00",
+      "titel": "Semesterexkneipe",
+      "ort": "Hohenstaufenhaus, Mozartstraße 31"
+    }
+  ],
   "ohne_festen_termin": [
     "Fuchsenabende",
     "Studienvorträge"
